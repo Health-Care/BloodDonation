@@ -2,12 +2,13 @@
 <html>
 <head>
 	<title>فصيلتي | Faselty</title>
-	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
+	<%= csrf_meta_tags %> 
 </head>
 <body>
 	<br>
@@ -21,10 +22,25 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="collapse-2" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
 				<a class="navbar-brand" href="#"><img src="<%= asset_path( 'logo.png' ) %>" height="46" width="200"></a>
+
+				 
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'fb.png' ) %>" height="40" width="46"></a>
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'tw.png' ) %>" height="40" width="46"></a>
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'google.png' ) %>" height="40" width="46"></a>
+
+				<% if current_user != nil && current_user.notifications >= 0 %>
+				<a class="navbar-brand-no"><%= link_to image_tag('notiii.png', :width => 46, :height => 40), relatedrequests_requests_path, {:class => 'navbar-brand-no'} %> </a>
+
+				<% end %>
+				 
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,9 +51,9 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span> التبرع</a>
 
 						<ul>
-							<li><a href="#">الحالات</a></li>  
+							<li><%= link_to 'الحالات', requests_path %></li>  
 							<li>
-								<a ><span class="caret"></span> ارشادات</a>
+								<a ><span class="caret"></span>ارشادات</a>
 								<ul>
 									<li><a href="#">عن التبرع</a></li>
 									<li><a href="#">عن المتبرع</a></li>
@@ -49,15 +65,29 @@
 					</li> 
 					<li><a href="#">التواصل معنا</a></li>
 					<li><a href="#">اخبار ودعايه</a></li> 
-					<li><a href="#">عن فصيلتى</a></li>
+					<li><%= link_to "عن فصيلتي", about_contents_path %></li>
 					<% if current_user %>
 					<li>
-					<a style="font-size:20px;">
-					<span class="caret"></span><%= current_user.name %></a>
+					<a> 
+					<span class="caret"></span><%= current_user.name.downcase.split[0]  %></a>
 						<ul>
-							<li><a href="#">عرض الحساب</a></li> 
-							<li><a href="#">اعدادات الحساب</a></li>
-							<li><a href="#">تسجيل الخروج</a></li>
+							<li><%= link_to 'عرض الحساب', show_users_path(current_user) %></li> 
+							<li><%= link_to 'اعدادات الحساب',edit_user_registration_path %></li>
+							<li>
+								<!-- Developer review: if user is available -->
+								<% unless current_user.pause %>
+
+								<!-- Developer review: pause user's account -->
+								<%= link_to 'تجميد الحساب', pause_user_path(current_user) %>
+
+								<!-- Developer review: if user Not Available -->
+								<% else %>
+
+								<!-- Developer review: resume user's account -->
+								<%= link_to 'تفعيل الحساب', unpause_user_path(current_user) %>
+								<% end %>
+							</li>
+							<li><%= link_to 'تسجيل الخروج',destroy_user_session_path, :method => :delete  %></li>
 						</ul>	
 					</li>
 					<% end %>
@@ -67,18 +97,10 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 
+	<% if current_user != nil && current_user.notifications != 0 %>
+	<%= javascript_tag "show_notification_blood('#{current_user.notifications.to_s}');" %>
+	<% end %>
 	
-
-<div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-
-
 	<%= yield %>
 	<br><br> 
 

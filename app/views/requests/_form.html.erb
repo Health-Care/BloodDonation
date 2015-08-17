@@ -1,0 +1,68 @@
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :nationalid %><br>
+    <%= f.text_field :contact_nationalid %>
+  </div>
+  <div class="field">
+    <%= f.label :patientname %><br>
+    <%= f.text_field :patient_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :blood_type %><br />
+    <%= f.select(:blood_type, [["A+","A+"],["A-","A-"],
+      ["B+","B+"],["B-","B-"],
+      ["O+","O+"],["O-","O-"],
+      ["AB+","AB+"],["AB-","AB-"]], include_blank: 'اختر فصيلة الدم') %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expiredate %><br>
+    <%= f.date_select :expiredate %>
+  </div>
+  <div class="field">
+    <%= f.label :bloodbag %><br>
+    <%= f.number_field :bloodbag %>
+  </div>
+  <div class="field">
+    <%= f.label :hospitalname %><br>
+    <%= f.text_field :hospital_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hospitaladdress %><br />
+    <input id="hospital_searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
+    
+    <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true  %>
+
+    <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true  %> 
+    <%= f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', hidden: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

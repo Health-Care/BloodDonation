@@ -1,25 +1,41 @@
 Rails.application.routes.draw do 
-
-
  
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
-  
-  resources :movies do
-    resources :reviews
-  end 
- 
-
-  devise_for :users
-
+  devise_for :users, :controllers => {:users_controller => "users_controller"}
+   
   root :to => 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
- 
-  get 'users/:id' => 'users#show'
-  resources :users, :only => [:show]
+  
+  get 'users/:id/activedonations' => 'users#active_donations', :as => :active_donations_users
+  get 'users/:id' => 'users#show', :as => :show_users
+  get 'requests/:id/donate' => 'requests#donate', :as => :donate_requests
+  get 'requests/:id/cancel_donate' => 'requests#cancel_donate', :as => :cancel_donate_requests
+  
+  resources :users, :only => [:show, :active_donations] do
+    member do 
+      get :pause
+      get :unpause 
+    end
+  end
 
+  resources :requests do
+    collection do
+      get 'relatedrequests'      
+    end
+  end 
+
+  resources :contents, only: [:index] do
+    collection do
+      get :about
+      get :donor_info
+      get :donation_info
+      get :blood_info
+      get :patient_info
+      get :news
+      get :contact
+    end
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

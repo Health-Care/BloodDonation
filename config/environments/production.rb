@@ -69,6 +69,21 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
+
+  config.active_support.deprecation = :notify
+  config.action_mailer.default_url_options = { :host => 'faselty.com' }
+
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,  
+    :address            => 'smtp.gmail.com',
+    :port               => 587,
+    :domain             => 'gmail.com', #you can also use google.com
+    :authentication     => :plain,
+    user_name: 'ibrahim.ali.0403@gmail.com',
+    password: 'HEma94#33'
+  }
+
+  # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.

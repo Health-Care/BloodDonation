@@ -1,34 +1,33 @@
 
+<% if notice != nil %>
+<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
+<% end %>
 
-<div class="row content main_content">
+<div  class="row content main_content" dir="rtl">
 	<ul> 
 		<% if current_user %>
-		<li><%= current_user.name %></li>
-		<li><%= current_user.email %></li>
-		<li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
-		<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-		<li><a>
-			<%= link_to current_user.name, user_path(current_user) %></a></li>
-			<% else %>
-			<li>
-				<a><%= link_to 'signup', new_user_registration_path %></a>
-			</li>
-			
-			<li>
-				<a><%= link_to 'signin', new_user_session_path %></a>
-			</li>
+		<li><%= " Welcome #{current_user.name}" %></li>
+		<li><%= current_user.email %></li> 
+		<li> <a><%= link_to 'عرض الحالات', requests_path %></a></li>		
+		<% else %> 
+		<li>
+			<%= link_to 'تسجيل متبرع جديد', '#', :onclick => "window.location.href = 'http://localhost:3000/users/sign_up'" %>
+		</li>
 
-			<li>
-				<a><%= link_to 'signin with facebook', new_user_session_path %></a>
-			</li>
+		<li>
+			<a><%= link_to 'تسجيل الدخول كمتبرع', new_user_session_path %></a>
+		</li>
+ 		
+ 		<li>
+			<a><%= link_to 'عرض الحالات', requests_path %></a>
+		</li>
 
-			<li>
-				<a><%= link_to 'signin with twitter', new_user_session_path %></a>
-			</li>
+ 		<li>
+			<a><%= link_to 'تسجيل متلقى جديد', new_request_path %></a>
+		</li>
 
-			<li>
-				<a><%= link_to 'signin with google +', new_user_session_path %></a>
-			</li>
-			<% end %>
-		</ul>
-	</div>
+		<% end %>
+	</ul>
+ 
+</div>
+ 

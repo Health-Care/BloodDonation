@@ -1,3 +1,7 @@
+<% if notice != nil %>
+<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
+<% end %>
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

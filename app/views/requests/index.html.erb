@@ -1,0 +1,37 @@
+<% if notice != nil %>
+<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
+<% end %>
+ 
+<h1>Listing Requests</h1>
+
+<table width="80%">
+  <thead>
+    <tr> 
+      <th>blood type</th>
+      <th>Expire date</th>
+      <th>Blood bag</th>
+      <th>Hospital name</th>  
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr> 
+        <td><%= request.blood_type %></td>
+        <td><%= request.expiredate %></td>
+        <td><%= request.bloodbag %></td>
+        <td><%= request.hospital_name %></td>  
+        <td><%= link_to 'Show', request %></td>
+        <!-- <td><%= link_to 'Edit', edit_request_path(request) %></td>
+        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user == nil %>
+  <%= link_to 'New Request', '#', :onclick => "window.location.href = 'http://localhost:3000/requests/new'" %>
+<% end %>
+

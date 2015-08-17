@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone: MyString
+  email: MyString
+  nationalid: MyString
+  patientname: MyString
+  faselty: MyString
+  expiredate: 2015-08-13
+  bloodbag: 1
+  hospitalname: MyString
+  hospitalphone: MyString
+  hospitaladdress: MyString
+
+two:
+  name: MyString
+  phone: MyString
+  email: MyString
+  nationalid: MyString
+  patientname: MyString
+  faselty: MyString
+  expiredate: 2015-08-13
+  bloodbag: 1
+  hospitalname: MyString
+  hospitalphone: MyString
+  hospitaladdress: MyString

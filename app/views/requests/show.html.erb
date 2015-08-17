@@ -1,0 +1,79 @@
+<% if notice != nil %>
+<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
+<% end %>
+ 
+<p>
+  <strong>Name:</strong>
+  <%= @request.contact_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @request.contact_phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @request.contact_email %>
+</p>
+
+<p>
+  <strong>Nationalid:</strong>
+  <%= @request.contact_nationalid %>
+</p>
+
+<p>
+  <strong>Patientname:</strong>
+  <%= @request.patient_name %>
+</p>
+
+<p>
+  <strong>Faselty:</strong>
+  <%= @request.blood_type %>
+</p>
+
+<p>
+  <strong>Expiredate:</strong>
+  <%= @request.expiredate %>
+</p>
+
+<p>
+  <strong>Bloodbag:</strong>
+  <%= @request.bloodbag %>
+</p>
+
+<p>
+  <strong>Hospitalname:</strong>
+  <%= @request.hospital_name %>
+</p>
+ 
+<p>
+  <strong>Hospitaladdress:</strong>
+  <%= @request.hospital_location %>
+</p>
+
+<p>
+  <strong>number of donors :</strong>
+  <%= @request.num_of_donors %>
+</p>
+
+<!-- Social Media share -->
+<div class="social-share">
+
+  <!-- Developer Review: Replace  request_url(r)  with link to request link -->
+  <!-- Facebook share -->
+  <a href="https://www.facebook.com/sharer/sharer.php?u=request_url(r) ">share fb</a>
+  <br>
+  <!-- Twitter share -->
+  <a href="https://twitter.com/intent/tweet?url=request_url(r)">share tw</a>
+  <br>
+  <!-- G+ share -->
+  <a href="https://plus.google.com/share?url=request_url(r)">shere g+</a>
+
+</div>
+
+<%= link_to 'تبرع', donate_requests_path(@request) %> <br>
+<%= link_to 'الرجوع الى صفحه الحالات', requests_path %>
+
+<!--%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path% -->

@@ -1,15 +1,30 @@
-<section>       
-  <div id="container_demo"> 
+ <div class="main row">
+	<div class="cover col-sm-12">
+		<img src="<%= asset_path( 'cover.jpg' ) %>" height="95%" width="1000">
+	</div>
 
-    <div id="wrapper">
-     <div  id="login" class="animate form">
-       <p id="notice"><%= params[:notice] %></p>
+	<div class="profile thumbnail with-caption">
+		<img src="<%= asset_path( 'profile.png' ) %>" height="100%" width="100%">
+		<p style="text-align:center;"> <%=  @user.name %> </p>
+	</div>
 
-       <h1> 
-        <h1><%= @user.email %>  </h1>
-        <h1><%="name : #{@user.name}" %>  </h1> 
-         
-      </div>
-    </div>
-  </div>  
-</section>
+	<div class="col-sm-12" dir="rtl" style="margin-top:-100px;">   
+		<h3><img src="<%= asset_path( 'email.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.email %></h3><br>
+		<h3><img src="<%= asset_path( 'phone.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.phone %></h3><br>	
+		<h3><img src="<%= asset_path( 'home.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.location_name %></h3><br>
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.age %></h3><br>
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.nationalid %></h3><br>
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.gender %></h3><br>	
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= @user.blood_type %></h3><br>	
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= "number of active requests : #{@user.num_of_active_requests} " %></h3><br>	
+		 <%= link_to 'الطلبات قيد الإنتظار', active_donations_users_path(current_user)%>
+	</div>	 
+</div>

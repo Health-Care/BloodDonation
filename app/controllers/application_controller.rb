@@ -6,16 +6,10 @@ class ApplicationController < ActionController::Base
 
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
-    private
-    def current_user
-    	@current_user ||= FacebookUser.find(session[:user_id]) if session[:user_id]
-    end
-    helper_method :current_user
-
     protected
 
-    def configure_permitted_parameters
-    	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password) }
-    	devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :is_female, :date_of_birth) }
-    end
+        def configure_permitted_parameters
+            devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :age, :phone, :nationalid, :blood_type, :gender, :lastdonation, :savedpeople, :notifications, :location_name, :location_lng, :location_lat, :num_of_active_requests, :pause ) }
+            devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :age, :phone, :nationalid, :blood_type, :gender, :lastdonation, :savedpeople, :notifications, :location_name, :location_lng, :location_lat, :num_of_active_requests, :pause) }
+        end
 end
