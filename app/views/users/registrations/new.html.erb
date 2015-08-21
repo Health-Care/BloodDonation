@@ -55,7 +55,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
 
 <div class="field">
-  <%= f.label :blood_type %><br />
+  <%= f.label :'blood type' %><br />
   <%= f.select(:blood_type, [["A+","A+"],["A-","A-"],
     ["B+","B+"],["B-","B-"],
     ["O+","O+"],["O-","O-"],
@@ -63,12 +63,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
 
 <div class="field">
-  <%= f.label :phone %><br />
+  <%= f.label :'phone number' %><br />
   <%= f.text_field :phone, autofocus: true, :required=>"Enter your mobile number" , :placeholder=>"Enter your phone number"%>
 </div>
 
 <div class="field">
-  <%= f.label :birth_date %><br />
+  <%= f.label :'birth date' %><br />
   <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter your Birth Date" , :id=>"datepicker" %>
   <script type="text/javascript">
     $(function() {
@@ -78,7 +78,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
 
 <div class="field">
-  <%= f.label :national_ID %><br />
+  <%= f.label :'national ID' %><br />
   <%= f.text_field :nationalid, autofocus: true, :required=>"Enter your national id", :placeholder=>"Enter your national id" %>
 </div>
 

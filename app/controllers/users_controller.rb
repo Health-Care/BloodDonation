@@ -7,6 +7,7 @@ class UsersController < ApplicationController
  
   def active_donations
     @requests = User.my_active_donations(current_user) 
+    current_user.update_attribute(:num_of_active_requests,@requests.size)
   end
 
   def pause

@@ -1,11 +1,15 @@
  
 <% content_for :title, "المتبرعين" %> 
 
-<h1>Request active donors</h1>
+<div  align="center">
 
-<table width="80%">
+<h1>active donors</h1>
+
+<% i = 1 %>
+<table width="30%">
   <thead>
     <tr> 
+      <th>number</th>
       <th>user name</th>
       <th>user phone</th>  
     </tr>
@@ -15,15 +19,19 @@
     <% @users.each do |user| %>
     <tr> 
       <% if current_user && user.id == current_user.id %> 
+      <td><%= i %></td>
       <td>you</td>
-      <td></td> 
+      <td><%= user.phone %></td> 
       <% else  %>
+      <td><%= i %></td>
       <td><%= user.name %></td>
       <td><%= user.phone %></td>
       <% end %>
     </tr>
+    <% i = i + 1 %>
     <% end %>
   </tbody>
 </table>
 
+</div>
 

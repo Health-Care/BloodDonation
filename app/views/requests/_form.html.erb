@@ -27,29 +27,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :'contact name' %><br>
     <%= f.text_field :contact_name, :required=>"Enter your name" %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :'contact phone' %><br>
     <%= f.text_field :contact_phone, :required=>"Enter your mobile number" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :'contact email' %><br>
     <%= f.text_field :contact_email, :required=>"Enter your email" %>
   </div>
   <div class="field">
-    <%= f.label :nationalid %><br>
+    <%= f.label :'contact national ID' %><br>
     <%= f.text_field :contact_nationalid, :required=>"Enter your national id" %>
   </div>
 
   <div class="field">
-    <%= f.label :patientname %><br>
+    <%= f.label :'patient name' %><br>
     <%= f.text_field :patient_name, :required=>"Enter the patient name" %>
   </div>
   
   <div class="field">
-    <%= f.label :blood_type %><br />
+    <%= f.label :'blood type' %><br />
     <%= f.select(:blood_type, [["A+","A+"],["A-","A-"],
       ["B+","B+"],["B-","B-"],
       ["O+","O+"],["O-","O-"],
@@ -57,20 +57,20 @@
   </div>
 
   <div class="field">
-    <%= f.label :expiredate %><br>
+    <%= f.label :'expire date' %><br>
     <%= f.date_select :expiredate %>
   </div>
   <div class="field">
-    <%= f.label :bloodbag %><br>
+    <%= f.label :'blood bag' %><br>
     <%= f.number_field :bloodbag, :required=>"Enter number of blood bag" %>
   </div>
   <div class="field">
-    <%= f.label :hospitalname %><br>
+    <%= f.label :'hospital name' %><br>
     <%= f.text_field :hospital_name, :required=>"Enter the hospital name" %>
   </div>
 
   <div class="field">
-    <%= f.label :hospitaladdress %><br />
+    <%= f.label :'hospital address' %><br />
     <input id="hospital_searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
     
     <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true  %>
