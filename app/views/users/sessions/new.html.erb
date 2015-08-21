@@ -3,6 +3,9 @@
 <div align="center">
 
 <h2>Log in</h2>
+<%- flash.each do |name, msg| -%>
+  <%= javascript_tag "show_notification_system('#{msg.to_s}');" %>
+<%- end -%>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
