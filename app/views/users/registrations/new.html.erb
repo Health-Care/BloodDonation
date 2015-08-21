@@ -1,6 +1,9 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
 <script type="text/javascript">
  function initialize() {
   var input = document.getElementById('searchTextField');
@@ -66,7 +69,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <div class="field">
   <%= f.label :birth_date %><br />
-  <%= f.date_select :birth_date %>
+  <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter your Birth Date" , :id=>"datepicker" %>
+  <script type="text/javascript">
+    $(function() {
+      $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0'});
+    });
+  </script>
 </div>
 
 <div class="field">

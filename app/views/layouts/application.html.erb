@@ -32,12 +32,12 @@
 				<a class="navbar-brand" href="#"><img src="<%= asset_path( 'logo.png' ) %>" height="46" width="200"></a>
 
 				 
-				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'fb.png' ) %>" height="40" width="46"></a>
-				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'tw.png' ) %>" height="40" width="46"></a>
-				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'google.png' ) %>" height="40" width="46"></a>
- 
+				<a class="navbar-brand-no" href="https://www.facebook.com/FaseltyMe" ><img src="<%= asset_path( 'fb.png' ) %>" height="40" width="46"></a>
+				<a class="navbar-brand-no" href="https://twitter.com/Faselty"><img src="<%= asset_path( 'tw.png' ) %>" height="40" width="46"></a>
+				<a class="navbar-brand-no" href="https://plus.google.com/u/3/108096126248367301464?cfem=1"><img src="<%= asset_path( 'google.png' ) %>" height="40" width="46"></a>
+ 				<% if current_user %>	
 				<a class="navbar-brand-no"><%= link_to image_tag('notiii.png', :width => 46, :height => 40), relatedrequests_requests_path, {:class => 'navbar-brand-no'} %> </a> 
-				 
+				<% end %> 
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
