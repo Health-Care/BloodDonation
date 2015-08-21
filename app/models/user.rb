@@ -37,12 +37,12 @@ class User < ActiveRecord::Base
   end 
 
   def self.get_myblood_requests(blood_type)
-    @requests = Request.select("*").where('blood_type == ? and expiredate >= ?', blood_type.to_s, Date.today).order('created_at DESC')
+    @requests = Request.select("*").where('blood_type = ? and expiredate >= ?', blood_type.to_s, Date.today).order('created_at DESC')
   end
 
   def self.my_active_donations(current_user)
       @active_requests = ActiveRequest.new  
-      @active_requests = ActiveRequest.select("*").where('donor_id == ? ' , current_user.id.to_s).order('created_at DESC') 
+      @active_requests = ActiveRequest.select("*").where('donor_id = ? ' , current_user.id.to_s).order('created_at DESC') 
       
       @requests = []
 
