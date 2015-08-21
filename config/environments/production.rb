@@ -68,8 +68,10 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Send deprecation notices to registered listeners.
-
+  # Send deprecation notices to registered listeners. 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { :host => 'faselty.com' }
 
@@ -79,12 +81,9 @@ Rails.application.configure do
     :port               => 587,
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
-    user_name: 'ibrahim.ali.0403@gmail.com',
+    user_name: 'faselty.team@gmail.com',
     password: 'HEma94#33'
-  }
-
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  } 
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new

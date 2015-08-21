@@ -1,19 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_logging_in, only: [:show, :active_donations, :pause, :unpause]
+  before_action :authenticate_logging_in, only: [:active_donations, :pause, :unpause]
   before_action :set_user, only: [:show, :active_donations]
   
-  def show  
+  def show   
   end 
  
   def active_donations
-   	  @active_requests = ActiveRequest.new	
-  	  @active_requests = ActiveRequest.select("*").where('donor_id == ? ' , current_user.id).order('created_at DESC') 
-  	  
-  	  @requests = []
-
-  	  @active_requests.each do |active_requests| 
-          @requests << Request.find( active_requests.request_id )
-      end	
+    @requests = User.my_active_donations(current_user) 
   end
 
   def pause

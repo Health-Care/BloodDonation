@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
+gem 'ruby', '2.1.2'
+
 # Use sqlite3 as the database for Active Record
 group :development, :test do
 gem 'sqlite3'
@@ -20,11 +22,9 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'rails_12factor'
 gem 'underscore-rails'
 
-group :development do
-  gem 'letter_opener'
-end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  
   devise_for :users, :controllers => {:users_controller => "users_controller"}
    
-  root :to => 'home#index'
+  root :to => 'contents#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/:id/activedonations' => 'users#active_donations', :as => :active_donations_users
   get 'users/:id' => 'users#show', :as => :show_users
   get 'requests/:id/donate' => 'requests#donate', :as => :donate_requests
+  get 'requests/:id/donors' => 'requests#donors', :as => :donors_requests
   get 'requests/:id/cancel_donate' => 'requests#cancel_donate', :as => :cancel_donate_requests
   
   resources :users, :only => [:show, :active_donations] do
@@ -21,9 +22,10 @@ Rails.application.routes.draw do
 
   resources :requests do
     collection do
-      get 'relatedrequests'      
+      get 'relatedrequests'  
     end
   end 
+
 
   resources :contents, only: [:index] do
     collection do

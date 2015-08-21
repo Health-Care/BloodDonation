@@ -1,6 +1,6 @@
-<% if notice != nil %>
-<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
-<% end %>
+<% content_for :title, "تسجيل الدخول" %> 
+
+<div align="center">
 
 <h2>Log in</h2>
 
@@ -28,3 +28,5 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+  </div>
+

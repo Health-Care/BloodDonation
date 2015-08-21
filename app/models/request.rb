@@ -23,6 +23,25 @@ class Request < ActiveRecord::Base
   validates_presence_of :blood_type, :message=> "Must enter the blood type"
   validates_presence_of :expiredate, :message=> "Must enter the expire date"
 
+  def self.my_active_donors(request)
+    @active_requests = ActiveRequest.new  
+    @active_requests = ActiveRequest.select("*").where('request_id == ? ' , request.id).order('created_at DESC') 
+
+    @users = []
+
+    @active_requests.each do |active_requests| 
+      if User.exists?(active_requests.donor_id)
+        @users << User.find( active_requests.donor_id )
+      end
+    end 
+    request.update_attribute(:num_of_donors, @users.size)
+    @users
+  end
+  
+  def all_users_with_blood_type(blood_type)
+    @users = User.select("*").where(:blood_type => blood_type) 
+  end  
+  
   def to_param
     encrypt id
   end

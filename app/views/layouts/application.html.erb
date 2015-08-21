@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>فصيلتي | Faselty</title>
+<head> 
+	<title>فصيلتي | <%= yield(:title) %></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -35,11 +35,8 @@
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'fb.png' ) %>" height="40" width="46"></a>
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'tw.png' ) %>" height="40" width="46"></a>
 				<a class="navbar-brand-no" href="#"><img src="<%= asset_path( 'google.png' ) %>" height="40" width="46"></a>
-
-				<% if current_user != nil && current_user.notifications >= 0 %>
-				<a class="navbar-brand-no"><%= link_to image_tag('notiii.png', :width => 46, :height => 40), relatedrequests_requests_path, {:class => 'navbar-brand-no'} %> </a>
-
-				<% end %>
+ 
+				<a class="navbar-brand-no"><%= link_to image_tag('notiii.png', :width => 46, :height => 40), relatedrequests_requests_path, {:class => 'navbar-brand-no'} %> </a> 
 				 
 			</div>
 
@@ -47,25 +44,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 				<ul class="nav navbar-nav navbar-right">		
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span> التبرع</a>
-
-						<ul>
-							<li><%= link_to 'الحالات', requests_path %></li>  
-							<li>
-								<a ><span class="caret"></span>ارشادات</a>
-								<ul>
-									<li><a href="#">عن التبرع</a></li>
-									<li><a href="#">عن المتبرع</a></li>
-									<li><a href="#">عن المريض</a></li>
-									<li><a href="#">عن الدم</a></li>
-								</ul>
-							</li> 
-						</ul>
-					</li> 
-					<li><a href="#">التواصل معنا</a></li>
-					<li><a href="#">اخبار ودعايه</a></li> 
-					<li><%= link_to "عن فصيلتي", about_contents_path %></li>
+					
+					
 					<% if current_user %>
 					<li>
 					<a> 
@@ -91,12 +71,16 @@
 						</ul>	
 					</li>
 					<% end %>
-
+					<li><%= link_to "عن فصيلتي", about_contents_path %></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-
+	
+	<% if notice != nil %>
+	<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
+	<% end %>
+ 
 	<% if current_user != nil && current_user.notifications != 0 %>
 	<%= javascript_tag "show_notification_blood('#{current_user.notifications.to_s}');" %>
 	<% end %>

@@ -1,3 +1,5 @@
+<% content_for :title, "الصفحه الشخصيه" %> 
+<br>
  <div class="main row">
 	<div class="cover col-sm-12">
 		<img src="<%= asset_path( 'cover.jpg' ) %>" height="95%" width="1000">
@@ -16,15 +18,28 @@
 		<h3><img src="<%= asset_path( 'home.png' ) %>" height="30" width="30">
 		 &nbsp;<%= @user.location_name %></h3><br>
 		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
-		 &nbsp;<%= @user.age %></h3><br>
+		 &nbsp;<%= @user.birth_date %></h3><br>
+
+		 <% if current_user && @user.id == current_user.id %>
 		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
 		 &nbsp;<%= @user.nationalid %></h3><br>
+		 <% end %>
+
 		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
 		 &nbsp;<%= @user.gender %></h3><br>	
 		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
 		 &nbsp;<%= @user.blood_type %></h3><br>	
+
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= "number of saved people: #{@user.savedpeople}" %></h3><br>	
+		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= "last donation time: #{@user.lastdonation}" %></h3><br>	
+
 		<h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
 		 &nbsp;<%= "number of active requests : #{@user.num_of_active_requests} " %></h3><br>	
-		 <%= link_to 'الطلبات قيد الإنتظار', active_donations_users_path(current_user)%>
+		 <% if current_user && @user.id == current_user.id %>
+		 <h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
+		 &nbsp;<%= link_to 'الطلبات قيد الإنتظار', active_donations_users_path(current_user)%></h3><br>	
+		 <% end %>
 	</div>	 
 </div>

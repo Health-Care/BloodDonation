@@ -16,10 +16,16 @@
 //= require_tree .
 //= require gmaps/google
 
+
+function ShowProgressAnimation() {
+  $("#loading-div-background").show();
+}
+
 function show_notification_system(msg){  
 
   $(document).ready(function() {  
     $.meow({ 
+      title: "faselty says:",
       message: msg, 
       icon: 'http://findicons.com/files/icons/1075/scrap/300/administrator_2.png'
     });

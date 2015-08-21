@@ -1,7 +1,20 @@
-<% if notice != nil %>
-<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
-<% end %>
- 
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#loading-div-background").css({ opacity: 0.8 });
+
+  });
+</script>
+<div id="loading-div-background">
+  <div id="loading-div" class="ui-corner-all" >
+    <img style="height:80px;margin:30px;" src="https://www.tmdn.org/tmdsview-web/resources/images/loading-gallery.gif" alt="Loading.."/>
+    <h2 style="color:gray;font-weight:normal;">Please wait....</h2>
+  </div>
+</div>
+
+<% content_for :title, "صفحة الحالة" %> 
+
+<div align="center">
+
 <p>
   <strong>Name:</strong>
   <%= @request.contact_name %>
@@ -46,7 +59,7 @@
   <strong>Hospitalname:</strong>
   <%= @request.hospital_name %>
 </p>
- 
+
 <p>
   <strong>Hospitaladdress:</strong>
   <%= @request.hospital_location %>
@@ -57,7 +70,14 @@
   <%= @request.num_of_donors %>
 </p>
 
+<% if @request.num_of_donors != 0 %>
+<p>
+  <strong>  <%= link_to "donors" , donors_requests_path(@request) %></strong>
+</p>
+<% end %>
 <!-- Social Media share -->
+
+<% if !@request.expiredate.past? %>
 <div class="social-share">
 
   <!-- Developer Review: Replace  request_url(r)  with link to request link -->
@@ -71,9 +91,13 @@
   <a href="https://plus.google.com/share?url=request_url(r)">shere g+</a>
 
 </div>
+<%= link_to 'تبرع', donate_requests_path(@request),:onclick => "ShowProgressAnimation();" %> 
+<% end %>
+<br>
 
-<%= link_to 'تبرع', donate_requests_path(@request) %> <br>
 <%= link_to 'الرجوع الى صفحه الحالات', requests_path %>
+
+  </div>
 
 <!--%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path% -->

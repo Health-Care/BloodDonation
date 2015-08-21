@@ -1,10 +1,12 @@
 class UserMailer < ActionMailer::Base
-  default from: "ibrahim.ali.0403@gmail.com"
+  default from: "faselty.team@gmail.com"
 
-  def new_request_email(user, request)
-    @user = user
-    @request_url = request_url(request)
-    mail(to: "ibrahim@faselty.me", subject: 'Donation Chance!')
+  def new_request_email(users, request, blood_type)
+      @blood_type = blood_type
+      @request_url = request_url(request)
+
+      emails = users.collect(&:email).join("; ")
+      mail(to: emails, subject: 'Donation Chance!')
   end
 
 
@@ -12,7 +14,7 @@ class UserMailer < ActionMailer::Base
     @request = request
     @user = user
     @user_url = user_url(@user)
-    mail(to: @request.email, subject: 'Donor Comming!')
+    mail(to: @request.contact_email, subject: 'Donor Comming!')
   end
 
 end

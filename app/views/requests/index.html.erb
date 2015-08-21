@@ -1,7 +1,7 @@
-<% if notice != nil %>
-<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
-<% end %>
- 
+<% content_for :title, "عرض الحالات الكاملة" %> 
+
+<% if @requests != nil %>
+
 <h1>Listing Requests</h1>
 
 <table width="80%">
@@ -29,6 +29,9 @@
   </tbody>
 </table>
 
+<% else %>
+  <h3>No requests yet !!</h3>
+<% end %>
 <br>
 
 <% if current_user == nil %>

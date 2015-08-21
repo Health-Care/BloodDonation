@@ -1,4 +1,19 @@
-<%= form_for(@request) do |f| %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#loading-div-background").css({ opacity: 0.8 });
+
+  });
+</script>
+<div id="loading-div-background">
+  <div id="loading-div" class="ui-corner-all" >
+    <img style="height:80px;margin:30px;" src="https://www.tmdn.org/tmdsview-web/resources/images/loading-gallery.gif" alt="Loading.."/>
+    <h2 style="color:gray;font-weight:normal;">Please wait....</h2>
+  </div>
+</div>
+
+
+
+<%= form_for(@request, :html => {:onsubmit => "ShowProgressAnimation();"}) do |f| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
@@ -13,23 +28,24 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :contact_name %>
+    <%= f.text_field :contact_name, :required=>"Enter your name" %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :contact_phone %>
+    <%= f.text_field :contact_phone, :required=>"Enter your mobile number" %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :contact_email %>
+    <%= f.text_field :contact_email, :required=>"Enter your email" %>
   </div>
   <div class="field">
     <%= f.label :nationalid %><br>
-    <%= f.text_field :contact_nationalid %>
+    <%= f.text_field :contact_nationalid, :required=>"Enter your national id" %>
   </div>
+
   <div class="field">
     <%= f.label :patientname %><br>
-    <%= f.text_field :patient_name %>
+    <%= f.text_field :patient_name, :required=>"Enter the patient name" %>
   </div>
   
   <div class="field">
@@ -46,11 +62,11 @@
   </div>
   <div class="field">
     <%= f.label :bloodbag %><br>
-    <%= f.number_field :bloodbag %>
+    <%= f.number_field :bloodbag, :required=>"Enter number of blood bag" %>
   </div>
   <div class="field">
     <%= f.label :hospitalname %><br>
-    <%= f.text_field :hospital_name %>
+    <%= f.text_field :hospital_name, :required=>"Enter the hospital name" %>
   </div>
 
   <div class="field">
@@ -66,3 +82,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+ 
