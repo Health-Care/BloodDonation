@@ -25,7 +25,7 @@ class Request < ActiveRecord::Base
 
   def self.my_active_donors(request)
     @active_requests = ActiveRequest.new  
-    @active_requests = ActiveRequest.select("*").where('request_id == ? ' , request.id).order('created_at DESC') 
+    @active_requests = ActiveRequest.select("*").where('request_id == ? ' , request.id.to_s).order('created_at DESC') 
 
     @users = []
 

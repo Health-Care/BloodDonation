@@ -1,6 +1,6 @@
 <% content_for :title, "عرض الحالات الكاملة" %> 
 
-<% if @requests != nil %>
+<% if @requests.size != 0 %>
 
 <h1>Listing Requests</h1>
 
@@ -31,10 +31,4 @@
 
 <% else %>
   <h3>No requests yet !!</h3>
-<% end %>
-<br>
-
-<% if current_user == nil %>
-  <%= link_to 'New Request', '#', :onclick => "window.location.href = 'http://localhost:3000/requests/new'" %>
-<% end %>
-
+<% end %> 
