@@ -36,8 +36,8 @@ function show_notification_system(msg){
 function show_notification_blood(msg){  
   $(document).ready(function() {  
     $.meow({
-      title: "عاجل",
-      message: "فيه " + msg +" حالات عاوزين مساعدتك", 
+      title: "حالات طارئه",
+      message: "فى حالات جديده بنفس فصيله دمك موجوده", 
       icon: 'http://static.wixstatic.com/media/9ba976_9ce0a72cba74472cb76112fd1376bf42.jpg'
     });
   });

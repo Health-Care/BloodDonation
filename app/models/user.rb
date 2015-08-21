@@ -32,25 +32,23 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_unexpired_requests
-    @requests = Request.select("*").where('expiredate >= ? ' , Date.today).order('created_at DESC') 
-  end 
-
   def self.get_myblood_requests(blood_type)
     @requests = Request.select("*").where('blood_type = ? and expiredate >= ?', blood_type.to_s, Date.today).order('created_at DESC')
   end
 
-  def self.my_active_donations(current_user)
-      @active_requests = ActiveRequest.new  
+  def self.my_active_donations(current_user) 
       @active_requests = ActiveRequest.select("*").where('donor_id = ? ' , current_user.id.to_s).order('created_at DESC') 
       
       @requests = []
 
-      @active_requests.each do |active_requests| 
-         if Request.exists?(active_requests.request_id)
-            @requests << Request.find( active_requests.request_id )
+      @active_requests.each do |active_request| 
+         if Request.exists?(active_request.request_id)
+            @requests << Request.find( active_request.request_id )
          end
       end 
+
+      current_user.update_attribute(:num_of_active_requests,@requests.size)
+
       @requests
   end
   

@@ -7,11 +7,11 @@ class UsersController < ApplicationController
  
   def active_donations
     @requests = User.my_active_donations(current_user) 
-    current_user.update_attribute(:num_of_active_requests,@requests.size)
   end
 
   def pause
-    if current_user.update_attribute(:pause , true)
+    current_user.update_attribute(:pause , true)
+    if current_user.pause
       redirect_to root_path, notice: "Successfully paused your donation ability."
     else
       redirect_to root_path, alert: "Something went wrong with your account, plaese call us"
@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def unpause
-    if current_user.update_attribute(:pause , false)
+    current_user.update_attribute(:pause , false)
+    if !current_user.pause
       redirect_to root_path, notice: "Successfully unpaused your donation ability."
     else
       redirect_to root_path, alert: "Something went wrong with your account, plaese call us"

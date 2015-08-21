@@ -5,9 +5,9 @@ class RequestsController < ApplicationController
 
   # GET /requests
   # GET /requests.json
-  def index   
-    user = User.new
-    @requests = user.get_unexpired_requests
+  def index    
+    User.my_active_donations(current_user) 
+    @requests = Request.get_unexpired_requests
   end
 
   # GET /requests/1
@@ -15,10 +15,7 @@ class RequestsController < ApplicationController
   def show 
     donors
     if current_user.blood_type != @request.blood_type
-      respond_to do |format|
-        format.html { redirect_to requests_path, notice: 'The requests blood type doesnt match yours' }
-        format.json { head :no_content } 
-      end
+       redirect_to requests_path, notice: 'The requests blood type does not match yours'
     end 
   end
 
@@ -44,7 +41,7 @@ class RequestsController < ApplicationController
         format.html { redirect_to root_url, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
-        format.html { redirect_to root_url, alert: "Something went wrong" }
+        format.html { redirect_to root_url, alert: "Something went wrong, try again" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +66,7 @@ class RequestsController < ApplicationController
   def destroy
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: 'Request was successfully destroyed.' }
+      format.html { redirect_to requests_url, notice: 'Request was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -84,14 +81,14 @@ class RequestsController < ApplicationController
     @active_request.request_id = @request.id
 
     if ActiveRequest.check_donations_status(current_user.id,@request.id) && !current_user.pause
-      notify_donation_reply(@request)  
+      notify_request_owner(@request)  
 
       if @active_request.save 
         redirect_to @request, notice: 'successfully responded to the request. He waiting you'
       end
     
     elsif current_user.pause
-        redirect_to @request, notice: "Your account paused, please if you have a problem call us" 
+        redirect_to @request, notice: "Your account paused, you can not donate right now" 
     
     else
         redirect_to @request, notice: "You are donated before"
@@ -105,7 +102,7 @@ class RequestsController < ApplicationController
     if ActiveRequest.where(:donor_id => current_user.id,:request_id => @request.id).destroy_all
        redirect_to active_donations_users_path(current_user), notice: 'successfully cancel this active donation' 
     else
-       redirect_to active_donations_users_path(current_user), notice: "Some thing went wrong, please call the call center" 
+       redirect_to active_donations_users_path(current_user), notice: "Some thing went wrong, please try again" 
     end  
 
   end
@@ -118,6 +115,7 @@ class RequestsController < ApplicationController
 
   def notify_users(request)
     users = []
+
     User.all.each do |user| 
       if user.blood_type.to_s == request.blood_type.to_s
         users << user
@@ -132,22 +130,12 @@ class RequestsController < ApplicationController
   end
 
 
-  def notify_donation_reply(request)
-    Thread.new do
-     UserMailer.new_reply_email(current_user, request).deliver_now
+  def notify_request_owner(request)
+     Thread.new do
+         UserMailer.new_reply_email(current_user, request).deliver_now
      end
 
-     if request.num_of_donors == nil && Request.exists?(request.id)
-       Request.find( request.id ).update_attribute(:num_of_donors, 1)
-     else
-       Request.find( request.id ).update_attribute(:num_of_donors, request.num_of_donors + 1)
-     end   
-
-     if current_user.num_of_active_requests == nil 
-       current_user.update_attribute(:num_of_active_requests, 1)
-     else
-       current_user.update_attribute(:num_of_active_requests, current_user.num_of_active_requests + 1)
-     end  
+     Request.update_num_of_donors(request , current_user)
   end
 
  private
