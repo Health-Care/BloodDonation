@@ -16,52 +16,52 @@
 <div align="center">
 
 <p>
-  <strong>Name:</strong>
+  <strong>Contact Name:</strong>
   <%= @request.contact_name %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>Contact Phone:</strong>
   <%= @request.contact_phone %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Contact Email:</strong>
   <%= @request.contact_email %>
 </p>
 
 <p>
-  <strong>Nationalid:</strong>
+  <strong>Contact National id:</strong>
   <%= @request.contact_nationalid %>
 </p>
 
 <p>
-  <strong>Patientname:</strong>
+  <strong>Patient name:</strong>
   <%= @request.patient_name %>
 </p>
 
 <p>
-  <strong>Faselty:</strong>
+  <strong>Patient blood type:</strong>
   <%= @request.blood_type %>
 </p>
 
 <p>
-  <strong>Expiredate:</strong>
+  <strong>Expire date:</strong>
   <%= @request.expiredate %>
 </p>
 
 <p>
-  <strong>Bloodbag:</strong>
+  <strong>Blood bag:</strong>
   <%= @request.bloodbag %>
 </p>
 
 <p>
-  <strong>Hospitalname:</strong>
+  <strong>Hospital name:</strong>
   <%= @request.hospital_name %>
 </p>
 
 <p>
-  <strong>Hospitaladdress:</strong>
+  <strong>Hospital address:</strong>
   <%= @request.hospital_location %>
 </p>
 
@@ -72,7 +72,7 @@
 
 <% if @request.num_of_donors != 0 %>
 <p>
-  <strong>  <%= link_to "donors" , donors_requests_path(@request) %></strong>
+  <strong>  <%= link_to "show donors" , donors_requests_path(@request) %></strong>
 </p>
 <% end %>
 <!-- Social Media share -->
