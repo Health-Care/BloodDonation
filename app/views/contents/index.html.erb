@@ -6,7 +6,7 @@
 		<li><%= " Welcome #{current_user.name}" %></li>
 		<li><%= current_user.email %></li> 
 		<li> <a><%= link_to 'عرض الحالات', requests_path %></a></li>		
-		<% else %> 
+		<% else %>  
 		<li>
 			<%= link_to 'تسجيل متبرع جديد', '#', :onclick => "window.location.href = '/users/sign_up'" %>
 		</li>

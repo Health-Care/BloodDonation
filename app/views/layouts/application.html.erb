@@ -80,7 +80,13 @@
 	<% if notice != nil %>
 	<%= javascript_tag "show_notification_system('#{notice.to_s}');" %>
 	<% end %>
- 
+ 	
+	<%- flash.each do |name, msg| -%>
+	<% if msg == "Invalid email or password." %>
+	<%= javascript_tag "show_notification_system('#{msg.to_s}');" %>
+	<%- end -%>     
+	<%- end -%>
+
 	<% if current_user != nil && current_user.notifications != 0 %>
 	<%= javascript_tag "show_notification_blood('#{current_user.notifications.to_s}');" %>
 	<% end %>

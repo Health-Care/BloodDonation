@@ -1,0 +1,21 @@
+<% content_for :title, "Faselty" %>
+ 
+<div  class="row content main_content" dir="rtl">
+	<ul> 
+		<% if current_admin %> 
+		<li><%= current_admin.email %></li> 
+		<li>number of users : <%= @users_number %></li> 
+		<li>number of requests : <%= @requests_number %></li> 
+		<li>number of active requests : <%= @active_requests_number %></li> 
+		<li>number of expired requests : <%= @expired_requests_number %></li> 
+		<li> <%= link_to  "sign out as admin", destroy_admin_session_path, method: :delete %></li>		
+		<% else %> 
+	
+		<li>
+			<%= link_to 'login as admin', '#', :onclick => "window.location.href = '/admins/sign_in'" %>
+		</li>
+
+		<% end %>
+	</ul>
+ 
+</div>

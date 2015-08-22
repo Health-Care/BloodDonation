@@ -1,5 +1,6 @@
 Rails.application.routes.draw do 
  
+  devise_for :admins
   devise_for :users, :controllers => {:users_controller => "users_controller"}
    
   root :to => 'contents#index'
@@ -36,6 +37,12 @@ Rails.application.routes.draw do
       get :patient_info
       get :news
       get :contact
+    end
+  end
+
+  resources :controls, only: [:index] do
+    collection do
+      get :dashboard
     end
   end
   # You can have the root of your site routed with "root"

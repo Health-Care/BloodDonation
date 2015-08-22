@@ -46,7 +46,7 @@ class Request < ActiveRecord::Base
     @users = User.select("*").where(:blood_type => blood_type) 
   end  
   
-  def update_num_of_donors(request,current_user)
+  def self.update_num_of_donors(request,current_user)
      if request.num_of_donors == nil && Request.exists?(request.id)
        Request.find( request.id ).update_attribute(:num_of_donors, 1)
      else
