@@ -6,7 +6,9 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index    
-    User.my_active_donations(current_user) 
+    if current_user
+       User.my_active_donations(current_user)
+    end 
     @requests = Request.get_unexpired_requests
   end
 
