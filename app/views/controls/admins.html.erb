@@ -1,0 +1,48 @@
+<% content_for :title, "admins" %> 
+
+<div align="center">
+  <% if @admins.size != 0 %>
+
+  <h1>Admins lists</h1>
+  
+  <table width="80%">
+    <tr>
+      <th>email</th>
+      <th></th>
+      <th>email</th>
+      <th>password</th> 
+      <th></th>
+    </tr>
+    <% @admins.each do |admin| %>
+    <tr>
+     <%=form_for :controls, url: url_for( :controller => :controls, :action => :delete ) do |f| %> 
+
+     <div> 
+      <td><%= admin.email %></td>
+      <%= f.text_field :id, :value => admin.id, :hidden => true %>
+      <td><div class="actions">
+        <%= f.submit "Delete Admin",data: { confirm: "Are you sure?" } %>
+      </div></td> 
+
+      <% end %> 
+
+      <%=form_for :controls, url: url_for( :controller => :controls, :action => :update ) do |f| %> 
+
+      <div> 
+
+        <%= f.text_field :id, :value => admin.id, :hidden => true %>
+        <th><%= f.text_field :email, :value => admin.email %></th>
+        <td><%= f.text_field :password, autocomplete: "off", :value => admin.password %></td> 
+      </div>
+      <td><div class="actions">
+        <%= f.submit "Update Admin" %>
+      </div></td>
+
+      <% end %> 
+    </tr> 
+    <% end %>
+  </table>
+  <% else %>
+  <h3>No admins yet !!</h3>
+  <% end %> 
+</div>

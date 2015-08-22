@@ -42,7 +42,12 @@ Rails.application.routes.draw do
 
   resources :controls, only: [:index] do
     collection do
+      get :new
       get :dashboard
+      get :admins
+      post :create_new_admin
+      post :update
+      post :delete
     end
   end
   # You can have the root of your site routed with "root"
