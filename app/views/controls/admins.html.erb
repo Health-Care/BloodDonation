@@ -4,7 +4,7 @@
   <% if @admins.size != 0 %>
 
   <h1>Admins lists</h1>
-  
+  <h3>There is no need to enter the password if you want to edit only the email</h3>
   <table width="80%">
     <tr>
       <th>email</th>
@@ -21,7 +21,7 @@
       <td><%= admin.email %></td>
       <%= f.text_field :id, :value => admin.id, :hidden => true %>
       <td><div class="actions">
-        <%= f.submit "Delete Admin",data: { confirm: "Are you sure?" } %>
+        <%= f.submit "Delete Admin", :onclick => "return confirm('Are you sure yo want to delete?')" %>
       </div></td> 
 
       <% end %> 
@@ -32,10 +32,10 @@
 
         <%= f.text_field :id, :value => admin.id, :hidden => true %>
         <th><%= f.text_field :email, :value => admin.email %></th>
-        <td><%= f.text_field :password, autocomplete: "off", :value => admin.password %></td> 
+        <td><%= f.password_field :password, autocomplete: "on", :value => admin.password %></td> 
       </div>
       <td><div class="actions">
-        <%= f.submit "Update Admin" %>
+        <%= f.submit "Update Admin", :onclick => "return confirm('Are you sure yo want to update?')" %>
       </div></td>
 
       <% end %> 

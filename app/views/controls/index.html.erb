@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+
+<% content_for :title, "Dashboard" %>
+
+<div  class="row content main_content">
+	    
+		<% if current_admin %> 
+		<% if current_admin.superadmin %> 
+		<div style="float:right">
+		<ul>  
+			<li> <%= link_to  "create a new admin", newadmin_controls_path %></li>
+			<li> <%= link_to  "view current admins", admins_controls_path %></li>
+			<li> <%= link_to  "update your login info", edit_admin_controls_path %></li>
+			<br><br>	
+				
+		</ul>
+		</div>
+		<% end %>
+		current admin email: <%= current_admin.email %><br>
+		<%= link_to  "sign out as admin", destroy_admin_session_path, method: :delete %>
+		<br><br>
+		<div style="float:left">
+			<%=form_for :controls, url: url_for( :controller => :controls, :action => :searchdonor ) do |f| %> 
+
+			<div class="field"> 
+				<%= f.text_field :search_tag, :required=>"", :placeholder=>"search by mobile number or email" , :maxlength=>"30"%> 
+
+				<%= f.submit "Search about Donors" %>
+			</div>
+
+			<% end %> 
+			<br>
+			<%=form_for :controls, url: url_for( :controller => :controls, :action => :deletecasesfromto ) do |f| %> 
+
+			<div class="field">  
+				<%= f.text_field :from, :required=>"", :placeholder=>"from", :maxlength=>"10", :id=>"from"%> 
+				<%= f.text_field :to, :required=>"", :placeholder=>"to", :maxlength=>"10", :id=>"to" %> 
+				<script type="text/javascript">
+					$(function() {
+						$( "#from" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
+						$( "#to" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
+					});
+				</script>
+				<%= f.submit "Delete Cases" %>
+			</div>
+
+			<% end %> 
+			<br>
+			number of donors : <%= @users_number %><br>
+			number of admins : <%= @admins_number %><br>
+			number of requests : <%= @requests_number %><br>
+			number of active requests : <%= @active_requests_number %><br>
+			number of expired requests : <%= @expired_requests_number %> 
+			<br><br>
+			<%= link_to  "create a new donor", newdonor_controls_path %><br>
+			<%= link_to  "create a new case", '#' ,:onclick => "window.location.href = '/requests/new'" %>
+			<br><br>
+			<%= link_to  "registered donors history", donorshistory_controls_path %><br>
+			<%= link_to  "registered cases history", caseshistory_controls_path %>
+			<br><br>
+			<%= link_to  "view active requests with donors", activerequests_controls_path %>
+			<br>
+			<%= link_to  "view active requests without donors", requests_controls_path %>
+			<br>
+			<%= link_to 'view expired requests' , expiredrequests_controls_path %>
+			<br><br>
+			<%= link_to  "reports and charts", '#' ,:onclick => "window.location.href = '/controls/chartsreports'" %>
+			<br>  
+			<%= link_to  "send mail to donor or case contact person", mailform_controls_path %>
+			
+		</div>	
+
+		<% else %> 
+
+		<li>
+			<%= link_to 'login as admin', '#', :onclick => "window.location.href = '/admins/sign_in'" %>
+		</li>
+
+		<% end %>
+
+</div>

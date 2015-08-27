@@ -6,9 +6,6 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index    
-    if current_user
-       User.my_active_donations(current_user)
-    end 
     @requests = Request.get_unexpired_requests
   end
 
@@ -82,15 +79,18 @@ class RequestsController < ApplicationController
     @active_request.donor_id = current_user.id
     @active_request.request_id = @request.id
 
-    if ActiveRequest.check_donations_status(current_user.id,@request.id) && !current_user.pause
-      notify_request_owner(@request)  
+    if ActiveRequest.check_donations_status(current_user.id,@request.id) && !current_user.pause && current_user.can_donate
+      notify_request_owner(@request) 
 
       if @active_request.save 
         redirect_to @request, notice: 'successfully responded to the request. He waiting you'
       end
     
     elsif current_user.pause
-        redirect_to @request, notice: "Your account paused, you can not donate right now" 
+        redirect_to @request, notice: "Your account paused, unpause your account to donate" 
+    
+    elsif !current_user.can_donate
+        redirect_to @request, notice: "Your account paused, call us to solve the problem" 
     
     else
         redirect_to @request, notice: "You are donated before"
@@ -166,6 +166,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:contact_name, :contact_phone, :contact_email, :contact_nationalid, :patient_name, :blood_type, :expiredate, :bloodbag, :hospital_name, :hospital_location, :hospital_location_lat,:hospital_location_lng)
+      params.require(:request).permit(:contact_name, :contact_phone, :contact_email, :contact_nationalid, :patient_name, :blood_type, :expiredate, :bloodbag, :hospital_name, :hospital_location, :hospital_location_lat,:hospital_location_lng, :num_of_donors, :created_at)
     end
   end

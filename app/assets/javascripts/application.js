@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require gmaps/google
-
+ 
 
 function ShowProgressAnimation() {
   $("#loading-div-background").show();

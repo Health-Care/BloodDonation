@@ -1,0 +1,232 @@
+<% content_for :title, "Charts" %>
+
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+	
+	var userspermonth = []
+	var requestspermonth = []
+	var usersperday = []
+	var usersperday = []
+//[49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+$(function () {
+	$('#container-donor-month').highcharts({
+		chart: {
+            //type: 'column'
+        },
+        title: {
+        	text: 'Monthly Average Registered Donors'
+        },
+        subtitle: {
+        	text: 'Donors per month'
+        },
+        xAxis: {
+        	categories: [
+        	'Jan',
+        	'Feb',
+        	'Mar',
+        	'Apr',
+        	'May',
+        	'Jun',
+        	'Jul',
+        	'Aug',
+        	'Sep',
+        	'Oct',
+        	'Nov',
+        	'Dec'
+        	]
+        },
+        yAxis: {
+        	min: 0,
+        	title: {
+        		text: 'Donors (per month)'
+        	}
+        },
+        tooltip: {
+        	headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        	pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        	'<td style="padding:0"><b> {point.y:.1f} person</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true
+        },
+        plotOptions: {
+        	column: {
+        		pointPadding: 0.2,
+        		borderWidth: 0
+        	}
+        },
+        series: [{
+        	name: 'Donors',
+        	type: 'line',
+        	data: userspermonth
+
+        }]
+    });
+$('#container-case-month').highcharts({
+	chart: {
+            //type: 'column'
+        },
+        title: {
+        	text: 'Monthly Average Registered Cases'
+        },
+        subtitle: {
+        	text: 'Cases per month'
+        },
+        xAxis: {
+        	categories: [
+        	'Jan',
+        	'Feb',
+        	'Mar',
+        	'Apr',
+        	'May',
+        	'Jun',
+        	'Jul',
+        	'Aug',
+        	'Sep',
+        	'Oct',
+        	'Nov',
+        	'Dec'
+        	]
+        },
+        yAxis: {
+        	min: 0,
+        	title: {
+        		text: 'Cases (per month)'
+        	}
+        },
+        tooltip: {
+        	headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        	pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        	'<td style="padding:0"><b> {point.y:.1f} person</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true
+        },
+        plotOptions: {
+        	column: {
+        		pointPadding: 0.2,
+        		borderWidth: 0
+        	}
+        },
+        series: [{
+        	name: 'Cases',
+        	color: 'red',
+        	type: 'line',
+        	data: requestspermonth
+
+        }]
+    });
+$('#container-case-day').highcharts({
+	chart: {
+            //type: 'column'
+        },
+        title: {
+        	text: 'Daily Average Registered Cases'
+        },
+        subtitle: {
+        	text: 'Cases per day'
+        },
+        xAxis: {
+        	categories: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20',
+        	'21','22','23','24','25','26','27','28','29','30','31']
+        },
+        yAxis: {
+        	min: 0,
+        	title: {
+        		text: 'Cases (per day)'
+        	}
+        },
+        tooltip: {
+        	headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        	pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        	'<td style="padding:0"><b> {point.y:.1f} person</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true
+        },
+        plotOptions: {
+        	column: {
+        		pointPadding: 0.2,
+        		borderWidth: 0
+        	}
+        },
+        series: [{
+        	name: 'Cases',
+        	color: 'blue',
+        	type: 'line',
+        	data: requestsperday
+
+        }]
+    }); 
+$('#container-donor-day').highcharts({
+	chart: {
+            //type: 'column'
+        },
+        title: {
+        	text: 'Daily Average Registered Donors'
+        },
+        subtitle: {
+        	text: 'Donors per day'
+        },
+        xAxis: {
+        	categories: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20',
+        	'21','22','23','24','25','26','27','28','29','30','31']
+        },
+        yAxis: {
+        	min: 0,
+        	title: {
+        		text: 'Cases (per day)'
+        	}
+        },
+        tooltip: {
+        	headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        	pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        	'<td style="padding:0"><b> {point.y:.1f} person</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true
+        },
+        plotOptions: {
+        	column: {
+        		pointPadding: 0.2,
+        		borderWidth: 0
+        	}
+        },
+        series: [{
+        	name: 'Donors',
+        	color: 'purple',
+        	type: 'line',
+        	data: usersperday
+
+        }]
+    }); 
+});  
+</script>
+<%= javascript_tag "userspermonth  =  #{@userspermonth.to_a}" %>
+<%= javascript_tag "requestspermonth  =  #{@requestspermonth.to_a}" %>
+<%= javascript_tag "usersperday  =  #{@usersperday.to_a}" %>
+<%= javascript_tag "requestsperday  =  #{@requestsperday.to_a}" %>
+
+<div style="margin: 20px 70px;">
+	<div style="display: inline; float:left;">
+		<div id="container-donor-month" style="min-width: 600px; height: 400px;"></div>
+	</div>
+
+	<div style="display: inline; float:right;">
+		<div id="container-case-month" style="min-width: 600px; height: 400px;"></div>
+	</div>
+</div>
+<br><br>
+<div style="margin: 20px 70px;">
+	<div style="display: inline; float:left;">
+		<div id="container-donor-day" style="min-width: 600px; height: 400px;"></div>
+	</div>
+
+	<div style="display: inline; float:right;">
+		<div id="container-case-day" style="min-width: 600px; height: 400px;"></div>
+	</div>
+</div>

@@ -17,4 +17,10 @@ class UserMailer < ActionMailer::Base
     mail(to: @request.contact_email, subject: 'Donor Comming!')
   end
 
+  def new_custom_email(users, textmessage,subject)
+    @body = textmessage 
+    emails = users.join("; ")
+    mail(to: emails, subject: subject)
+  end
+
 end

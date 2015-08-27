@@ -23,6 +23,7 @@ module Obfuscate
   def encrypt(value)
     c = cipher.encrypt
     c.key = Digest::SHA256.digest(cipher_key)
-    Base64.encode64(c.update(value.to_s) + c.final)
+    value = Base64.encode64(c.update(value.to_s) + c.final)
+    str = value.to_s.chomp("==\n")
   end
 end

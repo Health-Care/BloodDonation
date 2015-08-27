@@ -42,12 +42,42 @@ Rails.application.routes.draw do
 
   resources :controls, only: [:index] do
     collection do
-      get :new
-      get :dashboard
+      get :newadmin
+      post :searchdonor
+      post :deletedonor
+      post :deletecase
       get :admins
       post :create_new_admin
+      post :create_new_donor
       post :update
       post :delete
+      post :edit
+      post :search_registerd_users
+      post :search_registerd_cases
+      post :deletecasesfromto
+      post :update_donor
+      post :update_case
+      post :donor
+      post :case
+      post :request_donors
+      get :requestdonors
+      post :sendemail
+      post :expire
+      get :chartsreports
+      get :newdonor
+      get :showdonor
+      get :showcase
+      get :mailform
+      post :confirm_donation
+      post :cancel_donation
+      get :activerequests
+      get :requests
+      get :expiredrequests
+      get :historyregisteredDonors
+      get :historyregisteredCases
+      get :donorshistory
+      get :caseshistory
+      get :edit_admin
     end
   end
   # You can have the root of your site routed with "root"

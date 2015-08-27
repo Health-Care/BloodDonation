@@ -11,8 +11,6 @@
   </div>
 </div>
 
-
-
 <%= form_for(@request, :html => {:onsubmit => "ShowProgressAnimation();"}) do |f| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
@@ -64,11 +62,13 @@
     <%= f.label :'blood bag' %><br>
     <%= f.number_field :bloodbag, :required=>"Enter number of blood bag" %>
   </div>
+  <%= f.number_field :num_of_donors, :hidden => true, :value => 0 %>
   <div class="field">
     <%= f.label :'hospital name' %><br>
     <%= f.text_field :hospital_name, :required=>"Enter the hospital name" %>
   </div>
-
+  
+ <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
   <div class="field">
     <%= f.label :'hospital address' %><br />
     <input id="hospital_searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
