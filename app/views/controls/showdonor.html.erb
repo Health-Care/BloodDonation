@@ -20,7 +20,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <% content_for :title, "Edit Donor" %> 
 <div align="center">
 
-  <%=form_for :controls, url: url_for( :controller => :controls, :action => :update_donor ) do |f| %> 
+  <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_donor ) do |f| %> 
 
   <div class="field">
     <%= f.label :name %><br />
@@ -90,17 +90,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <%= f.text_field :num_of_active_requests, autofocus: true, :value => @user.num_of_active_requests  %>
     </div>
     
-      
+
     <div class="field">
       <%= f.label :'number of saved people' %><br />
       <%= f.text_field :savedpeople, autofocus: true, :value => @user.savedpeople  %>
     </div>
-
+    <hr>
     <div class="field">
-    <%= f.label :'can donate ?' %><br />
+      <%= f.label :'can donate ?' %><br />
       <%= f.select :can_donate, options_for_select([["True", "true"], ["False", "false"]],@user.can_donate) %>
     </div>
-
+    <hr>
+    <div class="field">
+      <%= f.label "Hide Account Information" %><br />
+      <%= f.select :hide_account, options_for_select([["False", "false"], ["True", "true"]], @user.hide_account) %>
+    </div>
+    <hr>
+    <div class="field">
+    <%= f.label "Stop receiving Messages by email when new cases matches my blood type" %><br />
+    <%= f.select :stop_getting_email, options_for_select([["False", "false"], ["True", "true"]], @user.stop_getting_email) %>
+    </div>
+    <hr>
     <div class="field">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off", :value => @user.password  %>
@@ -111,7 +121,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
     <% end %> 
     <div>
-      <%=form_for :controls, url: url_for( :controller => :controls, :action => :deletedonor ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %> 
 
       <div class="field"> 
         <%= f.text_field :user_id, :hidden => true, :value => @user.id %> 

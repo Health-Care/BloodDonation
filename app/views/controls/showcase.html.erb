@@ -20,7 +20,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <% content_for :title, "Edit Case" %> 
 <div align="center">
 
-  <%=form_for :controls, url: url_for( :controller => :controls, :action => :update_case ) do |f| %> 
+  <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_case ) do |f| %> 
 
   <div class="field">
     <%= f.label :'contact name' %><br />
@@ -90,7 +90,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <% end %> 
     <br><hr><br>
     <div>
-      <%=form_for :controls, url: url_for( :controller => :controls, :action => :deletecase ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
 
       <div class="field"> 
         <%= f.text_field :request_id, :hidden => true, :value => @request.id %> 

@@ -22,7 +22,7 @@
 		<%= link_to  "sign out as admin", destroy_admin_session_path, method: :delete %>
 		<br><br>
 		<div style="float:left">
-			<%=form_for :controls, url: url_for( :controller => :controls, :action => :searchdonor ) do |f| %> 
+			<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :searchdonor ) do |f| %> 
 
 			<div class="field"> 
 				<%= f.text_field :search_tag, :required=>"", :placeholder=>"search by mobile number or email" , :maxlength=>"30"%> 
@@ -32,7 +32,17 @@
 
 			<% end %> 
 			<br>
-			<%=form_for :controls, url: url_for( :controller => :controls, :action => :deletecasesfromto ) do |f| %> 
+			<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :searchcase ) do |f| %> 
+
+			<div class="field"> 
+				<%= f.text_field :search_tag, :required=>"", :placeholder=>"search by mobile number or email or blood type" , :maxlength=>"30"%> 
+
+				<%= f.submit "Search about Cases" %>
+			</div>
+
+			<% end %> 
+			<br>
+			<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecasesfromto ) do |f| %> 
 
 			<div class="field">  
 				<%= f.text_field :from, :required=>"", :placeholder=>"from", :maxlength=>"10", :id=>"from"%> 
@@ -54,7 +64,7 @@
 			number of active requests : <%= @active_requests_number %><br>
 			number of expired requests : <%= @expired_requests_number %> 
 			<br><br>
-			<%= link_to  "create a new donor", newdonor_controls_path %><br>
+			<%= link_to  "create a new donor", '#' ,:onclick => "window.location.href = '/controls/newdonor'" %><br>
 			<%= link_to  "create a new case", '#' ,:onclick => "window.location.href = '/requests/new'" %>
 			<br><br>
 			<%= link_to  "registered donors history", donorshistory_controls_path %><br>

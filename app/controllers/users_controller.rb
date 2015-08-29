@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :active_donations]
   
   def show   
+    usersids = User.getUsersHideThierAccounts
+    @hide_account = false
+    if usersids.include?(@user.id)
+      @hide_account = true
+    end
   end 
  
   def active_donations

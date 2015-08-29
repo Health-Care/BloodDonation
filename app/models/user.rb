@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
       @requests
   end
   
+  def self.getUsersHideThierAccounts
+    @users_ids = User.select("id").where('hide_account = ? ', true)
+  end
+
   def to_param
     encrypt id
   end

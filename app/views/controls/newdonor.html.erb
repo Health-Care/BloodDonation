@@ -24,7 +24,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div align="center">
   <h2>Create a new Donor</h2>
 
-<%=form_for :controls, url: url_for( :controller => :controls, :action => :create_new_donor ) do |f| %> 
+<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_donor ) do |f| %> 
 
 <div class="field">
   <%= f.label :name %><br />

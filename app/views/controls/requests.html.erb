@@ -21,7 +21,7 @@
 				<tr><td>Hospital location</td><td><%= request.hospital_location %></td></tr>
 				<tr><td>Number of donors</td><td><%= request.num_of_donors %></td></tr>
 				<tr style="background-color:#ffffff;"><td>Update Information</td><td>
-					<%=form_for :controls, url: url_for( :controller => :controls, :action => :case ) do |f| %> 
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :case ) do |f| %> 
 
 					<div class="field"> 
 					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
@@ -34,7 +34,7 @@
 				<tr style="background-color:#ffffff;">
 				<td>Mark as expire</td>
 				<td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :expire ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :expire ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
@@ -47,7 +47,7 @@
 				</tr>
 				<tr style="background-color:#ffffff;">
 				<td>Delete this request</td><td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :deletecase ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
 
 				<div class="field">  
 					<%= f.text_field :request_id, :hidden => true, :value => request.id %>

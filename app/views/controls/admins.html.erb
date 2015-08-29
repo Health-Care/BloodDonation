@@ -15,7 +15,7 @@
     </tr>
     <% @admins.each do |admin| %>
     <tr>
-     <%=form_for :controls, url: url_for( :controller => :controls, :action => :delete ) do |f| %> 
+     <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :delete ) do |f| %> 
 
      <div> 
       <td><%= admin.email %></td>
@@ -26,7 +26,7 @@
 
       <% end %> 
 
-      <%=form_for :controls, url: url_for( :controller => :controls, :action => :update ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update ) do |f| %> 
 
       <div> 
 

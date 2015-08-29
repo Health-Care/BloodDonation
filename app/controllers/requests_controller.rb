@@ -1,7 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_logging_in, only: [:donors, :show, :donate, :relatedrequests, :cancel_donate]
-  before_action :authenticate_admin_logging_in, only: [:edit]
-  before_action :set_request, only: [:donors, :show, :edit, :update, :destroy, :donate, :cancel_donate] 
+  before_action :set_request, only: [:donors, :show, :update, :donate, :cancel_donate] 
 
   # GET /requests
   # GET /requests.json
@@ -21,11 +20,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new       
-  end
-
-  # GET /requests/1/edit
-  def edit
-  end
+  end 
 
   # POST /requests
   # POST /requests.json
@@ -43,30 +38,6 @@ class RequestsController < ApplicationController
         format.html { redirect_to root_url, alert: "Something went wrong, try again" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /requests/1
-  # PATCH/PUT /requests/1.json
-  def update
-    respond_to do |format|
-      if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
-        format.json { render :show, status: :ok, location: @request }
-      else
-        format.html { render :edit }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /requests/1
-  # DELETE /requests/1.json
-  def destroy
-    @request.destroy
-    respond_to do |format|
-      format.html { redirect_to requests_url, notice: 'Request was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 
@@ -120,7 +91,9 @@ class RequestsController < ApplicationController
 
     User.all.each do |user| 
       if user.blood_type.to_s == request.blood_type.to_s
-        users << user
+        if !user.stop_getting_email
+          users << user
+        end
         user.update_attribute(:notifications, user.notifications + 1);
       end
     end  
@@ -146,12 +119,7 @@ class RequestsController < ApplicationController
       if current_user === nil
         redirect_to new_user_session_path , notice: "You must login first!"       
       end
-    end 
-
-    #authenticate admin
-    def authenticate_admin_logging_in
-
-    end
+    end  
 
     # check if there is a new notification
     def is_there_notification

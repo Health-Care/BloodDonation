@@ -1,11 +1,11 @@
-<% content_for :title, "Active Requests" %>
+<% content_for :title, "Requests" %>
 
 <div align="center">
 	<br> 
 	<% if @requests.size == 0 %>
-	<h2>No Active Requests</h2>
+	<h2>No Requests matches your search</h2>
 	<% else %>
-	<h2>There is <%= @requests.size %> Active Requests</h2>
+	<h2>There is <%= @requests.size %> requests found</h2>
 	<% @requests.each do |request| %>
 	<div class="CSSTableGenerator" >
 		<table > 
@@ -20,6 +20,7 @@
 			<tr><td>Hospital Name</td><td><%= request.hospital_name %></td></tr>
 			<tr><td>Hospital location</td><td><%= request.hospital_location %></td></tr>
 			<tr><td>Number of donors</td><td><%= request.num_of_donors %></td></tr>
+			<% if request.num_of_donors > 0 %>
 			<tr style="background-color:#ffffff;"><td>Show Donors</td><td>
 				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :request_donors ) do |f| %> 
 
@@ -30,12 +31,13 @@
 
 				<% end %>
 			</td></tr>
-			<tr style="background-color:#ffffff;"><td>Update Information</td><td>
+			<% end %>
+			<tr style="background-color:#ffffff;"><td>Update Info</td><td>
 				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :case ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
-					<%= f.submit "Update Information", class: "submit-button" %>
+					<%= f.submit "Update Info", class: "submit-button" %>
 				</div>
 
 				<% end %>

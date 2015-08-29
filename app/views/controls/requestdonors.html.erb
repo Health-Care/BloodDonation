@@ -17,7 +17,7 @@
 			<tr><td>address</td><td><%= user.location_name %></td></tr>
 			<tr style="background-color:#ffffff;">
 			<td>Confirm Donation Process</td><td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :confirm_donation ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :confirm_donation ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
@@ -29,7 +29,7 @@
 			</tr> 
 			<tr style="background-color:#ffffff;">
 			<td>Cancel Donation Process</td><td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :cancel_donation ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :cancel_donation ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
@@ -41,7 +41,7 @@
 			</tr> 
 			<tr style="background-color:#ffffff;">
 			<td>Send Email</td><td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :sendemail ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :sendemail ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :user_email, :hidden => true, :value => user.email %>

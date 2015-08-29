@@ -5,7 +5,7 @@
 
 <div align="center">
 	<br><br><br>
-	<%=form_for :controls, url: url_for( :controller => :controls, :action => :search_registerd_cases ) do |f| %> 
+	<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :search_registerd_cases ) do |f| %> 
 
 	<div class="field"> 
 		<%= f.text_field :date, :required=>"", :placeholder=>"Enter The Date" , :id=>"datepicker" %>
@@ -39,7 +39,7 @@
 			<tr><td>Hospital location</td><td><%= request.hospital_location %></td></tr>
 			<tr><td>Number of donors</td><td><%= request.num_of_donors %></td></tr>
 			<tr style="background-color:#ffffff;"><td>Update Info</td><td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :case ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :case ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
@@ -52,7 +52,7 @@
 		<tr style="background-color:#ffffff;">
 		<td>Delete this case</td>
 			<td>
-				<%=form_for :controls, url: url_for( :controller => :controls, :action => :deletecase ) do |f| %> 
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
 
 				<div class="field">  
 				<%= f.text_field :request_id, :hidden => true, :value => request.id %> 

@@ -40,36 +40,44 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :controls, only: [:index] do
+  resources :admincommands do
     collection do
-      get :newadmin
+      post :create_new_donor
       post :searchdonor
+      post :searchcase
+      post :deletecasesfromto
       post :deletedonor
       post :deletecase
-      get :admins
       post :create_new_admin
-      post :create_new_donor
       post :update
       post :delete
       post :edit
       post :search_registerd_users
       post :search_registerd_cases
-      post :deletecasesfromto
       post :update_donor
       post :update_case
       post :donor
       post :case
       post :request_donors
-      get :requestdonors
       post :sendemail
       post :expire
+      post :confirm_donation
+      post :cancel_donation
+    end
+  end    
+  
+  resources :controls, only: [:index] do
+    collection do
+      get :newadmin
+      get :admins
+      get :requestdonors
       get :chartsreports
       get :newdonor
       get :showdonor
+      get :showcases
+      get :showdonorinfo
       get :showcase
       get :mailform
-      post :confirm_donation
-      post :cancel_donation
       get :activerequests
       get :requests
       get :expiredrequests

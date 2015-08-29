@@ -3,7 +3,7 @@
 <div align="center">
 <h2>Create a new admin</h2>
 
-<%=form_for :controls, url: url_for( :controller => :controls, :action => :create_new_admin ) do |f| %> 
+<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_admin ) do |f| %> 
 
   <div class="field">
     <%= f.label :email %><br />

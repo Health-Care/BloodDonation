@@ -1,5 +1,7 @@
-<% content_for :title, "الصفحه الشخصيه" %> 
+
 <br>
+
+<% if !@user.hide_account || (@user.hide_account && current_user && @user.id == current_user.id) %>
  <div class="main row">
 	<div class="cover col-sm-12">
 		<img src="<%= asset_path( 'cover.jpg' ) %>" height="95%" width="1000">
@@ -40,6 +42,17 @@
 		 <% if current_user && @user.id == current_user.id %>
 		 <h3><img src="<%= asset_path( 'profile.png' ) %>" height="30" width="30">
 		 &nbsp;<%= link_to 'الطلبات قيد الإنتظار', active_donations_users_path(current_user)%></h3><br>	
+		 <% content_for :title, "الصفحه الشخصيه" %> 
+		 <% else %>
+			<% content_for :title, "donor info" %>
 		 <% end %>
 	</div>	 
 </div>
+<% else %>
+<br><br><br>
+<% content_for :title, "donor info" %>
+<div align="center">
+<img src="http://solve-problems.ws/images/img_1/aff97a64e38dd909871470b922d459bf.gif" height="200" width="200" />
+<h1>You can not see this donor info</h1>
+</div>
+<% end %>

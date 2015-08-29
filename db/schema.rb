@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826123340) do
+ActiveRecord::Schema.define(version: 20150829130822) do
 
   create_table "active_requests", force: :cascade do |t|
     t.string   "donor_id"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 20150826123340) do
     t.date     "birth_date"
     t.integer  "notifications",          default: 0
     t.boolean  "can_donate",             default: true
+    t.boolean  "hide_account",           default: false
+    t.boolean  "stop_getting_email",     default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

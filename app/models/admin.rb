@@ -83,7 +83,7 @@ class Admin < ActiveRecord::Base
     end
   end
 
-  def self.getDonorByMobileEmail(email)
+  def self.getDonorByEmail(email)
     @user = User.select("*").where('email = ? ' , email.to_s).first
     if @user == nil
       nil
@@ -91,28 +91,19 @@ class Admin < ActiveRecord::Base
       @user.id
     end
   end
-
-=begin
-  def self.getActiveRequests
-    @active_requests = ActiveRequest.select("*").order('created_at DESC') 
-
-    @requests = []
-    ids = []
-
-    @active_requests.each do |active_request| 
-       if Request.exists?(active_request.request_id)
-        request = Request.find( active_request.request_id)
-        
-        if !request.expiredate.past? && !ids.include?(active_request.request_id)
-            @requests << request
-            ids << active_request.request_id
-        end
-
-       end
-    end 
-    @requests
+  
+  def self.getCasesByMobileNumber(mobile_number)
+    Request.select("*").where('contact_phone = ? ' , mobile_number.to_s)
   end
-=end
+
+  def self.getCasesByEmail(email)
+    Request.select("*").where('contact_email = ? ' , email.to_s)
+  end 
+
+  def self.getCasesByBloodType(bloodtype)
+    Request.select("*").where('blood_type = ? ' , bloodtype.to_s)
+  end 
+
   def self.getActiveRequests
     Request.select("*").where('expiredate >= ? and num_of_donors > ?' , Date.today ,0).order('created_at DESC')
   end
@@ -187,6 +178,30 @@ class Admin < ActiveRecord::Base
       arr[i] = Request.where("strftime('%d', created_at) + 0 = ? and  strftime('%m', created_at) + 0 = ? and strftime('%Y', created_at) + 0 = ?", i + 1 ,Time.now.strftime("%m").to_i, Time.now.strftime("%Y").to_i).count
     end
     arr
+  end
+
+  def self.valid_email_param(user,user_email)  
+    if User.where('id != ? and email = ?',user.id,user_email).blank?
+     return "ok"
+    else
+     return "Email already used by another donor"
+    end  
+  end
+
+  def self.valid_phone_param(user,user_phone) 
+    if User.where('id != ? and phone = ?',user.id,user_phone).blank?
+     return "ok"
+    else
+     return "Phone already used by another donor"
+    end  
+  end
+
+  def self.valid_nationalid_param(user, user_nationalid) 
+    if User.where('id != ? and nationalid = ?',user.id,user_nationalid).blank?
+     return "ok"
+    else
+     return "nationalid already used by another donor"
+    end  
   end
 
   def exist?
