@@ -3,6 +3,22 @@
 
 <% content_for :title, "History" %>
 
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            History Registered Cases
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li> Dashboard</li>
+            <li> History</li>
+            <li class="active"> Registered Cases</li>
+        </ol>
+    </section>
+  <!-- Main content -->
+  <section class="content">
 <div align="center">
 	<br><br><br>
 	<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :search_registerd_cases ) do |f| %> 
@@ -21,9 +37,11 @@
 	<% end %> 
 	<br>
 	<% if @requests.size == 0 %>
-	<h2>No Cases registered on this Date</h2>
+	<br><br>
+	<h2>No cases registered today</h2>
+	<br><br>
 	<% else %>
-	<h2>There is <%= @requests.size %> Cases registered on this Date</h2>
+	<h2>There are <%= @requests.size %> cases registered today</h2>
 	<% @requests.each do |request| %>
 	<div class="CSSTableGenerator" >
 		<table > 
@@ -67,4 +85,5 @@
 <% end %>
 
 <% end %>
-</div>
+</div></section>
+	</aside>

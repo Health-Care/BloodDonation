@@ -1,0 +1,72 @@
+<% content_for :title, "صفحة الحالة" %> 
+
+<div align="center">
+
+<h1>Thanks .. </h1>
+<h1>You Successfully create the request </h1>
+<h2>we well send email to you when donors want to donate to this case :) </h2>
+<br><br>
+
+<p>
+  <strong>Contact Name:</strong>
+  <%= @request.contact_name %>
+</p>
+
+<p>
+  <strong>Contact Phone:</strong>
+  <%= @request.contact_phone %>
+</p>
+
+<p>
+  <strong>Contact Email:</strong>
+  <%= @request.contact_email %>
+</p>
+
+<p>
+  <strong>Contact National id:</strong>
+  <%= @request.contact_nationalid %>
+</p>
+
+<p>
+  <strong>Patient name:</strong>
+  <%= @request.patient_name %>
+</p>
+
+<p>
+  <strong>Patient blood type:</strong>
+  <%= @request.blood_type %>
+</p>
+
+<p>
+  <strong>Expire date:</strong>
+  <%= @request.expiredate %>
+</p>
+
+<p>
+  <strong>Blood bag:</strong>
+  <%= @request.bloodbag %>
+</p>
+
+<p>
+  <strong>Hospital name:</strong>
+  <%= @request.hospital_name %>
+</p>
+
+<p>
+  <strong>Hospital address:</strong>
+  <%= @request.hospital_location %>
+</p> 
+
+<div class="social-share">
+
+  <!-- Developer Review: Replace  request_url(r)  with link to request link -->
+  <!-- Facebook share -->
+  <a href="https://www.facebook.com/sharer/sharer.php?u=request_url(r) ">share fb</a>
+  <br>
+  <!-- Twitter share -->
+  <a href="https://twitter.com/intent/tweet?url=request_url(r)">share tw</a>
+  <br>
+  <!-- G+ share -->
+  <a href="https://plus.google.com/share?url=request_url(r)">shere g+</a>
+
+</div> 

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def pause
     current_user.update_attribute(:pause , true)
     if current_user.pause
+      current_user.update_attribute(:stop_getting_email , true)
       redirect_to root_path, notice: "Successfully paused your donation ability."
     else
       redirect_to root_path, alert: "Something went wrong with your account, plaese call us"
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
   def unpause
     current_user.update_attribute(:pause , false)
     if !current_user.pause
+      current_user.update_attribute(:stop_getting_email , false)
       redirect_to root_path, notice: "Successfully unpaused your donation ability."
     else
       redirect_to root_path, alert: "Something went wrong with your account, plaese call us"

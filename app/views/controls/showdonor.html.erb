@@ -18,116 +18,136 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script> 
 
 <% content_for :title, "Edit Donor" %> 
-<div align="center">
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Donor
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li> Dashboard</li>
+      <li> Donor</li>
+      <li class="active"> Informations</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div align="center">
+      <div>
+        <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %> 
 
-  <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_donor ) do |f| %> 
+        <div class="field"> 
+          <%= f.text_field :user_id, :hidden => true, :value => @user.id %> 
+          <%= f.submit "Cancel this Donor account" , :style => 'width:30%;'%>
+        </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :value => @user.name %>
-  </div>
+        <% end %> 
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, :value => @user.email  %>
-  </div>
+      </div>
+      <br><br>
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_donor ) do |f| %> 
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, :value => @user.phone %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"]],@user.gender) %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :'blood type' %><br />
-    <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
-      ["B+","B+"],["B-","B-"],
-      ["O+","O+"],["O-","O-"],
-      ["AB+","AB+"],["AB-","AB-"]], @user.blood_type) %> 
-    </div>
-
-    <div class="field">
-      <%= f.label :address %><br />
-      <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @user.location_name %>" /> 
-
-      <%= f.text_field :location_name, autofocus: true, id: 'addName', hidden: true, :value => @user.location_name %>
-      <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true, :value => @user.location_lat %> 
-      <%= f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true, :value => @user.location_lng %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :'birth date' %><br />
-      <%= f.text_field :birth_date, :id=>"birth_date", :value => @user.birth_date  %>
-      <script type="text/javascript">
-        $(function() {
-          $( "#birth_date" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-        });
-      </script>
-    </div>
-
-    <div class="field">
-      <%= f.label :'national ID' %><br />
-      <%= f.text_field :nationalid, autofocus: true, :value => @user.nationalid  %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :'last donation date' %><br />
-      <%= f.text_field :lastdonation, :id=>"lastdonation", :value => @user.lastdonation  %>
-      <script type="text/javascript">
-        $(function() {
-          $( "#lastdonation" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-        });
-      </script>
-    </div>
-    
-    <div class="field">
-      <%= f.label :'number of active requests' %><br />
-      <%= f.text_field :num_of_active_requests, autofocus: true, :value => @user.num_of_active_requests  %>
-    </div>
-    
-
-    <div class="field">
-      <%= f.label :'number of saved people' %><br />
-      <%= f.text_field :savedpeople, autofocus: true, :value => @user.savedpeople  %>
-    </div>
-    <hr>
-    <div class="field">
-      <%= f.label :'can donate ?' %><br />
-      <%= f.select :can_donate, options_for_select([["True", "true"], ["False", "false"]],@user.can_donate) %>
-    </div>
-    <hr>
-    <div class="field">
-      <%= f.label "Hide Account Information" %><br />
-      <%= f.select :hide_account, options_for_select([["False", "false"], ["True", "true"]], @user.hide_account) %>
-    </div>
-    <hr>
-    <div class="field">
-    <%= f.label "Stop receiving Messages by email when new cases matches my blood type" %><br />
-    <%= f.select :stop_getting_email, options_for_select([["False", "false"], ["True", "true"]], @user.stop_getting_email) %>
-    </div>
-    <hr>
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off", :value => @user.password  %>
-    </div> 
-
-    <div class="actions">
-      <%= f.submit "Update Info" %>
-    </div>
-    <% end %> 
-    <div>
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %> 
-
-      <div class="field"> 
-        <%= f.text_field :user_id, :hidden => true, :value => @user.id %> 
-        <%= f.submit "Cancel this Donor account" %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, :value => @user.name, :style => 'width:30%;' %>
       </div>
 
-      <% end %> 
-    </div>
-  </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, :value => @user.email , :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone, :value => @user.phone, :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :gender %><br />
+        <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"]],@user.gender),{}, :style => 'width:30%;' %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :'blood type' %><br />
+        <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
+          ["B+","B+"],["B-","B-"],
+          ["O+","O+"],["O-","O-"],
+          ["AB+","AB+"],["AB-","AB-"]], @user.blood_type),{}, :style => 'width:30%;' %> 
+      </div>
+
+        <div class="field">
+          <%= f.label :address %><br />
+          <input id="searchTextField" type="text" style="width:30%;" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @user.location_name %>" /> 
+
+          <%= f.text_field :location_name, autofocus: true, id: 'addName', hidden: true, :value => @user.location_name %>
+          <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true, :value => @user.location_lat %> 
+          <%= f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true, :value => @user.location_lng %>
+        </div>
+
+        <div class="field">
+          <%= f.label :'birth date' %><br />
+          <%= f.text_field :birth_date, :id=>"birth_date", :value => @user.birth_date, :style => 'width:30%;'  %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#birth_date" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+        </div>
+
+        <div class="field">
+          <%= f.label :'national ID' %><br />
+          <%= f.text_field :nationalid, autofocus: true, :value => @user.nationalid, :style => 'width:30%;'  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :'last donation date' %><br />
+          <%= f.text_field :lastdonation, :id=>"lastdonation", :value => @user.lastdonation, :style => 'width:30%;'  %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#lastdonation" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+        </div>
+
+        <div class="field">
+          <%= f.label :'number of active requests' %><br />
+          <%= f.text_field :num_of_active_requests, autofocus: true, :value => @user.num_of_active_requests , :style => 'width:30%;' %>
+        </div>
+
+
+        <div class="field">
+          <%= f.label :'number of saved people' %><br />
+          <%= f.text_field :savedpeople, autofocus: true, :value => @user.savedpeople, :style => 'width:30%;'  %>
+        </div>
+        <hr>
+        <div class="field">
+          <%= f.label :'can donate ?' %><br />
+          <%= f.select :can_donate, options_for_select([["True", "true"], ["False", "false"]],@user.can_donate),{}, :style => 'width:30%;' %>
+        </div>
+        <hr>
+        <div class="field">
+          <%= f.label "Hide Account Information" %><br />
+          <%= f.select :hide_account, options_for_select([["False", "false"], ["True", "true"]], @user.hide_account),{}, :style => 'width:30%;' %>
+        </div>
+        <hr>
+        <div class="field">
+          <%= f.label "Stop receiving Messages by email when new cases matches my blood type" %><br />
+          <%= f.select :stop_getting_email, options_for_select([["False", "false"], ["True", "true"]], @user.stop_getting_email),{}, :style => 'width:30%;' %>
+        </div>
+        <hr>
+        <div class="field">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off", :value => @user.password , :style => 'width:30%;' %>
+        </div> 
+        <br>
+        <div class="actions">
+          <%= f.submit "Update Info" , :style => 'width:30%;'%>
+        </div>
+        <% end %> 
+
+      </div>
+    </section>
+  </aside>

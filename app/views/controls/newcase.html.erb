@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+
+<script type="text/javascript">
+ function initialize() {
+
+  var input = document.getElementById('hospital_searchTextField');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var place = autocomplete.getPlace();
+    document.getElementById('hospital_addName').value = document.getElementById('hospital_searchTextField').value;
+    document.getElementById('hospital_addLat').value = place.geometry.location.lat();
+    document.getElementById('hospital_addLng').value = place.geometry.location.lng();
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize); 
+</script> 
+
+<% content_for :title, "New Donor" %> 
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Create New Case
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Case</li>
+      <li class="active"> New</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div align="center">
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_case ) do |f| %> 
+
+      <div class="field">
+        <%= f.text_field :contact_name, :placeholder=>"Enter contact name", :style => 'width:30%;', :required => '' %>
+      </div><br>
+      <div class="field"> 
+        <%= f.text_field :contact_phone, :placeholder=>"Enter contact mobile number", :style => 'width:30%;', :required => '' %>
+      </div><br>
+      <div class="field">
+        <%= f.text_field :contact_email, :placeholder=>"Enter contact email", :style => 'width:30%;', :required => '' %>
+      </div><br>
+      <div class="field"> 
+        <%= f.text_field :contact_nationalid, :placeholder=>"Enter contact national id", :style => 'width:30%;', :required => '' %>
+      </div><br>
+      <div class="field">
+        <%= f.text_field :patient_name, :placeholder=>"Enter the patient name", :style => 'width:30%;', :required => '' %>
+      </div><br>
+      <div class="field"> 
+        <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
+          ["B+","B+"],["B-","B-"],
+          ["O+","O+"],["O-","O-"],
+          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %> 
+      </div><br>
+      <div class="field"> 
+          <%= f.text_field :expiredate, :placeholder=>"Enter the expire date", :style => 'width:30%;', :required => '', :id => 'datepicker' %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+      </div><br>
+      <div class="field"> 
+          <%= f.number_field :bloodbag, :placeholder=>"Enter number of blood bag", :style => 'width:30%;', :required => '' %>
+      </div><br>
+        
+      <%= f.number_field :num_of_donors, :hidden => true, :value => 0 %>
+        
+      <div class="field"> 
+          <%= f.text_field :hospital_name, :placeholder=>"Enter the hospital name", :style => 'width:30%;', :required => ''%>
+      </div><br>
+
+      <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
+
+      <div class="field"> 
+        <input id="hospital_searchTextField" type="text" style="width:30%;, :style => 'width:30%;'" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
+
+          <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true  %>
+
+          <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true  %> 
+          <%= f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', hidden: true %>
+      </div><br>
+      
+      <div class="actions">
+        <%= f.submit  'create case', :style => 'width:30%;' %>
+      </div>
+        <% end %>
+
+      </div>
+
+    </section>
+  </aside>

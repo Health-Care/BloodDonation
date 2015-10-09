@@ -211,22 +211,40 @@ $('#container-donor-day').highcharts({
 <%= javascript_tag "usersperday  =  #{@usersperday.to_a}" %>
 <%= javascript_tag "requestsperday  =  #{@requestsperday.to_a}" %>
 
-<div style="margin: 20px 70px;">
-	<div style="display: inline; float:left;">
-		<div id="container-donor-month" style="min-width: 600px; height: 400px;"></div>
-	</div>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Reports and Charts
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li> Dashboard</li>
+            <li class="active"> Reports</li>
+        </ol>
+    </section>
 
-	<div style="display: inline; float:right;">
-		<div id="container-case-month" style="min-width: 600px; height: 400px;"></div>
-	</div>
-</div>
-<br><br>
-<div style="margin: 20px 70px;">
-	<div style="display: inline; float:left;">
-		<div id="container-donor-day" style="min-width: 600px; height: 400px;"></div>
-	</div>
-
-	<div style="display: inline; float:right;">
-		<div id="container-case-day" style="min-width: 600px; height: 400px;"></div>
-	</div>
-</div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <section class="col-lg-6 connectedSortable"> 
+                <div class="box box-primary">
+                    <div id="container-donor-month"></div>
+                </div>
+                <div class="box box-primary">
+                    <div id="container-case-month"></div>
+                </div>
+            </section> 
+            <section class="col-lg-6 connectedSortable"> 
+             <!-- Map box -->
+             <div class="box box-primary"> 
+                <div id="container-donor-day"></div>
+            </div>
+            <div class="box box-info"> 
+                <div id="container-case-day"></div>         
+            </div>
+        </section> 
+    </div>
+    </section>
+    </aside>

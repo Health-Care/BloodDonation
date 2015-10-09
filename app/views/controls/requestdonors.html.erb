@@ -1,59 +1,75 @@
 <% content_for :title, "Active Donors" %>
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			Request Donors
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li>Dashboard</li>
+			<li> Request</li>
+			<li class="active"> Donors</li>
+		</ol>
+	</section>
 
-<div align="center">
-	<br>
-	<br>
-	<h2>There is <%= @users.size %> Donors responded on this Case</h2>
-	<% @users.each do |user| %>
-	<div class="CSSTableGenerator" >
-		<table > 
-			<tr><td>name</td><td><%= user.name %></td></tr>
-			<tr><td>email</td><td><%= user.email %></td></tr>
-			<tr><td>mobile</td><td><%= user.phone %></td></tr>
-			<tr><td>gender</td><td><%= user.gender %></td></tr>
-			<tr><td>blood</td><td><%= user.blood_type %></td></tr>
-			<tr><td>national id</td><td><%= user.nationalid %></td></tr>
-			<tr><td>birth date</td><td><%= user.birth_date %></td></tr>
-			<tr><td>address</td><td><%= user.location_name %></td></tr>
-			<tr style="background-color:#ffffff;">
-			<td>Confirm Donation Process</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :confirm_donation ) do |f| %> 
+	<!-- Main content -->
+	<section class="content">
+		<div align="center">
+			<h2>There are <%= @users.size %> donors responded to this case</h2>
+			<% @users.each do |user| %>
+			<div class="CSSTableGenerator" >
+				<table > 
+					<tr><td>name</td><td><%= user.name %></td></tr>
+					<tr><td>email</td><td><%= user.email %></td></tr>
+					<tr><td>mobile</td><td><%= user.phone %></td></tr>
+					<tr><td>gender</td><td><%= user.gender %></td></tr>
+					<tr><td>blood</td><td><%= user.blood_type %></td></tr>
+					<tr><td>national id</td><td><%= user.nationalid %></td></tr>
+					<tr><td>birth date</td><td><%= user.birth_date %></td></tr>
+					<tr><td>address</td><td><%= user.location_name %></td></tr>
+					<tr style="background-color:#ffffff;">
+						<td>Confirm Donation Process</td><td>
+						<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :confirm_donation ) do |f| %> 
 
-				<div class="field"> 
-					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
-					<%= f.submit "Confirm Donation Process", class: "submit-button" %>
-				</div>
+						<div class="field"> 
+							<%= f.text_field :user_id, :hidden => true, :value => user.id %>
+							<%= f.submit "Confirm Donation Process", class: "submit-button" %>
+						</div>
 
-				<% end %>
-			</td> 
+						<% end %>
+					</td> 
+				</tr> 
+				<tr style="background-color:#ffffff;">
+					<td>Cancel Donation Process</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :cancel_donation ) do |f| %> 
+
+					<div class="field"> 
+						<%= f.text_field :user_id, :hidden => true, :value => user.id %>
+						<%= f.submit "Cancel Donation Process", class: "submit-button" %>
+					</div>
+
+					<% end %>
+				</td> 
 			</tr> 
 			<tr style="background-color:#ffffff;">
-			<td>Cancel Donation Process</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :cancel_donation ) do |f| %> 
-
-				<div class="field"> 
-					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
-					<%= f.submit "Cancel Donation Process", class: "submit-button" %>
-				</div>
-
-				<% end %>
-			</td> 
-			</tr> 
-			<tr style="background-color:#ffffff;">
-			<td>Send Email</td><td>
+				<td>Send Email</td><td>
 				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :sendemail ) do |f| %> 
 
 				<div class="field"> 
 					<%= f.text_field :user_email, :hidden => true, :value => user.email %>
-					<%= f.text_field :subject, :required => '', :maxlength=>"64", placeholder: 'write the subject here'  %>
-					<%= f.text_area(:textmsg, :required => '', size: '62x5', placeholder: 'write the message here and click send') %>
+					<%= f.text_field :subject, :required => '', :maxlength=>"52", placeholder: 'write the subject here'  %>
+					<%= f.text_area(:textmsg, :required => '', size: '50x5', placeholder: 'write the message here and click send') %>
 					<%= f.submit "Send Email", class: "submit-button" %>
 				</div>
 
 				<% end %>
 			</td> 
-			</tr> 
+		</tr> 
 	</table>
 </div><br><br>
 <% end %>
 </div>
+</section>
+</aside>

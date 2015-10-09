@@ -1,7 +1,11 @@
 Rails.application.routes.draw do 
  
-  devise_for :admins
-  devise_for :users, :controllers => {:users_controller => "users_controller"}
+  devise_for :admins , :controllers => { :sessions => "sessions" } do
+     get '/admins/sign_out' => 'devise/sessions#destroy'
+  end
+  devise_for :users, :controllers => {:users_controller => "users_controller"} do
+     get '/users/sign_out' => 'devise/sessions#destroy'
+  end
    
   root :to => 'contents#index'
 
@@ -23,7 +27,8 @@ Rails.application.routes.draw do
 
   resources :requests do
     collection do
-      get 'relatedrequests'  
+      get 'relatedrequests'
+      get 'createdrequest'  
     end
   end 
 
@@ -63,6 +68,7 @@ Rails.application.routes.draw do
       post :expire
       post :confirm_donation
       post :cancel_donation
+      post :create_new_case
     end
   end    
   
@@ -86,6 +92,9 @@ Rails.application.routes.draw do
       get :donorshistory
       get :caseshistory
       get :edit_admin
+      get :deletecases
+      get :lockscreen
+      get :newcase
     end
   end
   # You can have the root of your site routed with "root"
@@ -139,4 +148,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '*path' => redirect('/')
 end

@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+<% content_for :title, "Delete Cases" %>
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Delete Cases
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Cases</li>
+      <li class="active"> Delete Cases</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div align="center">
+      <h2>Insert from/to date of requests you want to delete</h2>
+      <br><br><br>
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecasesfromto ) do |f| %> 
+
+
+      <div class="field"> 
+        <%= f.text_field :from, :required=>"", :placeholder=>"Enter The Date" , :id=>"from-datepicker" %>
+        <script type="text/javascript">
+          $(function() {
+            $( "#from-datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
+          });
+        </script>
+        <br><br>
+        <%= f.text_field :to, :required=>"", :placeholder=>"Enter The Date" , :id=>"to-datepicker" %>
+        <script type="text/javascript">
+          $(function() {
+            $( "#to-datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
+          });
+        </script>
+        <br><br>
+        <%= f.submit 'Delete Cases' %>
+      </div>
+
+      <% end %> 
+    </div>
+
+  </section>
+</aside>

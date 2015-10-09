@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authenticate_logging_in, only: [:donors, :show, :donate, :relatedrequests, :cancel_donate]
   before_action :set_request, only: [:donors, :show, :update, :donate, :cancel_donate] 
-
+  
   # GET /requests
   # GET /requests.json
   def index    
@@ -29,16 +29,19 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-
         notify_users(@request)
-
-        format.html { redirect_to root_url, notice: 'Request was successfully created.' }
+        session[:request_id] = @request.id
+        format.html { redirect_to createdrequest_requests_path, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
-        format.html { redirect_to root_url, alert: "Something went wrong, try again" }
+        format.html { render :action => "new" , alert: "Something went wrong, try again" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def createdrequest
+    @request = Request.find(session[:request_id])
   end
 
   def donors  

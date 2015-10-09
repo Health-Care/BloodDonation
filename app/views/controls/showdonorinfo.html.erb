@@ -1,44 +1,60 @@
 <% content_for :title, "Donor Info" %>
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+		    Donor Informations
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li> Dashboard</li>
+			<li> Donor</li>
+			<li class="active"> Information</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div align="center">
+			<br>
+			<div class="CSSTableGenerator" >
+				<table > 
+					<tr><td>name</td><td><%= @user.name %></td></tr>
+					<tr><td>email</td><td><%= @user.email %></td></tr>
+					<tr><td>mobile</td><td><%= @user.phone %></td></tr>
+					<tr><td>gender</td><td><%= @user.gender %></td></tr>
+					<tr><td>blood</td><td><%= @user.blood_type %></td></tr>
+					<tr><td>national id</td><td><%= @user.nationalid %></td></tr>
+					<tr><td>birth date</td><td><%= @user.birth_date %></td></tr>
+					<tr><td>address</td><td><%= @user.location_name %></td></tr>
+					<tr><td>can donate</td><td><%= @user.can_donate %></td></tr>
+					<tr><td>number of active requests</td><td><%= @user.num_of_active_requests %></td></tr>
+					<tr><td>last donation date</td><td><%= @user.lastdonation %></td></tr>
+					<tr><td>number of saved people</td><td><%= @user.savedpeople %></td></tr>
+					<tr style="background-color:#ffffff;"><td>Update Information and settings</td><td>
+						<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :donor ) do |f| %> 
 
-<div align="center">
-	<br> <br>
-	<h2><%= @user.name %> information</h2>
-	<div class="CSSTableGenerator" >
-		<table > 
-			<tr><td>name</td><td><%= @user.name %></td></tr>
-			<tr><td>email</td><td><%= @user.email %></td></tr>
-			<tr><td>mobile</td><td><%= @user.phone %></td></tr>
-			<tr><td>gender</td><td><%= @user.gender %></td></tr>
-			<tr><td>blood</td><td><%= @user.blood_type %></td></tr>
-			<tr><td>national id</td><td><%= @user.nationalid %></td></tr>
-			<tr><td>birth date</td><td><%= @user.birth_date %></td></tr>
-			<tr><td>address</td><td><%= @user.location_name %></td></tr>
-			<tr><td>can donate</td><td><%= @user.can_donate %></td></tr>
-			<tr><td>number of active requests</td><td><%= @user.num_of_active_requests %></td></tr>
-			<tr><td>last donation date</td><td><%= @user.lastdonation %></td></tr>
-			<tr><td>number of saved people</td><td><%= @user.savedpeople %></td></tr>
-			<tr style="background-color:#ffffff;"><td>Update Information and settings</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :donor ) do |f| %> 
+						<div class="field"> 
+							<%= f.text_field :user_id, :hidden => true, :value => @user.id %>
+							<%= f.submit "Update Information and settings", class: "submit-button" %>
+						</div>
 
-				<div class="field"> 
-					<%= f.text_field :user_id, :hidden => true, :value => @user.id %>
-					<%= f.submit "Update Information and settings", class: "submit-button" %>
-				</div>
+						<% end %>
+					</td> 
+				</tr> 
+				<tr style="background-color:#ffffff;"><td>Cancel Donor</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %>
 
-				<% end %>
-			</td> 
-		</tr> 
-		<tr style="background-color:#ffffff;"><td>Cancel Donor</td><td>
-			<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %>
+					<div class="field"> 
+						<%= f.text_field :user_id, :hidden => true, :value => @user.id %>
+						<%= f.submit "Cancel this donor account", class: "submit-button" %>
+					</div>
 
-			<div class="field"> 
-				<%= f.text_field :user_id, :hidden => true, :value => @user.id %>
-				<%= f.submit "Cancel this donor account", class: "submit-button" %>
-			</div>
-
-			<% end %>
-		</td> 
-	</tr> 
-</table>
-</div> 
+					<% end %>
+				</td> 
+			</tr> 
+		</table>
+	</div> 
 </div>
+</section>
+</aside>

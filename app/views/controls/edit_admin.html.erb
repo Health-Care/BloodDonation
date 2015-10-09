@@ -1,32 +1,47 @@
 <% content_for :title, "login info" %> 
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Super Admin
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Super admin</li>
+      <li class="active"> Informations</li>
+    </ol>
+  </section>
 
-<div align="center">
-<h2>Edit super admin login info </h2>
+  <!-- Main content -->
+  <section class="content">
+    <div align="center">
+      <h2>Edit super admin login info </h2>
 
-<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :edit ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :edit ) do |f| %> 
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :value => current_admin.email %>
-  </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, :value => current_admin.email , :style => 'width:30%;' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", :required => true %>
-  </div>
+      <div class="field">
+        <%= f.label :'password ( 8 or more Chars)' %><br />
+        <%= f.password_field :password, autocomplete: "off", :required => true , :style => 'width:30%;' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
-  </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", :required => true  , :style => 'width:30%;'%>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Update Informations" , :style => 'width:30%;' %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Update info" %>
-  </div>
+      <% end %> 
+    </div>
 
-<% end %> 
-</div>
-
+  </section>
+</aside>

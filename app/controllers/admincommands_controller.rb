@@ -30,15 +30,16 @@ class AdmincommandsController < ApplicationController
     end
   end
 
-  def email_exist(email)
-    @admins = Admin.all.offset(1)
+  def email_exist(email , id)
+    @admins = Admin.all
     @admins.each do |admin|
-      if admin.email == email
+      if admin.email == email && admin.id != id
           return true
       end
     end
     false    
   end
+
   def update
     @admin = Admin.new  
     @admin.id = params[:controls][:id]
@@ -47,6 +48,8 @@ class AdmincommandsController < ApplicationController
 
     if @admin.password == nil || @admin.email == nil
       redirect_to admins_controls_path, notice: "Please insert email and password fields"
+    elsif email_exist(@admin.email ,  @admin.id )
+      redirect_to admins_controls_path, notice: "This email already signed to another admin"    
     elsif @admin.update
       redirect_to admins_controls_path, notice: "successfully updated this admin"
     end
@@ -61,8 +64,8 @@ class AdmincommandsController < ApplicationController
 
     if password_confirmation != @admin.password
       redirect_to edit_admin_controls_path, notice: "Incorrect passwords, try again"
-    elsif email_exist(@admin.email)
-      redirect_to edit_admin_controls_path, notice: "This email already signed to anther admin"    
+    elsif email_exist(@admin.email , 1)
+      redirect_to edit_admin_controls_path, notice: "This email already signed to another admin"    
     elsif @admin.update
       redirect_to controls_path, notice: "successfully updated this admin"
     end
@@ -85,7 +88,11 @@ class AdmincommandsController < ApplicationController
     @user.num_of_active_requests = params[:controls][:num_of_active_requests]
     password_confirmation = params[:controls][:password_confirmation]
 
-    if !User.where(:email => @user.email).blank?
+    if @user.blood_type == "Choose blood type"
+      redirect_to newdonor_controls_path , notice: "Please enter blood type field"
+    elsif @user.gender == "Choose gender"
+      redirect_to newdonor_controls_path , notice: "Please enter the gender field"
+    elsif !User.where(:email => @user.email).blank?
       redirect_to newdonor_controls_path, :notice => 'Email already used by another donor'
     elsif !User.where(:phone => @user.phone).blank?
       redirect_to newdonor_controls_path, :notice => 'Phone number already used by another donor'
@@ -99,6 +106,35 @@ class AdmincommandsController < ApplicationController
     end  
   end
 
+  def create_new_case
+    @request = Request.new
+    @request.contact_name = params[:controls][:contact_name]
+    @request.contact_email = params[:controls][:contact_email]
+    @request.contact_phone = params[:controls][:contact_phone]
+    @request.contact_nationalid = params[:controls][:contact_nationalid]
+    @request.blood_type = params[:controls][:blood_type]
+    @request.bloodbag = params[:controls][:bloodbag]
+    @request.patient_name = params[:controls][:patient_name]
+    @request.expiredate = params[:controls][:expiredate]
+    @request.hospital_location_lng = params[:controls][:hospital_location_lat]
+    @request.hospital_location_lat = params[:controls][:hospital_location_lng]
+    @request.hospital_location = params[:controls][:hospital_location]
+    @request.hospital_name = params[:controls][:hospital_name]
+    @request.created_at = params[:controls][:created_at]
+    @request.num_of_donors = params[:controls][:num_of_donors]
+    
+    if @request.contact_nationalid.length != 14
+      redirect_to newcase_controls_path , notice: "Please make sure that national ID is 14 number"
+    elsif @request.contact_phone.length != 11
+      redirect_to newcase_controls_path , notice: "Please make sure that mobile number is 11 number"
+    elsif @request.blood_type == "Choose blood type"
+      redirect_to newcase_controls_path , notice: "Please enter blood type field"
+    else
+      @request.save
+      redirect_to controls_path, notice: "successfully create a new case"
+    end
+  end
+  
   # search about donor
   def searchdonor
     search_tag = params[:controls][:search_tag]
@@ -191,6 +227,7 @@ class AdmincommandsController < ApplicationController
     @user.update_attribute(:password, params[:controls][:password])
     @user.update_attribute(:hide_account, params[:controls][:hide_account])
     @user.update_attribute(:can_donate, params[:controls][:can_donate])
+    @user.update_attribute(:stop_getting_email, params[:controls][:stop_getting_email])
     @user.update_attribute(:savedpeople, params[:controls][:savedpeople])
     @user.update_attribute(:lastdonation, params[:controls][:lastdonation])
     @user.update_attribute(:num_of_active_requests, params[:controls][:num_of_active_requests])

@@ -2,7 +2,13 @@ class ControlsController < ApplicationController
   before_action :authenticate_logging_in
   before_action :authenticate_superadmin_logging_in, only: [:newadmin, :admins, :edit_admin]
 
-  def index
+  layout "admin"
+
+  def lockscreen
+    render :layout => false
+  end
+
+  def index 
     session[:return_to] = controls_path
     system = Admin.new 
     @users_number = system.getNumberofUsers 
@@ -10,6 +16,9 @@ class ControlsController < ApplicationController
     @requests_number = system.getNumberofAllRequests
     @active_requests_number  = system.getNumberofActiveRequests
     @expired_requests_number  = system.getNumberofExpiredRequests
+
+    @usersperday = Admin.getUsersChartPerDay
+    @requestsperday = Admin.getRequestsChartPerDay
   end 
 
   def admins
@@ -23,26 +32,37 @@ class ControlsController < ApplicationController
   end
   
   def historyregisteredDonors
-    session[:return_to] = historyregisteredDonors_controls_path
-    date= session[:date]
-    @users = Admin.last_registeredUsers(date)
+    if session[:date]
+      session[:return_to] = historyregisteredDonors_controls_path
+      date= session[:date]
+      @users = Admin.last_registeredUsers(date)
+    else
+      redirect_to controls_path
+    end
   end
 
   def showdonor
-    @user = User.find(session[:user_id])
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      redirect_to controls_path
+    end
   end
 
   def showcases
-    session[:return_to] = showcases_controls_path
-    search_tag = session[:search_tag]
-    @requests = nil
-    if search_tag.numeric?
-       @requests = Admin.getCasesByMobileNumber(search_tag)
-    elsif search_tag.email?
-       @requests = Admin.getCasesByEmail(search_tag)
-    elsif search_tag.include?('+') || search_tag.include?('-')
-       @requests = Admin.getCasesByBloodType(search_tag)
-    end 
+    if session[:search_tag]
+        session[:return_to] = showcases_controls_path
+        search_tag = session[:search_tag]
+        if search_tag.numeric?
+           @requests = Admin.getCasesByMobileNumber(search_tag)
+        elsif search_tag.email?
+           @requests = Admin.getCasesByEmail(search_tag)
+        elsif search_tag.include?('+') || search_tag.include?('-')
+           @requests = Admin.getCasesByBloodType(search_tag)
+        end 
+    else
+        redirect_to controls_path
+    end
   end
 
   ##########################################
@@ -53,18 +73,26 @@ class ControlsController < ApplicationController
   end
 
   def historyregisteredCases
-    session[:return_to] = historyregisteredCases_controls_path
-    date= session[:date]
-    @requests = Admin.last_registeredCases(date)
+    if session[:date]
+      session[:return_to] = historyregisteredCases_controls_path
+      date= session[:date]
+      @requests = Admin.last_registeredCases(date)
+    else
+      redirect_to controls_path
+    end
   end
 
   def showcase
-    session[:return_to] = showcase_controls_path
-    if session[:return] == 'deletecase_controls_path'
-      session.delete(:return)
-      redirect_to controls_path
+    if session[:request_id]
+      session[:return_to] = showcase_controls_path
+      if session[:return] == 'deletecase_controls_path'
+        session.delete(:return)
+        redirect_to controls_path
+      else
+        @request = Request.find(session[:request_id])
+      end
     else
-      @request = Request.find(session[:request_id])
+      redirect_to controls_path
     end
   end
 
@@ -101,16 +129,28 @@ class ControlsController < ApplicationController
 
   #show request donors
   def requestdonors
-    session[:return_to] = requestdonors_controls_path
-    request_id = session[:request_id]
-    @users = Admin.getRequestsDonors(request_id)
+    if session[:request_id]
+        session[:return_to] = requestdonors_controls_path
+        request_id = session[:request_id]
+        @users = Admin.getRequestsDonors(request_id)
+        
+        if @users.size == 0
+           redirect_to controls_path
+        end
+    else
+      redirect_to controls_path
+    end
   end
 
   def newdonor
     session[:return_to] = newdonor_controls_path
     @user = User.new
   end
-
+  
+  def newcase
+    session[:return_to] = newdonor_controls_path
+    @request = Request.new
+  end
   private
     #authenticate admin
     def authenticate_logging_in
@@ -129,6 +169,7 @@ class ControlsController < ApplicationController
     def set_user 
       @admin = Admin.find( Admin.decrypt(params[:id]) )
     end 
+
 end
 
 class String

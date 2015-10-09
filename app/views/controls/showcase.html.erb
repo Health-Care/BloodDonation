@@ -18,85 +18,103 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script> 
 
 <% content_for :title, "Edit Case" %> 
-<div align="center">
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Case
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li> Dashboard</li>
+      <li> Case</li>
+      <li class="active"> Informations</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div align="center">
+      <div>
+        <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
 
-  <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_case ) do |f| %> 
+        <div class="field"> 
+          <%= f.text_field :request_id, :hidden => true, :value => @request.id %> 
+          <%= f.submit "Click to Delete this Case", :style => 'width:40%;' %>
+        </div>
 
-  <div class="field">
-    <%= f.label :'contact name' %><br />
-    <%= f.text_field :contact_name, :value => @request.contact_name %>
-  </div>
+        <% end %> 
+      </div>
+      <br><br>
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update_case ) do |f| %> 
 
-  <div class="field">
-    <%= f.label :'contact email' %><br />
-    <%= f.text_field :contact_email, :value => @request.contact_email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'contact phone' %><br />
-    <%= f.text_field :contact_phone, :value => @request.contact_phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'contact national id' %><br />
-    <%= f.text_field :contact_nationalid, :value => @request.contact_nationalid %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :'patient name' %><br />
-    <%= f.text_field :patient_name, :value => @request.patient_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :'blood type' %><br />
-    <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
-      ["B+","B+"],["B-","B-"],
-      ["O+","O+"],["O-","O-"],
-      ["AB+","AB+"],["AB-","AB-"]], @request.blood_type) %> 
-    </div>
-
-    <div class="field">
-    <%= f.label :'blood bag' %><br />
-      <%= f.text_field :bloodbag, :value => @request.bloodbag %>
-    </div>
-
-    <div class="field">
-      <%= f.label :'hospital name' %><br />
-      <%= f.text_field :hospital_name, :value => @request.hospital_name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :'hospital location' %><br />
-      <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location %>" /> 
-
-      <%= f.text_field :hospital_location, autofocus: true, id: 'addName', hidden: true, :value => @request.hospital_location %>
-      <%= f.text_field :hospital_location_lat, autofocus: true, id: 'addLat', hidden: true, :value => @request.hospital_location_lat %> 
-      <%= f.text_field :hospital_location_lng, autofocus: true, id: 'addLng', hidden: true, :value => @request.hospital_location_lng %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :'expire date' %><br />
-      <%= f.text_field :expiredate, :required=>"", :id=>"datepicker", :value => @request.expiredate  %>
-      <script type="text/javascript">
-        $(function() {
-          $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-        });
-      </script>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update Info" %>
-    </div>
-    <% end %> 
-    <br><hr><br>
-    <div>
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
-
-      <div class="field"> 
-        <%= f.text_field :request_id, :hidden => true, :value => @request.id %> 
-        <%= f.submit "Delete this Case" %>
+      <div class="field">
+        <%= f.label :"Contact Name" %><br />
+        <%= f.text_field :contact_name, :value => @request.contact_name, :style => 'width:30%;'%>
       </div>
 
-      <% end %> 
-    </div>
-  </div>
+      <div class="field">
+        <%= f.label :'Contact Email' %><br />
+        <%= f.text_field :contact_email, :value => @request.contact_email, :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :'Contact Phone' %><br />
+        <%= f.text_field :contact_phone, :value => @request.contact_phone, :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :'Contact National ID' %><br />
+        <%= f.text_field :contact_nationalid, :value => @request.contact_nationalid, :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :'Patient Name' %><br />
+        <%= f.text_field :patient_name, :value => @request.patient_name, :style => 'width:30%;' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :'Blood Type' %><br />
+        <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
+          ["B+","B+"],["B-","B-"],
+          ["O+","O+"],["O-","O-"],
+          ["AB+","AB+"],["AB-","AB-"]], @request.blood_type),{}, :style => 'width:30%;'%> 
+        </div>
+
+        <div class="field">
+          <%= f.label :'Blood Bag' %><br />
+          <%= f.text_field :bloodbag, :value => @request.bloodbag , :style => 'width:30%;'%>
+        </div>
+
+        <div class="field">
+          <%= f.label :'Hospital Name' %><br />
+          <%= f.text_field :hospital_name, :value => @request.hospital_name, :style => 'width:30%;' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :'Hospital Location' %><br />
+          <input id="searchTextField" type="text" style="width:30%;" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location %>" /> 
+
+          <%= f.text_field :hospital_location, autofocus: true, id: 'addName', hidden: true, :value => @request.hospital_location %>
+          <%= f.text_field :hospital_location_lat, autofocus: true, id: 'addLat', hidden: true, :value => @request.hospital_location_lat %> 
+          <%= f.text_field :hospital_location_lng, autofocus: true, id: 'addLng', hidden: true, :value => @request.hospital_location_lng %>
+        </div>
+
+        <div class="field">
+          <%= f.label :'Expire Date' %><br />
+          <%= f.text_field :expiredate, :required=>"", :id=>"datepicker", :value => @request.expiredate, :style => 'width:30%;'  %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit "Update Informations", :style => 'width:30%;' %>
+        </div>
+        <% end %> 
+
+      </div>
+    </section>
+  </aside>

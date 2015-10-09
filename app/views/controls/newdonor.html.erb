@@ -9,98 +9,101 @@
   var input = document.getElementById('searchTextField');
   var autocomplete = new google.maps.places.Autocomplete(input);
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
-      var place = autocomplete.getPlace();
-      document.getElementById('addName').value = document.getElementById('searchTextField').value;
-      document.getElementById('addLat').value = place.geometry.location.lat();
-      document.getElementById('addLng').value = place.geometry.location.lng();
+    var place = autocomplete.getPlace();
+    document.getElementById('addName').value = document.getElementById('searchTextField').value;
+    document.getElementById('addLat').value = place.geometry.location.lat();
+    document.getElementById('addLng').value = place.geometry.location.lng();
 
-     });
+  });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
 </script> 
 
 <% content_for :title, "New Donor" %> 
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Create New Donor
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Donor</li>
+      <li class="active"> New</li>
+    </ol>
+  </section>
 
-<div align="center">
-  <h2>Create a new Donor</h2>
+  <!-- Main content -->
+  <section class="content">
+    <div align="center"> 
 
-<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_donor ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_donor ) do |f| %> 
 
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: true, :required=>"Enter donor name", :placeholder=>"Enter donor name"  %>
-</div>
+      <div class="field"> 
+        <%= f.text_field :name, autofocus: true, :required=>"Enter donor name", :placeholder=>"Enter donor name", :style => 'width:30%;'  %>
+      </div><br>
 
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, :required=>"Enter donor email", :placeholder=>"Enter donor email"  %>
-</div>
+      <div class="field"> 
+        <%= f.email_field :email, autofocus: true, :required=>"Enter donor email", :placeholder=>"Enter donor email", :style => 'width:30%;'  %>
+      </div><br>
 
+      <div class="field"> 
+        <input id="searchTextField" type="text" style="width:30%;" placeholder="Enter a location" autocomplete="on" runat="server" /> 
 
-<div class="field">
-  <%= f.label :address %><br />
-  <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" /> 
-  
+        <%= f.text_field :location_name, autofocus: true, id: 'addName', hidden: true  %>
 
-  <%= f.text_field :location_name, autofocus: true, id: 'addName', hidden: true  %>
+        <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true  %> 
+        <%= f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true %>
+      </div><br>
 
-  <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true  %> 
-  <%= f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true %>
-</div>
+      <div class="field"> 
+        <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"],["Choose gender"]], selected: "Choose gender") ,{}, :style => 'width:30%;'%>
+      </div><br />
 
-<div class="field">
-  <%= f.label :gender %><br />
-  <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"]]) %>
-</div>
+      <div class="field"> 
+        <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
+          ["B+","B+"],["B-","B-"],
+          ["O+","O+"],["O-","O-"],
+          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %> 
+      </div><br />
 
-<div class="field">
-  <%= f.label :'blood type' %><br />
-  <%= f.select(:blood_type, [["A+","A+"],["A-","A-"],
-    ["B+","B+"],["B-","B-"],
-    ["O+","O+"],["O-","O-"],
-    ["AB+","AB+"],["AB-","AB-"]], include_blank: 'Choose Blood Type') %>
-</div>
+      <div class="field"> 
+          <%= f.text_field :phone, autofocus: true, :required=>"Enter donor mobile number" , :placeholder=>"Enter donor phone number", :style => 'width:30%;'%>
+      </div><br />
 
-<div class="field">
-  <%= f.label :'phone number' %><br />
-  <%= f.text_field :phone, autofocus: true, :required=>"Enter donor mobile number" , :placeholder=>"Enter donor phone number"%>
-</div>
+      <div class="field"> 
+          <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter donor Birth Date" , :id=>"datepicker", :style => 'width:30%;' %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+      </div><br />
 
-<div class="field">
-  <%= f.label :'birth date' %><br />
-  <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter donor Birth Date" , :id=>"datepicker" %>
-  <script type="text/javascript">
-    $(function() {
-      $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-    });
-  </script>
-</div>
-
-<div class="field">
-  <%= f.label :'national ID' %><br />
-  <%= f.text_field :nationalid, autofocus: true, :required=>"Enter donor national id", :placeholder=>"Enter donor national id" %>
-</div>
+      <div class="field"> 
+          <%= f.text_field :nationalid, autofocus: true, :required=>"Enter donor national id", :placeholder=>"Enter donor national id", :style => 'width:30%;' %>
+      </div><br />
 
 
-<%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
-<%= f.number_field :num_of_active_requests, :hidden => true, :value => 0 %>
-<div class="field">
-  <%= f.label :password %>
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-</div>
+      <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
+      <%= f.number_field :num_of_active_requests, :hidden => true, :value => 0 %>
+        
+      <div class="field">
+          <%= f.password_field :password, :placeholder=>"Enter password ( 8 or more letters )", autocomplete: "off", :style => 'width:30%;' %>
+      </div><br>
 
-<div class="field">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
+      <div class="field"> 
+          <%= f.password_field :password_confirmation, :placeholder=>"Enter password confirmation", autocomplete: "off", :style => 'width:30%;' %>
+      </div><br>
+        
+      <div class="actions">
+          <%= f.submit "Create a new Donor", :style => 'width:30%;' %>
+      </div>
+        <% end %>
 
-<div class="actions">
-  <%= f.submit "Create a new Donor" %>
-</div>
-<% end %>
+      </div>
 
-</div>
-
+    </section>
+  </aside>

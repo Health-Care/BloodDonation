@@ -3,29 +3,48 @@
 
 <% content_for :title, "History" %>
 
-<div align="center">
-	<br><br><br>
-	<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :search_registerd_users ) do |f| %> 
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			History Registered Donors
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li> Dashboard</li>
+			<li> History</li>
+			<li class="active"> Registered Donors</li>
+		</ol>
+	</section>
+  <!-- Main content -->
+  <section class="content">
+	<div align="center">
+		<br><br><br>
+		<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :search_registerd_users ) do |f| %> 
 
-	<div class="field"> 
-		<%= f.text_field :date, :required=>"", :placeholder=>"Enter The Date" , :id=>"datepicker" %>
-		<script type="text/javascript">
-			$(function() {
-				$( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
-			});
-		</script>
+		<div class="field"> 
+			<%= f.text_field :date, :required=>"", :placeholder=>"Enter The Date" , :id=>"datepicker" %>
+			<script type="text/javascript">
+				$(function() {
+					$( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0', dateFormat: 'yy-mm-dd'});
+				});
+			</script>
 
-		<%= f.submit "Search Users" %>
-	</div>
+			<%= f.submit "Search Users" %>
+		</div>
 
-	<% end %> 
-	<br>
-	<% if @users.size == 0 %>
-	<h2>No Donors registered on this Date</h2>
-	<% else %>
-			<h2>There is <%= @users.size %> Donors registered on this Date</h2>
-			<% @users.each do |user| %>
-			<div class="CSSTableGenerator" >
+		<% end %> 
+		<br>
+		<% if @users.size == 0 %>
+		<br><br>
+		<h2>No Donors registered today</h2>
+		<br><br>
+		<% else %>
+		<h2>There are <%= @users.size %> donors registered today</h2>
+		<br>
+		<% @users.each do |user| %>
+		<div class="CSSTableGenerator" >
 			<table > 
 				<tr><td>name</td><td><%= user.name %></td></tr>
 				<tr><td>email</td><td><%= user.email %></td></tr>
@@ -43,27 +62,29 @@
 					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :donor ) do |f| %> 
 
 					<div class="field"> 
-					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
-					<%= f.submit "Update Information and settings", class: "submit-button" %>
+						<%= f.text_field :user_id, :hidden => true, :value => user.id %>
+						<%= f.submit "Update Information and settings", class: "submit-button" %>
 					</div>
 
 					<% end %>
 				</td> 
-			    </tr> 
-			    <tr style="background-color:#ffffff;"><td>Delete Donor</td><td>
-					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %>
+			</tr> 
+			<tr style="background-color:#ffffff;"><td>Delete Donor</td><td>
+				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletedonor ) do |f| %>
 
-					<div class="field"> 
+				<div class="field"> 
 					<%= f.text_field :user_id, :hidden => true, :value => user.id %>
 					<%= f.submit "Delete this donor", class: "submit-button" %>
-					</div>
+				</div>
 
-					<% end %>
-				</td> 
-			    </tr> 
-			</table>
-			</div><br><br>
-			<% end %>
-	
-	<% end %>
+				<% end %>
+			</td> 
+		</tr> 
+	</table>
+</div><br><br>
+<% end %>
+
+<% end %>
 </div>
+</section>
+</aside>

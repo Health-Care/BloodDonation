@@ -1,48 +1,66 @@
 <% content_for :title, "admins" %> 
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Admins lists
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Admin</li>
+      <li class="active">Admins lists</li>
+    </ol>
+  </section>
+    <!-- Main content -->
+  <section class="content">
+  <div align="center">
+    <% if @admins.size != 0 %>
+    <h1>Admins lists</h1>
+    <h3>There is no need to enter the password if you want to edit only the email</h3>
+    <br><br>
+    <table width="80%">
+      <tr>
+        <th>Email</th>
+        <th></th>
+        <th>Email</th>
+        <th>Password</th> 
+        <th></th>
+      </tr>
+      <% @admins.each do |admin| %>
+      <tr>
+       <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :delete ) do |f| %> 
 
-<div align="center">
-  <% if @admins.size != 0 %>
-
-  <h1>Admins lists</h1>
-  <h3>There is no need to enter the password if you want to edit only the email</h3>
-  <table width="80%">
-    <tr>
-      <th>email</th>
-      <th></th>
-      <th>email</th>
-      <th>password</th> 
-      <th></th>
-    </tr>
-    <% @admins.each do |admin| %>
-    <tr>
-     <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :delete ) do |f| %> 
-
-     <div> 
-      <td><%= admin.email %></td>
-      <%= f.text_field :id, :value => admin.id, :hidden => true %>
-      <td><div class="actions">
-        <%= f.submit "Delete Admin", :onclick => "return confirm('Are you sure yo want to delete?')" %>
-      </div></td> 
-
-      <% end %> 
-
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update ) do |f| %> 
-
-      <div> 
-
+       <div> 
+        <td><%= admin.email %></td>
         <%= f.text_field :id, :value => admin.id, :hidden => true %>
-        <th><%= f.text_field :email, :value => admin.email %></th>
-        <td><%= f.password_field :password, autocomplete: "on", :value => admin.password %></td> 
-      </div>
-      <td><div class="actions">
-        <%= f.submit "Update Admin", :onclick => "return confirm('Are you sure yo want to update?')" %>
-      </div></td>
+        <td><div class="actions">
+          <%= f.submit "Delete Admin", :onclick => "return confirm('Are you sure yo want to delete?')" %>
+        </div></td> 
 
-      <% end %> 
-    </tr> 
-    <% end %>
-  </table>
-  <% else %>
-  <h3>No admins yet !!</h3>
-  <% end %> 
-</div>
+        <% end %> 
+
+        <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :update ) do |f| %> 
+
+        <div> 
+
+          <%= f.text_field :id, :value => admin.id, :hidden => true %>
+          <th><%= f.text_field :email, :value => admin.email %></th>
+          <td><%= f.password_field :password, autocomplete: "on", :value => admin.password %></td> 
+        </div>
+        <td><div class="actions">
+          <%= f.submit "Update Admin", :onclick => "return confirm('Are you sure yo want to update?')" %>
+        </div></td>
+
+        <% end %> 
+      </tr> 
+      <% end %>
+    </table>
+    <% else %>
+    <br><br><br><br><br><h3>No admins created yet !!</h3>
+    <% end %> 
+  </div>
+<br><br><br><br><br>
+</section>
+</aside>

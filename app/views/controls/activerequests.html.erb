@@ -1,68 +1,88 @@
 <% content_for :title, "Active Requests" %>
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			Active Requests
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li>Dashboard</li>
+			<li>Cases</li>
+			<li class="active">Active Cases</li>
+		</ol>
+	</section>
+	  <!-- Main content -->
+  <section class="content">
+	<div align="center">
+		
+		<% if @requests.size == 0 %>
+		<br><br><br>
+		<h2>No Active Requests</h2>
+		<% else %>
+		<h2>There are <%= @requests.size %> Active Requests</h2>
+		<br>
+		<% @requests.each do |request| %>
+		<div class="CSSTableGenerator" >
+			<table > 
+				<tr><td>Contact Name</td><td><%= request.contact_name %></td></tr>
+				<tr><td>Contact Email</td><td><%= request.contact_email %></td></tr>
+				<tr><td>Contact Mobile</td><td><%= request.contact_phone %></td></tr>
+				<tr><td>Contact National ID</td><td><%= request.contact_nationalid %></td></tr>
+				<tr><td>Patient Name </td><td><%= request.patient_name %></td></tr>
+				<tr><td>Patient blood type</td><td><%= request.blood_type %></td></tr>
+				<tr><td>Blood bag</td><td><%= request.bloodbag %></td></tr>
+				<tr><td>Expire Date</td><td><%= request.expiredate %></td></tr>
+				<tr><td>Hospital Name</td><td><%= request.hospital_name %></td></tr>
+				<tr><td>Hospital location</td><td><%= request.hospital_location %></td></tr>
+				<tr><td>Number of donors</td><td><%= request.num_of_donors %></td></tr>
+				<tr style="background-color:#ffffff;"><td>Show Donors</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :request_donors ) do |f| %> 
 
-<div align="center">
-	<br> 
-	<% if @requests.size == 0 %>
-	<h2>No Active Requests</h2>
-	<% else %>
-	<h2>There is <%= @requests.size %> Active Requests</h2>
-	<% @requests.each do |request| %>
-	<div class="CSSTableGenerator" >
-		<table > 
-			<tr><td>Contact Name</td><td><%= request.contact_name %></td></tr>
-			<tr><td>Contact Email</td><td><%= request.contact_email %></td></tr>
-			<tr><td>Contact Mobile</td><td><%= request.contact_phone %></td></tr>
-			<tr><td>Contact National ID</td><td><%= request.contact_nationalid %></td></tr>
-			<tr><td>Patient Name </td><td><%= request.patient_name %></td></tr>
-			<tr><td>Patient blood type</td><td><%= request.blood_type %></td></tr>
-			<tr><td>Blood bag</td><td><%= request.bloodbag %></td></tr>
-			<tr><td>Expire Date</td><td><%= request.expiredate %></td></tr>
-			<tr><td>Hospital Name</td><td><%= request.hospital_name %></td></tr>
-			<tr><td>Hospital location</td><td><%= request.hospital_location %></td></tr>
-			<tr><td>Number of donors</td><td><%= request.num_of_donors %></td></tr>
-			<tr style="background-color:#ffffff;"><td>Show Donors</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :request_donors ) do |f| %> 
+					<div class="field"> 
+						<%= f.text_field :request_id, :hidden => true, :value => request.id %>
+						<%= f.submit "Show Donors", class: "submit-button" %>
+					</div>
 
-				<div class="field"> 
-					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
-					<%= f.submit "Show Donors", class: "submit-button" %>
-				</div>
+					<% end %>
+				</td></tr>
+				<tr style="background-color:#ffffff;"><td>Update Information</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :case ) do |f| %> 
 
-				<% end %>
-			</td></tr>
-			<tr style="background-color:#ffffff;"><td>Update Information</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :case ) do |f| %> 
+					<div class="field"> 
+						<%= f.text_field :request_id, :hidden => true, :value => request.id %>
+						<%= f.submit "Update Informations", class: "submit-button" %>
+					</div>
 
-				<div class="field"> 
-					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
-					<%= f.submit "Update Information", class: "submit-button" %>
-				</div>
+					<% end %>
+				</td></tr>
+				<tr style="background-color:#ffffff;"><td>Mark as expire</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :expire ) do |f| %>  
+					<div class="field"> 
+						<%= f.text_field :request_id, :hidden => true, :value => request.id %>
+						<%= f.submit "Mark as Expired", class: "submit-button" %>
+					</div>
 
-				<% end %>
-			</td></tr>
-			<tr style="background-color:#ffffff;"><td>Mark as expire</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :expire ) do |f| %>  
-				<div class="field"> 
-					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
-					<%= f.submit "Mark as expire", class: "submit-button" %>
-				</div>
+					<% end %>
+				</td></tr>
+				<tr style="background-color:#ffffff;"><td>Delete this request</td><td>
+					<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
 
-				<% end %>
-			</td></tr>
-			<tr style="background-color:#ffffff;"><td>Delete this request</td><td>
-				<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :deletecase ) do |f| %> 
+					<div class="field">  
+						<%= f.text_field :request_id, :hidden => true, :value => request.id %>
+						<%= f.submit "Delete this request", class: "submit-button" %>
+					</div>
 
-				<div class="field">  
-					<%= f.text_field :request_id, :hidden => true, :value => request.id %>
-					<%= f.submit "Delete this request", class: "submit-button" %>
-				</div>
+					<% end %>
+				</td> 
+			</tr> 
+		</table>
+	</div><br><br>
+	<% end %>
 
-				<% end %>
-			</td> 
-		</tr> 
-	</table>
-</div><br><br>
-<% end %>
-
-<% end %>
+	<% end %>
 </div>
+<br><br><br><br><br><br><br><br>
+</section>
+</aside>

@@ -1,32 +1,44 @@
 <% content_for :title, "New Admin" %>
+<aside class="right-side">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      New Admin
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li>Dashboard</li>
+      <li> Admin</li>
+      <li class="active"> New Admin</li>
+    </ol>
+  </section>
 
-<div align="center">
-<h2>Create a new admin</h2>
+  <!-- Main content -->
+  <section class="content">
+    <div align="center"> 
+      <br><br><br><br>
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_admin ) do |f| %> 
 
-<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_admin ) do |f| %> 
+      <div class="field"> 
+        <%= f.email_field :email, autofocus: true, :required => true, placeholder: 'Enter admin email' ,:style => "width: 50%;" %>
+      </div><br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :required => true %>
-  </div>
+      <div class="field"> 
+        <%= f.password_field :password, autocomplete: "off", :required => true, placeholder: 'Enter admin password ( 8 or more characters)' ,:style => "width: 50%;" %>
+      </div><br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", :required => true %>
-  </div>
+      <div class="field"> 
+        <%= f.password_field :password_confirmation, autocomplete: "off", :required => true , placeholder: 'Enter password confirmation' ,:style => "width: 50%;"%>
+      </div><br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
-  </div>
+      <div class="actions">
+        <%= f.submit "Create new admin",:style => "width: 50%;" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+      <% end %> 
+      <br><br><br><br>
+    </div>
 
-<% end %> 
-</div>
-
+  </section>
+</aside>

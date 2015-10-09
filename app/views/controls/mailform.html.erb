@@ -1,120 +1,43 @@
-<style type="text/css">
-	/*######## Smart Green ########*/
-	.smart-green {
-		margin-left:auto;
-		margin-right:auto;
-
-		max-width: 800px;
-		background: #F8F8F8;
-		padding: 30px 30px 20px 30px;
-		font: 12px Arial, Helvetica, sans-serif;
-		color: #666;
-		border-radius: 5px;
-		-webkit-border-radius: 5px;
-		-moz-border-radius: 5px;
-	}
-	.smart-green h1 {
-		font: 34px "Trebuchet MS", Arial, Helvetica, sans-serif;
-		padding: 20px 0px 20px 40px;
-		display: block;
-		margin: -30px -30px 10px -30px;
-		color: #FFF;
-		background: #BA2830;
-		text-shadow: 1px 1px 1px #949494;
-		border-radius: 5px 5px 0px 0px;
-		-webkit-border-radius: 5px 5px 0px 0px;
-		-moz-border-radius: 5px 5px 0px 0px;
-		border-bottom:1px solid #89AF4C;
-
-	}
-	.smart-green h1>span {
-		display: block;
-		font-size: 21px;
-		color: #FFF;
-	}
-
-	.smart-green label {
-		display: block;
-		margin: 0px 0px 5px;
-	}
-	.smart-green label>span {
-		float: left;
-		font-size: 21px;
-		margin-top: 10px;
-		color: #5E5E5E;
-	}
-	.smart-green input[type="text"], .smart-green input[type="email"], .smart-green textarea, .smart-green select {
-		color: #555;
-		height: 40px;
-		line-height:20px;
-		width: 100%;
-		padding: 0px 0px 0px 10px;
-		margin-top: 2px;
-		border: 1px solid #E5E5E5;
-		background: #FBFBFB;
-		outline: 0;
-		-webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
-		box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
-		font: normal 14px/14px Arial, Helvetica, sans-serif;
-	}
-	.smart-green textarea{
-		height:200px;
-		padding-top: 10px;
-	}
-	.smart-green select {
-		background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
-		background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
-		appearance:none;
-		-webkit-appearance:none;
-		-moz-appearance: none;
-		text-indent: 0.01px;
-		text-overflow: '';
-		width:100%;
-		height:30px;
-	}
-	.smart-green .button {
-		background-color: #9DC45F;
-		border-radius: 5px;
-		-webkit-border-radius: 5px;
-		-moz-border-border-radius: 5px;
-		border: none;
-		padding: 10px 25px 10px 25px;
-		color: #FFF;
-		width: 20%;
-		height: 30px;
-		font-size: 21px;
-		text-shadow: 1px 1px 1px #949494;
-	}
-	.smart-green .button:hover {
-		background-color:#80A24A;
-	}
-</style>
-
 <% content_for :title, "Send Email" %>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Mail Form
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#" onclick="window.location.href = '/controls'"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li>Dashboard</li>
+            <li class="active">Mail Form</li>
+        </ol>
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+<br><br><br>
+  <!-- Main content -->
+  <section class="content">
 <div align="center">
-	<br><br><br>
-	<%=form_for :controls, :html => {:class => "smart-green"}, url: url_for( :controller => :admincommands, :action => :sendemail ) do |f| %> 
-	<h1>Contact Form
-		<span>Please fill all the texts in the fields.</span>
-	</h1>
-	<label>
-	<span>Receiver Email :</span>
-		<%= f.text_field :user_email, :required => '',id: 'name', :maxlength=>"94", placeholder: 'write the email here' %> 
-	</label>
-	<label>
-	<span>Subject :</span>
-	<br>
-	<%= f.text_field :subject, :required => '', :maxlength=>"94", placeholder: 'write the subject here'  %>
-	<br>
-	</label>
-	<label>
-	<span>Message :</span>
-	<%= f.text_area(:textmsg, :required => '', size: '92x10', placeholder: 'write the message here and click send') %>
-	</label>
-	<br>
-	<%= f.submit "Send Email", :style => 'width:52%; height:35px;font-size: 21px;' %>
+	<div class="box-body">
+		<%=form_for :controls, url: url_for( :controller => :admincommands, :action => :sendemail ) do |f| %> 
 
-
-	<% end %>
+		<div class="form-group">
+			<%= f.text_field :user_email, :required => '', placeholder: 'Email to:' ,:style => "width: 80%;"%> 
+		</div>
+		<div class="form-group">
+			<%= f.text_field :subject, :required => '', placeholder: 'Subject',:style => "width: 80%;"  %>
+		</div>
+		<div>   
+			<%= f.text_area(:textmsg, :required => '', placeholder: 'write the message here and click send', :class => 'textarea', :style => "width: 80%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;") %>
+		</div>
+		<br>
+		<div class="box-footer clearfix">
+			<%= f.submit "Send Email", :style => 'width: 80%' %>
+		</div>
+		<% end %> 
+	</div> 
 </div>
+
+</section>
+</aside>
