@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :nationalid, :message=> "This national id is already associated with another user!"
   
   ##### Methods #####
-  def can_donate?
+  def able_to_donate?
     if (DateTime.now - lastdonation).to_i > BETWEEN_DONATIONS
       true
     else

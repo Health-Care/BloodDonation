@@ -1,3 +1,6 @@
+#Author: Ibrahim Ali Mohamed
+#Emial: ibrahim.ali.0403@gmail.com
+
 class AdmincommandsController < ApplicationController
 
    def create_new_admin
@@ -256,7 +259,7 @@ class AdmincommandsController < ApplicationController
   end
   def expire
     request_id = params[:controls][:request_id]
-    Request.find(request_id).update_attribute(:expiredate,'2010-10-10')
+    Request.find(request_id).update_attribute(:expiredate,Date.yesterday)
     
     redirect_to session.delete(:return_to) , :notice => 'Successfully you mark this case as expired'
   end

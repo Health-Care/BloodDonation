@@ -1,3 +1,6 @@
+#Author: Ibrahim Ali Mohamed
+#Emial: ibrahim.ali.0403@gmail.com
+
 class RequestsController < ApplicationController
   before_action :authenticate_logging_in, only: [:donors, :show, :donate, :relatedrequests, :cancel_donate]
   before_action :set_request, only: [:donors, :show, :update, :donate, :cancel_donate] 
@@ -53,7 +56,9 @@ class RequestsController < ApplicationController
     @active_request.donor_id = current_user.id
     @active_request.request_id = @request.id
 
-    if ActiveRequest.check_donations_status(current_user.id,@request.id) && !current_user.pause && current_user.can_donate
+    if ActiveRequest.check_donations_status(current_user.id,@request.id) && 
+      !current_user.pause && current_user.able_to_donate? && current_user.can_donate
+      
       notify_request_owner(@request) 
 
       if @active_request.save 
@@ -62,10 +67,10 @@ class RequestsController < ApplicationController
     
     elsif current_user.pause
         redirect_to @request, notice: "Your account paused, unpause your account to donate" 
-    
     elsif !current_user.can_donate
         redirect_to @request, notice: "Your account paused, call us to solve the problem" 
-    
+    elsif !current_user.able_to_donate?
+        redirect_to @request, notice: "You can not donate, you should donate after 3 monthes from the last donation " 
     else
         redirect_to @request, notice: "You are donated before"
     end
@@ -83,12 +88,13 @@ class RequestsController < ApplicationController
 
   end
 
+  # show the requests that can donor donate to it 
   def relatedrequests 
     @requests = User.get_myblood_requests(current_user.blood_type) 
     current_user.update_attribute(:notifications , 0)    
   end
 
-
+  
   def notify_users(request)
     users = []
 

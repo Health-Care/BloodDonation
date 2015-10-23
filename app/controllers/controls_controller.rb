@@ -1,3 +1,6 @@
+#Author: Ibrahim Ali Mohamed
+#Emial: ibrahim.ali.0403@gmail.com
+
 class ControlsController < ApplicationController
   before_action :authenticate_logging_in
   before_action :authenticate_superadmin_logging_in, only: [:newadmin, :admins, :edit_admin]

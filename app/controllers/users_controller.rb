@@ -1,7 +1,11 @@
+#Author: Ibrahim Ali Mohamed
+#Emial: ibrahim.ali.0403@gmail.com
+
 class UsersController < ApplicationController
   before_action :authenticate_logging_in, only: [:active_donations, :pause, :unpause]
   before_action :set_user, only: [:show, :active_donations]
   
+  # show the profile of user if not hidden
   def show   
     usersids = User.getUsersHideThierAccounts
     @hide_account = false
@@ -10,6 +14,7 @@ class UsersController < ApplicationController
     end
   end 
  
+  # show donor active donation
   def active_donations
     @requests = User.my_active_donations(current_user) 
   end
