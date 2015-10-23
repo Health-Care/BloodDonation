@@ -35,5 +35,5 @@ Request.create(id: 19,contact_name: "contact 19", contact_phone: "01227462847", 
 Request.create(id: 20,contact_name: "contact 20", contact_phone: "01227462847", contact_email: "ibrahim19@faselty.me", contact_nationalid: "12312312312221", patient_name: "patient 20", blood_type: "O+", expiredate: "2015-11-5", bloodbag: 3, hospital_name: "wardan imbaba", hospital_location: "Wardan Al Roum, Cairo Governorate, Egypt", created_at: "2015-09-04", updated_at: nil, hospital_location_lat: 31.236065800000006, hospital_location_lng: 30.0166197, num_of_donors: 0 )
 
 ActiveRequest.create(id: 1,donor_id: "1", request_id: "1")
-ActiveRequest.create(id: 1,donor_id: "2", request_id: "1")
-ActiveRequest.create(id: 2,donor_id: "1", request_id: "3")
+ActiveRequest.create(id: 2,donor_id: "2", request_id: "1")
+ActiveRequest.create(id: 3,donor_id: "1", request_id: "3")
