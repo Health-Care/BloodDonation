@@ -41,11 +41,28 @@ class Admin < ActiveRecord::Base
   end
 
   def delete
-  	Admin.find(self.id).destroy
+    if Admin.exists?(donor_id)
+  	   Admin.find(self.id).destroy
+    end
   end
 
   def self.deleteDonor(donor_id)
-    User.find(donor_id).destroy
+    if User.exists?(donor_id)
+       Admin.updateCasesOfDeletedDonor(donor_id)
+       User.find(donor_id).destroy
+    end   
+  end
+
+  def self.updateCasesOfDeletedDonor(donor_id)
+    @active_requests = ActiveRequest.select("*").where('donor_id = ? ' , donor_id.to_s)
+    @active_requests.each do |active_request| 
+       if Request.exists?(active_request.request_id)
+          @request = Request.find( active_request.request_id )
+          @request.update_attribute(:num_of_donors , @request.num_of_donors - 1)
+       end
+    end 
+
+    ActiveRequest.where('donor_id = ? ' , donor_id.to_s).destroy_all
   end
 
   def self.updateDonorsOfDeletedCase(request_id)
@@ -61,8 +78,10 @@ class Admin < ActiveRecord::Base
   end
 
   def self.deleteCase(request_id)
-    Admin.updateDonorsOfDeletedCase(request_id)
-    Request.find(request_id).destroy
+    if Request.exists?(request_id)
+      Admin.updateDonorsOfDeletedCase(request_id)
+      Request.find(request_id).destroy
+    end
   end
 
   def self.deleteCasesFromTO(from,to)

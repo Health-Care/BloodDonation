@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   
   ##### Methods #####
   def able_to_donate?
-    if (DateTime.now - lastdonation).to_i > BETWEEN_DONATIONS
+    
+    if lastdonation == nil
+      true
+    elsif (DateTime.now - lastdonation).to_i > BETWEEN_DONATIONS
       true
     else
       false

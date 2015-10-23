@@ -87,6 +87,7 @@ class AdmincommandsController < ApplicationController
     @user.gender = params[:controls][:gender]
     @user.birth_date = params[:controls][:birth_date]
     @user.created_at = params[:controls][:created_at]
+    @user.lastdonation = params[:controls][:lastdonation]
     @user.password = params[:controls][:password]
     @user.num_of_active_requests = params[:controls][:num_of_active_requests]
     password_confirmation = params[:controls][:password_confirmation]
@@ -134,10 +135,29 @@ class AdmincommandsController < ApplicationController
       redirect_to newcase_controls_path , notice: "Please enter blood type field"
     else
       @request.save
+      notify_users(@request)
       redirect_to controls_path, notice: "successfully create a new case"
     end
   end
   
+  def notify_users(request)
+    users = []
+
+    User.all.each do |user| 
+      if user.blood_type.to_s == request.blood_type.to_s
+        if !user.stop_getting_email
+          users << user
+        end
+        user.update_attribute(:notifications, user.notifications + 1);
+      end
+    end  
+
+    Thread.new do
+       UserMailer.new_request_email(users, request, request.blood_type).deliver_later
+    end
+
+  end
+
   # search about donor
   def searchdonor
     search_tag = params[:controls][:search_tag]
@@ -257,6 +277,7 @@ class AdmincommandsController < ApplicationController
     Admin.deleteDonor(user_id)
     redirect_to session.delete(:return_to), :notice => "successfully Deleted this donor!"
   end
+
   def expire
     request_id = params[:controls][:request_id]
     Request.find(request_id).update_attribute(:expiredate,Date.yesterday)

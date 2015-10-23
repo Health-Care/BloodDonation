@@ -44,7 +44,9 @@ class RequestsController < ApplicationController
   end
 
   def createdrequest
-    @request = Request.find(session[:request_id])
+    if Request.exists?( session[:request_id] )
+        @request = Request.find(session[:request_id])
+    end
   end
 
   def donors  
@@ -138,7 +140,9 @@ class RequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_request
       #@request = Request.find(params[:id])
-      @request = Request.find( Request.decrypt(params[:id]) )
+      if Request.exists?(Request.decrypt(params[:id]))
+          @request = Request.find( Request.decrypt(params[:id]) )
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

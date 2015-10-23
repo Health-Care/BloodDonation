@@ -7,7 +7,11 @@
 <script type="text/javascript">
  function initialize() {
   var input = document.getElementById('searchTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  var options = {
+    componentRestrictions: {country: "eg"}
+  };
+
+  var autocomplete = new google.maps.places.Autocomplete(input,options);
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     var place = autocomplete.getPlace();
     document.getElementById('addName').value = document.getElementById('searchTextField').value;
@@ -67,40 +71,49 @@ google.maps.event.addDomListener(window, 'load', initialize);
           ["B+","B+"],["B-","B-"],
           ["O+","O+"],["O-","O-"],
           ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %> 
-      </div><br />
+        </div><br />
 
-      <div class="field"> 
+        <div class="field"> 
           <%= f.text_field :phone, autofocus: true, :required=>"Enter donor mobile number" , :placeholder=>"Enter donor phone number", :style => 'width:30%;'%>
-      </div><br />
+        </div><br />
 
-      <div class="field"> 
+        <div class="field"> 
           <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter donor Birth Date" , :id=>"datepicker", :style => 'width:30%;' %>
           <script type="text/javascript">
             $(function() {
               $( "#datepicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
             });
           </script>
-      </div><br />
+        </div><br />
 
-      <div class="field"> 
+        <div class="field"> 
           <%= f.text_field :nationalid, autofocus: true, :required=>"Enter donor national id", :placeholder=>"Enter donor national id", :style => 'width:30%;' %>
-      </div><br />
+        </div><br />
 
 
-      <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
-      <%= f.number_field :num_of_active_requests, :hidden => true, :value => 0 %>
+        <div class="field"> 
+          <%= f.text_field :lastdonation, :placeholder=>"Enter donor last date of donation" , :id=>"picker", :style => 'width:30%;' %>
+          <script type="text/javascript">
+            $(function() {
+              $( "#picker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+            });
+          </script>
+        </div><br />
+
+        <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
+        <%= f.number_field :num_of_active_requests, :hidden => true, :value => 0 %>
         
-      <div class="field">
+        <div class="field">
           <%= f.password_field :password, :placeholder=>"Enter password ( 8 or more letters )", autocomplete: "off", :style => 'width:30%;' %>
-      </div><br>
+        </div><br>
 
-      <div class="field"> 
+        <div class="field"> 
           <%= f.password_field :password_confirmation, :placeholder=>"Enter password confirmation", autocomplete: "off", :style => 'width:30%;' %>
-      </div><br>
+        </div><br>
         
-      <div class="actions">
+        <div class="actions">
           <%= f.submit "Create a new Donor", :style => 'width:30%;' %>
-      </div>
+        </div>
         <% end %>
 
       </div>
