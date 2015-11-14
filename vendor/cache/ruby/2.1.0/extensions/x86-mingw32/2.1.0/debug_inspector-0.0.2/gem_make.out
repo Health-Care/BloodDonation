@@ -1,0 +1,13 @@
+C:/RailsInstaller/Ruby2.1.0/bin/ruby.exe extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating debug_inspector-i386-mingw32.def
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20151114-3052-ftlcmm
+installing default debug_inspector libraries

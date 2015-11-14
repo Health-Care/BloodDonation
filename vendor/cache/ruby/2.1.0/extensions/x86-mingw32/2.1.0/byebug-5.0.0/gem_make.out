@@ -1,0 +1,17 @@
+C:/RailsInstaller/Ruby2.1.0/bin/ruby.exe extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating byebug-i386-mingw32.def
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20151114-3052-1tiz74/byebug
+installing default byebug libraries

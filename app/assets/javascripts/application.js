@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require gmaps/google
 //= require_tree .
-//= stub admin
 
 function ShowProgressAnimation() {
   $("#loading-div-background").show();
