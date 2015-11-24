@@ -1,0 +1,53 @@
+//---------------------------
+//
+// Inputs
+//
+//---------------------------
+
+input[hidden="hidden"] { display: none !important; }
+
+$form-namespace: 'c-form';
+$form-set-namespace: 'c-form-set';
+$label-namespace: 'c-label';
+$input-namespace: 'c-input';
+
+$label-color: #7b8994;
+$input-color: #47525d;
+
+$input-border: $border-color;
+$input-border-focused: #72b6ec;
+
+.#{$form-set-namespace} {
+  margin-bottom: $line-height__base;
+}
+
+.#{$label-namespace} {
+  display: block;
+  margin-bottom: $line-height__base / 4;
+  color: $label-color;
+}
+
+.#{$input-namespace} {
+  display: block;
+  width: 100%;
+  padding: ($line-height__base / 4) ($line-height__base / 2);
+  line-height: $line-height__base;
+
+  color: $input-color;
+  border: 1px solid $input-border;
+
+  background: transparent;
+  font-family: $font-family__base;
+  font-size: $font-size__base;
+
+  outline: none;
+  font-weight: inherit;
+
+  @media #{$medium-down} {
+    padding: ($line-height__small / 4) ($line-height__small / 2);
+  }
+
+  &:focus {
+    border: 1px solid $input-border-focused;
+  }
+}

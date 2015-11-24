@@ -1,0 +1,19 @@
+%ul.nav
+  - if current_user
+    %li
+      = current_user.name.downcase.split[0]
+      %ul
+        %li= link_to 'عرض الحساب', show_users_path(current_user)
+        %li= link_to 'اعدادات الحساب', '#', :onclick => "window.location.href = '/users/edit'"
+        %li
+          / Developer review: if user is available
+          - unless current_user.pause
+            / Developer review: pause user's account
+            = link_to 'تجميد الحساب', pause_user_path(current_user)
+            / Developer review: if user Not Available
+          - else
+            / Developer review: resume user's account
+            = link_to 'تفعيل الحساب', unpause_user_path(current_user)
+        %li= link_to 'تسجيل الخروج',destroy_user_session_path
+
+  %li= link_to "عن فصيلتي", about_contents_path

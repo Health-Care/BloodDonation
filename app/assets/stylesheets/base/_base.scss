@@ -1,0 +1,21 @@
+//---------------------------
+//
+// Base
+//
+//---------------------------
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family__base;
+  font-size: $font-size__base;
+  line-height: $line-height__base;
+  text-align: right;
+  direction: rtl;
+
+  color: $color-base;
+}

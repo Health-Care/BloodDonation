@@ -1,12 +1,12 @@
 <% content_for :title, "Faselty" %>
- 
+
 <div  class="row content main_content" dir="rtl">
-	<ul> 
+	<ul>
 		<% if current_user %>
 		<li><%= " Welcome #{current_user.name}" %></li>
-		<li><%= current_user.email %></li> 
-		<li> <a><%= link_to 'عرض الحالات', requests_path %></a></li>		
-		<% else %>  
+		<li><%= current_user.email %></li>
+		<li> <a><%= link_to 'عرض الحالات', requests_path %></a></li>
+		<% else %>
 		<li>
 			<%= link_to 'تسجيل متبرع جديد', '#', :onclick => "window.location.href = '/users/sign_up'" %>
 		</li>
@@ -14,7 +14,7 @@
 		<li>
 			<a><%= link_to 'تسجيل الدخول كمتبرع', new_user_session_path %></a>
 		</li>
- 		
+
  		<li>
 			<a><%= link_to 'عرض الحالات', requests_path %></a>
 		</li>
@@ -25,5 +25,5 @@
 
 		<% end %>
 	</ul>
- 
+
 </div>

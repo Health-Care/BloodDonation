@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require gmaps/google
 //= require_tree .
 
@@ -20,23 +19,23 @@ function ShowProgressAnimation() {
   $("#loading-div-background").show();
 }
 
-function show_notification_system(msg){  
+function show_notification_system(msg){
 
-  $(document).ready(function() {  
-    $.meow({ 
+  $(document).ready(function() {
+    $.meow({
       title: "faselty says:",
-      message: msg, 
+      message: msg,
       icon: 'http://findicons.com/files/icons/1075/scrap/300/administrator_2.png'
     });
   });
 }
 
- 
-function show_notification_blood(msg){  
-  $(document).ready(function() {  
+
+function show_notification_blood(msg){
+  $(document).ready(function() {
     $.meow({
       title: "حالات طارئه",
-      message: "فى حالات جديده بنفس فصيله دمك موجوده", 
+      message: "فى حالات جديده بنفس فصيله دمك موجوده",
       icon: 'http://static.wixstatic.com/media/9ba976_9ce0a72cba74472cb76112fd1376bf42.jpg'
     });
   });

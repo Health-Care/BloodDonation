@@ -1,0 +1,19 @@
+//---------------------------
+//
+// Typography
+//
+//---------------------------
+
+$font-family__base: 'Noto Kufi Arabic';
+
+$font-size__base: 16px;
+$font-size__medium: 14px;
+$font-size__small: 12px;
+
+$font-weight__light: 300;
+$font-weight__regular: 400;
+$font-weight__bold: 700;
+
+$line-height__base: round($font-size__base * 1.7);
+$line-height__medium: round($font-size__medium * 1.55);
+$line-height__small: round($font-size__small * 1.55);

@@ -1,0 +1,25 @@
+- content_for :title, t('login_title')
+
+.row
+  .column.column--center.large-4
+    %h2
+      = t('login_title')
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+      .c-form-set
+        = f.label :email, class: 'c-label'
+        = f.email_field :email, autofocus: true
+
+      .c-form-set
+        = f.label :password, class: 'c-label'
+        = f.password_field :password, autocomplete: 'off'
+
+      - if devise_mapping.rememberable?
+        .c-form-set
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .c-form-set
+        = f.submit t('login_button_label')
+
+    = render 'users/shared/links'
