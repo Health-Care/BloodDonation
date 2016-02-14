@@ -1,0 +1,84 @@
+- content_for :title, t('request_show_page_title')
+
+.row
+  .column.column--center.large-8
+    %h2.heading
+      = t('related_requests_title')
+
+    %table
+      %tbody
+        %tr
+          %td
+            = t('contact name')
+          %td
+            = @request.contact_name
+        %tr
+          %td
+            = t('contact phone')
+          %td
+            = @request.contact_phone
+        %tr
+          %td
+            = t('contact email')
+          %td
+            = @request.contact_email
+        %tr
+          %td
+            = t('contact national ID')
+          %td
+            = @request.contact_nationalid
+        %tr
+          %td
+            = t('patient name')
+          %td
+            = @request.patient_name
+        %tr
+          %td
+            = t('blood type')
+          %td
+            = @request.blood_type
+        %tr
+          %td
+            = t('expire date')
+          %td
+            = @request.expiredate
+        %tr
+          %td
+            = t('blood bag')
+          %td
+            = @request.bloodbag
+        %tr
+          %td
+            = t('hospital name')
+          %td
+            = @request.hospital_name
+        %tr
+          %td
+            = t('hospital address')
+          %td
+            = @request.hospital_location
+
+        %tr
+          %td
+            = t('number_of_donors')
+          %td
+            = @request.num_of_donors
+            - if @request.num_of_donors != 0
+              %p
+                %strong
+                  = link_to = t('showـdonors'), donors_requests_path(@request)
+
+    - if !@request.expiredate.past?
+      .social-share
+        / Developer Review: Replace  request_url(r)  with link to request link
+        / Facebook share
+        %a{:href => "https://www.facebook.com/sharer/sharer.php?u=request_url(r) "} share fb
+        %br
+          / Twitter share
+          %a{:href => "https://twitter.com/intent/tweet?url=request_url(r)"} share tw
+          %br
+            / G+ share
+            %a{:href => "https://plus.google.com/share?url=request_url(r)"} shere g+
+      = link_to 'تبرع', donate_requests_path(@request),:onclick => "ShowProgressAnimation();"
+    %br
+      = link_to 'الرجوع الى صفحه الحالات', requests_path

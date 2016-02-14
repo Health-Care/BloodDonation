@@ -1,0 +1,18 @@
+- content_for :title, t('resend_confirmation')
+
+.row
+  .column.column--center.medium-6.large-6
+    %h2.heading
+      = t('forgot_your_password')
+
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-wrapper' }) do |f|
+      = devise_error_messages!
+
+      .form-set
+        = f.label :email, class: 'label'
+        = f.email_field :email, autofocus: true, class: 'input'
+
+      .form-set
+        = f.submit 'Send', class: 'button'
+
+    = render 'users/shared/links'

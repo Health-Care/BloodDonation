@@ -1,0 +1,60 @@
+- content_for :title, t('created_requestـpage_title')
+
+.row
+  .column.column--center.large-8
+
+    %h1 Thanks ..
+    %h1 You Successfully create the request
+    %h2 we well send email to you when donors want to donate to this case :)
+    %table
+      %tbody
+        %tr
+          %td
+            = t('contact name')
+          %td
+            = @request.contact_name
+        %tr
+          %td
+            = t('contact phone')
+          %td
+            = @request.contact_phone
+        %tr
+          %td
+            = t('contact email')
+          %td
+            = @request.contact_email
+        %tr
+          %td
+            = t('contact national ID')
+          %td
+            = @request.contact_nationalid
+        %tr
+          %td
+            = t('patient name')
+          %td
+            = @request.patient_name
+        %tr
+          %td
+            = t('blood type')
+          %td
+            = @request.blood_type
+        %tr
+          %td
+            = t('expire date')
+          %td
+            = @request.expiredate
+        %tr
+          %td
+            = t('blood bag')
+          %td
+            = @request.bloodbag
+        %tr
+          %td
+            = t('hospital name')
+          %td
+            = @request.hospital_name
+        %tr
+          %td
+            = t('hospital address')
+          %td
+            = @request.hospital_location

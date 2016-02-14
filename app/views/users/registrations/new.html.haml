@@ -1,73 +1,74 @@
-- content_for :title, t('new_volunteerـsignup_page_title')
+- content_for :title, t('volunteerـsignup')
 
 :javascript
   prepare_to_initialize()
 
 .row
-  .column.column--center.large-8
-    %h2
-      = t('new_volunteerـsignup_page_title')
+  .column.column--center.medium-10.large-8
+    %h2.heading
+      = t('volunteerـsignup')
 
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = form_for( resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-wrapper' } ) do |f|
+
       = devise_error_messages!
 
-      .c-form-set
-        = f.label :name, class: 'c-label'
-        = f.text_field :name, autofocus: true, required: 'Enter your name', placeholder: 'Enter your name', class: 'c-input'
+      .form-set
+        = f.label :name, class: 'label'
+        = f.text_field :name, autofocus: true, required: 'Enter your name', class: 'input'
 
-      .c-form-set
-        = f.label :email, class: 'c-label'
-        = f.email_field :email, autofocus: true, required: 'Enter your email', placeholder: 'Enter your email', class: 'c-input'
+      .form-set
+        = f.label :email, class: 'label'
+        = f.email_field :email, autofocus: true, required: 'Enter your email', class: 'input'
 
-      .c-form-set
-        = f.label :address, class: 'c-label'
-        %input#searchTextField{autocomplete: 'on', placeholder: 'Enter a location', class: 'c-input search', runat: 'server', size: '50', type: 'text'}
-        = f.text_field :location_name, autofocus: true, id: 'addName', hidden: true, class: 'location_name'
-        = f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true, class: 'location_lat'
-        = f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true, class: 'location_lng'
+      .form-set
+        = f.label :address, class: 'label'
+        %input#searchTextField{autocomplete: 'on', placeholder: 'Enter a location', class: 'input search', runat: 'server', size: '50', type: 'text'}
+        = f.text_field :location_name, autofocus: true, id: 'addName', class: 'location_name', hidden: true
+        = f.text_field :location_lat, autofocus: true, id: 'addLat', class: 'location_lat', hidden: true
+        = f.text_field :location_lng, autofocus: true, id: 'addLng', class: 'location_lng', hidden: true
 
-      .c-form-set
-        = f.label :gender, class: 'c-label'
-        = f.select :gender, options_for_select([[t('male'), 'male'], [t('female'), 'female']]), {}, {required: 'true', class: 'c-input'}
+      .form-set
+        = f.label :gender, class: 'label'
+        = f.select :gender, options_for_select([[t('male'), 'male'], [t('female'), 'female']]), { }, {required: 'true', class: 'input'}
 
-      .c-form-set
-        = f.label :'blood type', class: 'c-label'
+      .form-set
+        = f.label :'blood type', class: 'label'
         = f.select(:blood_type, [['A+','A+'],['A-','A-'],
           ['B+','B+'],['B-','B-'],
           ['O+','O+'],['O-','O-'],
-          ['AB+','AB+'],['AB-','AB-']], include_blank: t('choose_blood_type'))
+          ['AB+','AB+'],['AB-','AB-']], { }, class: 'input', include_blank: t('choose_blood_type'))
 
-      .c-form-set
-        = f.label :'phone number', class: 'c-label'
-        = f.text_field :phone, autofocus: true, required: 'Enter your mobile number', placeholder:'Enter your phone number', class: 'c-input'
-      .c-form-set
-        = f.label :'birth date', class: 'c-label'
-        = f.text_field :birth_date, required: '', placeholder: 'Enter your Birth Date', id: 'datepicker', class: 'c-input dtpicker'
+      .form-set
+        = f.label :'phone number', class: 'label'
+        = f.text_field :phone, autofocus: true, required: 'Enter your mobile number', placeholder:'Enter your phone number', class: 'input'
 
-      .c-form-set
-        = f.label :'national ID', class: 'c-label'
-        = f.text_field :nationalid, autofocus: true, required: 'Enter your national id', placeholder: 'Enter your national id', class: 'c-input'
+      .form-set
+        = f.label :'birth date', class: 'label'
+        = f.text_field :birth_date, required: '', placeholder: 'Enter your Birth Date', id: 'datepicker', class: 'input dtpicker'
 
-      .c-form-set
-        = f.label :'last donation date', class: 'c-label'
-        = f.text_field :lastdonation, placeholder: 'Enter your last date of donation', id: 'picker', class: 'c-input dtpicker'
+      .form-set
+        = f.label :'national ID', class: 'label'
+        = f.text_field :nationalid, autofocus: true, required: 'Enter your national id', class: 'input'
+
+      .form-set
+        = f.label :'last donation date', class: 'label'
+        = f.text_field :lastdonation, placeholder: 'Enter your last date of donation', id: 'picker', class: 'input dtpicker'
 
       = f.number_field :num_of_active_requests, hidden: true, value: 0
       = f.date_field :created_at, value: Time.now.strftime("%Y-%m-%d"), hidden: true
 
-      .c-form-set
-        = f.label :password, class: 'c-label'
+      .form-set
+        = f.label :password, class: 'label'
         - if @minimum_password_length
           %em
             (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: 'off', class: 'c-input'
+        = f.password_field :password, autocomplete: 'off', class: 'input'
 
-      .c-form-set
-        = f.label :password_confirmation, class: 'c-label'
-        = f.password_field :password_confirmation, autocomplete: 'off', class: 'c-input'
+      .form-set
+        = f.label :password_confirmation, class: 'label'
+        = f.password_field :password_confirmation, autocomplete: 'off', class: 'input'
 
-      .c-form-set
-        = f.submit t('signup')
+      .form-set
+        = f.submit t('signup'), class: 'button info expand large'
 
       = render 'users/shared/links'

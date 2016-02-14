@@ -1,0 +1,56 @@
+- if current_user && @user.id == current_user.id
+  - content_for :title, t('login_donor_page_title')
+- else
+  - content_for :title, t('donor_page_title')
+
+.row
+  .column.column--center.medium-10.large-8
+
+    - if !@user.hide_account || (@user.hide_account && current_user && @user.id == current_user.id)
+
+      %h2
+        = @user.name
+
+      %ul
+        %li
+          = @user.email
+
+        %li
+          = @user.phone
+
+        %li
+          = @user.location_name
+
+        %li
+          = @user.birth_date
+
+        - if current_user && @user.id == current_user.id
+          %li
+            = @user.nationalid
+        %li
+          = @user.gender
+
+        %li
+          = @user.blood_type
+
+        %li
+          = t('saved_people_number')
+          \-
+          = @user.savedpeople
+
+        %li
+          = t('last_donation_time')
+          \-
+          = @user.lastdonation
+
+        %li
+          = t('number_of_active_requests')
+          \-
+          = @user.num_of_active_requests
+
+      - if current_user && @user.id == current_user.id
+        = link_to t('pending_requests'), active_donations_users_path(current_user)
+
+    - else
+      %h2
+        = t('donor_pageـno_access_alert')

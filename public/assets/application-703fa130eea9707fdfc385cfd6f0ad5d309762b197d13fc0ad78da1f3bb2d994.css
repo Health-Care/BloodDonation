@@ -1,0 +1,1358 @@
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_base.scss */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* line 13, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_base.scss */
+body {
+  font-family: "Noto Kufi Arabic";
+  font-size: 16px;
+  line-height: 27px;
+  text-align: right;
+  direction: rtl;
+  color: #222222;
+}
+
+/* line 23, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_base.scss */
+.wrapper {
+  padding: 0 0 22px 0;
+}
+@media only screen and (min-width: 64em) {
+  /* line 23, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_base.scss */
+  .wrapper {
+    padding: 0 0 27px 0;
+  }
+}
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* line 77, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+/* line 98, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 110, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 118, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 127, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 136, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 145, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 154, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 162, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 170, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+sup {
+  top: -0.5em;
+}
+
+/* line 174, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 185, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 193, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 204, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 212, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+/* line 356, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  box-sizing: content-box;
+  /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 367, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 376, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 387, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 396, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 405, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 416, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 421, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/normalize.css */
+td,
+th {
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Noto Kufi Arabic';
+  src: "/assets/Noto_Kufi_Arabic_normal-ca5f20ef696cd4571a86dd3541af7819b02b71923902cc496628348a3a085359.ttf";
+}
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_typography.scss */
+a {
+  color: #BA1F27;
+  text-decoration: none;
+  transition: 0.4s;
+}
+/* line 14, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/base/_typography.scss */
+a:hover {
+  color: #222222;
+}
+
+/* line 16, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+.row {
+  margin: 0 auto;
+  padding-left: 11px;
+  padding-right: 11px;
+  max-width: 960px;
+}
+/* line 22, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+.row:before, .row:after {
+  display: table;
+  clear: both;
+  content: " ";
+}
+/* line 29, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+.row .row {
+  padding: 0;
+  margin-right: -11px;
+  margin-left: -11px;
+}
+@media only screen and (min-width: 64em) {
+  /* line 29, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .row .row {
+    margin-right: -13.5px;
+    margin-left: -13.5px;
+  }
+}
+@media only screen and (min-width: 64em) {
+  /* line 16, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .row {
+    padding-left: 13.5px;
+    padding-right: 13.5px;
+  }
+}
+
+/* line 47, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+.column {
+  position: relative;
+  float: right;
+  padding-right: 11px;
+  padding-left: 11px;
+  width: 100%;
+}
+@media only screen and (min-width: 64em) {
+  /* line 47, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .column {
+    padding-right: 13.5px;
+    padding-left: 13.5px;
+  }
+}
+
+/* line 60, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+.column--center {
+  float: none;
+  margin: 0 auto;
+}
+
+@media only screen {
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-1 {
+    width: 8.33333%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-2 {
+    width: 16.66667%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-3 {
+    width: 25%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-4 {
+    width: 33.33333%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-5 {
+    width: 41.66667%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-6 {
+    width: 50%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-7 {
+    width: 58.33333%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-8 {
+    width: 66.66667%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-9 {
+    width: 75%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-10 {
+    width: 83.33333%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-11 {
+    width: 91.66667%;
+  }
+
+  /* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .small-12 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 40.063em) {
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-1 {
+    width: 8.33333%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-2 {
+    width: 16.66667%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-3 {
+    width: 25%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-4 {
+    width: 33.33333%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-5 {
+    width: 41.66667%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-6 {
+    width: 50%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-7 {
+    width: 58.33333%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-8 {
+    width: 66.66667%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-9 {
+    width: 75%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-10 {
+    width: 83.33333%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-11 {
+    width: 91.66667%;
+  }
+
+  /* line 81, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .medium-12 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 64em) {
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-1 {
+    width: 8.33333%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-2 {
+    width: 16.66667%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-3 {
+    width: 25%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-4 {
+    width: 33.33333%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-5 {
+    width: 41.66667%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-6 {
+    width: 50%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-7 {
+    width: 58.33333%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-8 {
+    width: 66.66667%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-9 {
+    width: 75%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-10 {
+    width: 83.33333%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-11 {
+    width: 91.66667%;
+  }
+
+  /* line 93, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_grid.scss */
+  .large-12 {
+    width: 100%;
+  }
+}
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+input[hidden="hidden"] {
+  display: none !important;
+}
+
+/* line 20, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+.form-set {
+  margin-bottom: 27px;
+}
+
+/* line 24, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+.label {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: #7b8994;
+}
+
+/* line 30, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+.input {
+  display: block;
+  width: 100%;
+  padding: 7px 14px;
+  line-height: 27px;
+  color: #47525d;
+  border: 1px solid #ECF0F1;
+  background: transparent;
+  font-family: "Noto Kufi Arabic";
+  font-size: 16px;
+  outline: none;
+  font-weight: inherit;
+}
+@media only screen and (max-width: 40em) {
+  /* line 30, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+  .input {
+    padding: 5px 10px;
+  }
+}
+/* line 50, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_inputs.scss */
+.input:focus {
+  border: 1px solid #72b6ec;
+}
+
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+table,
+th,
+td {
+  border: 1px solid #ECF0F1;
+}
+
+/* line 11, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-width: 1px 0 0 1px;
+  font-size: 14px;
+  margin-bottom: 22px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* line 21, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+}
+
+/* line 28, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+th {
+  border-width: 0 1px 1px 0;
+  font-weight: 700;
+}
+
+/* line 33, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+td {
+  border-width: 0 1px 1px 0;
+}
+
+/* line 35, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_table.scss */
+th,
+td {
+  padding: 7px;
+}
+
+/* line 19, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button {
+  display: inline-block;
+  text-align: center;
+  padding: 7px 14px;
+  font-family: "Noto Kufi Arabic";
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  border: 0;
+  text-decoration: none;
+  color: #fff;
+  background-color: #F54337;
+  transition: 0.4s;
+}
+/* line 34, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button:active, .button:focus, .button:hover {
+  color: #fff;
+  background-color: #7E7E7E;
+}
+/* line 41, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button:visited {
+  color: #fff;
+}
+/* line 43, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.info {
+  background-color: #a0d3e8;
+}
+/* line 46, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.info:active, .button.info:focus, .button.info:hover {
+  background-color: #61b6d9;
+}
+/* line 51, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.success {
+  background-color: #43AC6A;
+}
+/* line 54, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.success:active, .button.success:focus, .button.success:hover {
+  background-color: #368a55;
+}
+/* line 59, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.alert {
+  background-color: #ec5454;
+}
+/* line 62, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.alert:active, .button.alert:focus, .button.alert:hover {
+  background-color: #e61a1a;
+}
+/* line 67, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.twitter {
+  color: #fff;
+  background-color: #55acee;
+}
+/* line 71, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.twitter .icon {
+  margin-right: 5px;
+  vertical-align: middle;
+  fill: #fff;
+}
+/* line 77, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.twitter:active, .button.twitter:focus, .button.twitter:hover {
+  color: #fff;
+  background-color: #1E8BC3;
+}
+/* line 85, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.outline {
+  border: 1px solid #222222;
+  background-color: #fff;
+  color: #222222;
+}
+/* line 90, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.outline:active, .button.outline:focus, .button.outline:hover {
+  color: #fff;
+  background-color: #F54337;
+}
+/* line 98, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.large {
+  padding: 14px 27px;
+  line-height: 22px;
+  font-size: 14px;
+}
+/* line 104, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.small {
+  padding: 5px 10px;
+  line-height: 19px;
+}
+/* line 109, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_buttons.scss */
+.button.expand {
+  width: 100%;
+}
+
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+.site-header__navigation .nav-item {
+  position: relative;
+  display: inline-block;
+  margin-right: 19px;
+  margin-left: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+@media only screen and (max-width: 40em) {
+  /* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .nav-item {
+    display: block;
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 40.063em) {
+  /* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation {
+    text-align: left;
+  }
+  /* line 27, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .nav-item-has-children > a {
+    padding-right: 14px;
+  }
+  /* line 30, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .nav-item-has-children > a:after {
+    position: absolute;
+    right: 0;
+    left: auto;
+    display: inline-block;
+    font-size: 12px;
+    font-family: 'Genericons';
+    color: #fff;
+  }
+  /* line 42, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .nav-item-has-children:hover > .sub-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  /* line 49, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 41px;
+    z-index: 1000;
+    width: 190px;
+    text-align: right;
+    background-color: #fff;
+    transition: opacity 0.4s;
+    box-shadow: 0px 3px 5px rgba(190, 190, 190, 0.46);
+  }
+  /* line 61, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .sub-menu .nav-item {
+    display: block;
+    margin-right: 0;
+    line-height: 22px;
+    border-bottom: 1px solid #ECF0F1;
+  }
+  /* line 67, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .sub-menu .nav-item:last-child {
+    border-bottom: 0;
+  }
+  /* line 69, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation .sub-menu .nav-item a {
+    display: block;
+    padding: 14px;
+    color: #222222;
+    line-height: 14px;
+  }
+}
+/* line 79, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+.site-header__navigation a {
+  padding: 19px 0;
+  transition: 0.4s;
+}
+@media only screen and (max-width: 40em) {
+  /* line 79, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/components/_navigation.scss */
+  .site-header__navigation a {
+    display: block;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ECF0F1;
+  }
+}
+
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+.site-header {
+  padding: 11px 0;
+  margin-bottom: 11px;
+  background-color: #F54337;
+}
+@media only screen and (min-width: 64em) {
+  /* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+  .site-header {
+    padding: 14px 0;
+    margin-bottom: 27px;
+  }
+}
+/* line 20, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+.site-header a {
+  color: #fff;
+}
+/* line 22, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+.site-header__logo {
+  margin-bottom: 0;
+  line-height: 27px;
+}
+/* line 26, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+.site-header__logo a {
+  transition: 0.4s;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: #fff;
+}
+/* line 33, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+.site-header__logo img {
+  max-height: 22px;
+  vertical-align: middle;
+}
+@media only screen and (min-width: 40.063em) {
+  /* line 33, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+  .site-header__logo img {
+    max-height: 27px;
+  }
+}
+@media only screen and (max-width: 40em) {
+  /* line 22, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/sections/_header.scss */
+  .site-header__logo {
+    line-height: 22px;
+  }
+}
+
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_colors.scss */
+.grey-bg {
+  background-color: #FAFAFA;
+}
+
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_lists.scss */
+.no-bullets, .list-bare {
+  list-style: none;
+}
+
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_lists.scss */
+.bullets-inside {
+  list-style: inside;
+}
+
+/* line 11, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_lists.scss */
+.list-bare {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 7, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.inline {
+  display: inline;
+}
+
+/* line 8, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.block {
+  display: block;
+}
+
+/* line 9, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.inline-block {
+  display: inline-block;
+}
+
+/* line 10, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.hide {
+  display: none;
+}
+
+/* line 12, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.left {
+  float: left;
+}
+
+/* line 13, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/helpers/_layout.scss */
+.right {
+  float: right;
+}
+
+/* line 1, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.submit-button {
+  width: 80%;
+  text-align: center;
+}
+
+/* line 5, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator {
+  margin: 0px;
+  padding: 0px;
+  width: 70%;
+  box-shadow: 10px 10px 5px #888888;
+  border: 1px solid #000000;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+/* line 26, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 32, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:last-child td:last-child {
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* line 37, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator table tr:first-child td:first-child {
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+/* line 42, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator table tr:first-child td:last-child {
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+/* line 46, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:last-child td:first-child {
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+/* line 53, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:nth-child(odd) {
+  background-color: #aad4ff;
+}
+
+/* line 54, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* line 54, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator td {
+  vertical-align: middle;
+  border: 1px solid #000000;
+  border-width: 0px 1px 1px 0px;
+  text-align: left;
+  padding: 7px;
+  font-size: 15px;
+  font-family: Arial;
+  font-weight: normal;
+  color: #000000;
+}
+
+/* line 66, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:last-child td {
+  border-width: 0px 1px 0px 0px;
+}
+
+/* line 68, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr td:last-child {
+  border-width: 0px 0px 1px 0px;
+}
+
+/* line 70, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:last-child td:last-child {
+  border-width: 0px 0px 0px 0px;
+}
+
+/* line 73, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr td:first-child {
+  background: -o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f));
+  background: -moz-linear-gradient(center top, #005fbf 5%, #003f7f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");
+  background: -o-linear-gradient(top, #005fbf, 3f7f);
+  background-color: #005fbf;
+  border: 0px solid #000000;
+  text-align: center;
+  width: 25%;
+  border-width: 0px 0px 1px 1px;
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* line 88, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr td {
+  text-align: center;
+}
+
+/* line 91, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:first-child td:first-child {
+  border-width: 0px 0px 1px 0px;
+}
+
+/* line 94, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.CSSTableGenerator tr:first-child td:last-child {
+  border-width: 0px 0px 1px 1px;
+}
+
+/* line 98, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+#loading-div-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 109, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+#loading-div {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -100px;
+}
+
+/*===========================================================*/
+/* line 123, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meows {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+}
+
+/* line 129, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 135, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner {
+  width: 300px;
+  min-height: 48px;
+  padding: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background: #000;
+  border: 2px solid;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  -moz-opacity: 0.75;
+  -ms-opacity: 0.75;
+  -o-opacity: 0.75;
+  opacity: 0.75;
+  zoom: 1;
+  -webkit-box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+  -khtml-box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+  -moz-box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+  -ms-box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+  -o-box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+  box-shadow: 2px 2px 10px rgba(25, 25, 25, 0.25);
+}
+
+/* line 165, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner:after {
+  display: block;
+  height: 0;
+  clear: both;
+  line-height: 0;
+  content: "\0200";
+  visibility: hidden;
+}
+
+/* line 174, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow.hover .inner {
+  border: 2px solid #fff;
+}
+
+/* line 178, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* line 186, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner .icon {
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 6px;
+}
+
+/* line 193, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner .icon img {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+/* line 198, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow .inner .close {
+  display: none;
+}
+
+/* line 202, /Users/ahmadajmi/www/faselty/BloodDonation/app/assets/stylesheets/ibrahim-jquery.meow.css */
+.meow.hover .inner .close {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background: #BA2830;
+  border: 2px solid #ffffff;
+  -webkit-border-radius: 18px;
+  -khtml-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border-radius: 18px;
+  -webkit-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  -moz-opacity: 0.75;
+  -ms-opacity: 0.75;
+  -o-opacity: 0.75;
+  opacity: 0.75;
+  zoom: 1;
+}

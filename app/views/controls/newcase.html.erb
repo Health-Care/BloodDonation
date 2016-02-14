@@ -20,10 +20,10 @@
     document.getElementById('hospital_addLng').value = place.geometry.location.lng();
   });
 }
-google.maps.event.addDomListener(window, 'load', initialize); 
-</script> 
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
-<% content_for :title, "New Donor" %> 
+<% content_for :title, "New Donor" %>
 <aside class="right-side">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -42,30 +42,30 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <!-- Main content -->
   <section class="content">
     <div align="center">
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_case ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_case ) do |f| %>
 
       <div class="field">
         <%= f.text_field :contact_name, :placeholder=>"Enter contact name", :style => 'width:30%;', :required => '' %>
       </div><br>
-      <div class="field"> 
+      <div class="field">
         <%= f.text_field :contact_phone, :placeholder=>"Enter contact mobile number", :style => 'width:30%;', :required => '' %>
       </div><br>
       <div class="field">
         <%= f.text_field :contact_email, :placeholder=>"Enter contact email", :style => 'width:30%;', :required => '' %>
       </div><br>
-      <div class="field"> 
+      <div class="field">
         <%= f.text_field :contact_nationalid, :placeholder=>"Enter contact national id", :style => 'width:30%;', :required => '' %>
       </div><br>
       <div class="field">
         <%= f.text_field :patient_name, :placeholder=>"Enter the patient name", :style => 'width:30%;', :required => '' %>
       </div><br>
-      <div class="field"> 
+      <div class="field">
         <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
           ["B+","B+"],["B-","B-"],
           ["O+","O+"],["O-","O-"],
-          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %> 
+          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %>
       </div><br>
-      <div class="field"> 
+      <div class="field">
           <%= f.text_field :expiredate, :placeholder=>"Enter the expire date", :style => 'width:30%;', :required => '', :id => 'datepicker' %>
           <script type="text/javascript">
             $(function() {
@@ -73,27 +73,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
             });
           </script>
       </div><br>
-      <div class="field"> 
+      <div class="field">
           <%= f.number_field :bloodbag, :placeholder=>"Enter number of blood bag", :style => 'width:30%;', :required => '' %>
       </div><br>
-        
+
       <%= f.number_field :num_of_donors, :hidden => true, :value => 0 %>
-        
-      <div class="field"> 
+
+      <div class="field">
           <%= f.text_field :hospital_name, :placeholder=>"Enter the hospital name", :style => 'width:30%;', :required => ''%>
       </div><br>
 
       <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
 
-      <div class="field"> 
-        <input id="hospital_searchTextField" type="text" style="width:30%;, :style => 'width:30%;'" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
+      <div class="field">
+        <input id="hospital_searchTextField" type="text" style="width:30%;, :style => 'width:30%;'" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" />
 
           <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true  %>
 
-          <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true  %> 
+          <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true  %>
           <%= f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', hidden: true %>
       </div><br>
-      
+
       <div class="actions">
         <%= f.submit  'create case', :style => 'width:30%;' %>
       </div>

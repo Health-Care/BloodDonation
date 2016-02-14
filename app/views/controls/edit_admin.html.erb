@@ -1,4 +1,4 @@
-<% content_for :title, "login info" %> 
+<% content_for :title, "login info" %>
 <aside class="right-side">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -19,7 +19,7 @@
     <div align="center">
       <h2>Edit super admin login info </h2>
 
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :edit ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :edit ) do |f| %>
 
       <div class="field">
         <%= f.label :email %><br />
@@ -40,7 +40,7 @@
         <%= f.submit "Update Informations" , :style => 'width:30%;' %>
       </div>
 
-      <% end %> 
+      <% end %>
     </div>
 
   </section>

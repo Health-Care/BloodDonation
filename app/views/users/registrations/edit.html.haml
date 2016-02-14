@@ -1,0 +1,84 @@
+- content_for :title, t('profile_edit_page_title')
+
+:javascript
+  prepare_to_initialize();
+
+.row
+  .column.column--center.medium-10.large-8
+    %h2.heading
+      = t('profile_edit_page_title')
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-wrapper' }) do |f|
+
+      = devise_error_messages!
+
+      .form-set
+        = f.label :name, class: 'label'
+        = f.text_field :name, autofocus: true, class: 'input'
+
+      .form-set
+        = f.label :email, class: 'label'
+        = f.email_field :email, autofocus: true, class: 'input'
+
+      .form-set
+        = f.label :phone, class: 'label'
+        = f.text_field :phone, autofocus: true, class: 'input'
+
+      .form-set
+        = f.label :address, class: 'label'
+        %input#searchTextField{ autocomplete: 'on', placeholder: 'Enter a location', runat: 'server', size: '50', type: 'text', value: current_user.location_name, class: 'input search' }
+
+        = f.text_field :location_name, autofocus: true, id: 'addName', class: 'location_name', hidden: true
+        = f.text_field :location_lat, autofocus: true, id: 'addLat', class: 'location_lat', hidden: true
+        = f.text_field :location_lng, autofocus: true, id: 'addLng', class: 'location_lng', hidden: true
+
+      .form-set
+        = f.label :'blood type', class: 'label'
+        = f.select(:blood_type, [['A+', 'A+'],['A-','A-'],
+          ['B+','B+'],['B-','B-'],
+          ['O+','O+'],['O-','O-'],
+          ['AB+','AB+'],['AB-','AB-']], { }, class: 'input', include_blank: t('choose_blood_type'))
+
+      .form-set
+        = f.label :'birth date', class: 'label'
+        = f.text_field :birth_date, required: '', placeholder: 'Enter your Birth Date', id: 'datepicker', class: 'input dtpicker'
+
+      .form-set
+        = f.label :'national ID', class: 'label'
+        = f.text_field :nationalid, autofocus: true, required: 'Enter your national id', placeholder: 'Enter your national id', class: 'input'
+
+      .form-set
+        = f.label :'last donation date', class: 'label'
+        = f.text_field :lastdonation, placeholder: 'Enter your last date of donation', id: 'picker', class: 'input dtpicker'
+
+      .form-set
+        = f.label 'Hide Account Information', class: 'label'
+        = f.select :hide_account, options_for_select([['False', 'false'], ['True', 'true']], @user.hide_account), {}, class: 'input'
+
+      .form-set
+        = f.label 'Stop receiving Messages by email when new cases matches my blood type', class: 'label'
+        = f.select :stop_getting_email, options_for_select([['False', 'false'], ['True', 'true']], @user.stop_getting_email), {}, class: 'input'
+
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+      .form-set
+        = f.label :password, class: 'label'
+        %i (leave blank if you don't want to change it)
+        = f.password_field :password, autocomplete: 'off', class: 'input'
+
+      .form-set
+        = f.label :password_confirmation, class: 'label'
+        = f.password_field :password_confirmation, autocomplete: 'off', class: 'input'
+
+      .form-set
+        = f.label :current_password
+        %i (we need your current password to confirm your changes)
+        = f.password_field :current_password, autocomplete: 'off', class: 'input'
+
+      .form-set
+        = f.submit t('update'), class: 'button expand info large'
+
+    .form-set
+      = button_to t('cancel_my_account'), registration_path(resource_name), data: { confirm: t('cancel_my_accountـnotification') }, method: :delete, class: 'button'

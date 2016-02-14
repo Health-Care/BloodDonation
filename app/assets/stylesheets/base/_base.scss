@@ -10,12 +10,10 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: $font-family__base;
-  font-size: $font-size__base;
-  line-height: $line-height__base;
-  text-align: right;
-  direction: rtl;
+.wrapper {
+  padding: 0 0 $line-height__medium 0;
 
-  color: $color-base;
+  @media #{$large-up} {
+    padding: 0 0 $line-height__base 0;
+  }
 }

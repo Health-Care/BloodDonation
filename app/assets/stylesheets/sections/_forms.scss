@@ -1,0 +1,19 @@
+//---------------------------
+//
+// Sections
+//
+//---------------------------
+
+.form-wrapper {
+  margin-bottom: $line-height__base;
+  padding: $line-height__base;
+  background-color: $grey-bg;
+
+  @media #{$large-up} {
+    padding: double($line-height__small) double($line-height__base);
+  }
+}
+
+.form-bottom {
+  border-top: 1px solid $border-color;
+}

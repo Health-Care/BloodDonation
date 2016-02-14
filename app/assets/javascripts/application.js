@@ -16,31 +16,27 @@
 //= require_tree .
 
 function ShowProgressAnimation() {
-  $("#loading-div-background").show();
+  $('#loading-div-background').show();
 }
 
-function show_notification_system(msg){
-
+function show_notification_system(msg) {
   $(document).ready(function() {
     $.meow({
-      title: "faselty says:",
+      title: 'faselty says:',
       message: msg,
-      icon: 'http://findicons.com/files/icons/1075/scrap/300/administrator_2.png'
+      // duration: 300000
     });
   });
 }
 
-
-function show_notification_blood(msg){
+function show_notification_blood(msg) {
   $(document).ready(function() {
     $.meow({
-      title: "حالات طارئه",
-      message: "فى حالات جديده بنفس فصيله دمك موجوده",
-      icon: 'http://static.wixstatic.com/media/9ba976_9ce0a72cba74472cb76112fd1376bf42.jpg'
+      title: 'حالات طارئه',
+      message: 'فى حالات جديده بنفس فصيله دمك موجوده'
     });
   });
 }
-
 
 function prepare_to_initialize() {
   $(document).ready(function() {
@@ -48,13 +44,14 @@ function prepare_to_initialize() {
  });
 }
 
-
 function initialize() {
 
   var input = document.getElementsByClassName('search');
+
   var options = {
     componentRestrictions: {country: 'eg'}
   };
+
   var autocomplete = new google.maps.places.Autocomplete(input[0], options);
 
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -65,7 +62,6 @@ function initialize() {
   });
 }
 
-
 $(document).ready(function() {
- $( ".dtpicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+  $('.dtpicker').datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
 });

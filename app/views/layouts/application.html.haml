@@ -1,15 +1,12 @@
-!!! 5
-%html{ lang: 'ar', dir: 'rtl'}
+!!!
+%html{ lang: 'ar' }
   %head
     %meta{ charset: 'utf-8' }
-
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
 
-    %title
-      فصيلتي | #{yield(:title)}
+    %title= content_for?(:title) ? yield(:title) + ' | ' + t('app_name') : t('app_name')
 
     = stylesheet_link_tag 'application'
-    = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application'
     = csrf_meta_tag
 
@@ -18,11 +15,7 @@
     %header.site-header
       .row
         .small-4.large-4.column
-          = link_to image_tag('logo.png', alt: t(:app_name), title: t(:app_name)), root_path, class: 'logo'
-
-          - if current_user
-            %a.navbar-brand-no
-              = link_to image_tag('notiii.png', width: 46, height: 40), relatedrequests_requests_path, { class: 'navbar-brand-no' }
+          = link_to image_tag('logo.png', alt: t(:app_name), title: t(:app_name)), root_path, class: 'logo site-header__logo'
 
         .small-8.large-8.column
           = render 'shared/navigation'
@@ -35,6 +28,5 @@
     - if current_user != nil && current_user.notifications != 0
       = javascript_tag "show_notification_blood('#{current_user.notifications.to_s}');"
 
-    .row
-      .large-12.column
-        = yield
+    .wrapper
+      = yield
