@@ -1,27 +1,9 @@
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
-
 <script type="text/javascript">
- function initialize() {
 
-  var input = document.getElementById('hospital_searchTextField');
-  var options = { 
-      componentRestrictions: {country: "eg"}
-   };
+prepare_to_initialize() ;
 
-  var autocomplete = new google.maps.places.Autocomplete(input , options);
-  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-    var place = autocomplete.getPlace();
-    document.getElementById('hospital_addName').value = document.getElementById('hospital_searchTextField').value;
-    document.getElementById('hospital_addLat').value = place.geometry.location.lat();
-    document.getElementById('hospital_addLng').value = place.geometry.location.lng();
-  });
-}
-google.maps.event.addDomListener(window, 'load', initialize); 
-</script> 
+</script>
 
 <% content_for :title, "تسجيل حالة تبرع جديدة" %>
 
@@ -31,4 +13,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <%= render 'form' %>
 
-	</div>
+</div>

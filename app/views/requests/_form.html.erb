@@ -45,7 +45,7 @@
     <%= f.label :'patient name' %><br>
     <%= f.text_field :patient_name, :required=>"Enter the patient name" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :'blood type' %><br />
     <%= f.select(:blood_type, [["A+","A+"],["A-","A-"],
@@ -67,19 +67,18 @@
     <%= f.label :'hospital name' %><br>
     <%= f.text_field :hospital_name, :required=>"Enter the hospital name" %>
   </div>
-  
+
  <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
   <div class="field">
     <%= f.label :'hospital address' %><br />
-    <input id="hospital_searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" /> 
-    
-    <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true  %>
+    <input id="hospital_searchTextField" class="search" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" value="<%= @request.hospital_location%>" />
 
-    <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true  %> 
-    <%= f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', hidden: true %>
+    <%= f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', hidden: true, class: 'location_name' %>
+
+    <%= f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', hidden: true, class: 'location_lat' %>
+    <%= f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', hidden: true, class: 'location_lng' %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
- 

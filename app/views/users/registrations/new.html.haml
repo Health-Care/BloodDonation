@@ -1,28 +1,7 @@
 - content_for :title, t('new_volunteerـsignup_page_title')
 
-%script{:src => "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places", :type => "text/javascript"}
-%link{:href => "//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}
-%script{:src => "//code.jquery.com/ui/1.11.0/jquery-ui.js"}
-
 :javascript
-  function initialize() {
-  var input = document.getElementById('searchTextField');
-   var options = {
-      componentRestrictions: {country: "eg"}
-   };
-
-  var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-      var place = autocomplete.getPlace();
-      document.getElementById('addName').value = document.getElementById('searchTextField').value;
-      document.getElementById('addLat').value = place.geometry.location.lat();
-      document.getElementById('addLng').value = place.geometry.location.lng();
-
-     });
-  }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
+  prepare_to_initialize()
 
 .row
   .column.column--center.large-8
@@ -42,10 +21,10 @@
 
       .c-form-set
         = f.label :address, class: 'c-label'
-        %input#searchTextField{autocomplete: 'on', placeholder: 'Enter a location', class: 'c-input', runat: 'server', size: '50', type: 'text'}
-        = f.text_field :location_name, autofocus: true, id: 'addName', hidden: true
-        = f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true
-        = f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true
+        %input#searchTextField{autocomplete: 'on', placeholder: 'Enter a location', class: 'c-input search', runat: 'server', size: '50', type: 'text'}
+        = f.text_field :location_name, autofocus: true, id: 'addName', hidden: true, class: 'location_name'
+        = f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true, class: 'location_lat'
+        = f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true, class: 'location_lng'
 
       .c-form-set
         = f.label :gender, class: 'c-label'
@@ -63,11 +42,7 @@
         = f.text_field :phone, autofocus: true, required: 'Enter your mobile number', placeholder:'Enter your phone number', class: 'c-input'
       .c-form-set
         = f.label :'birth date', class: 'c-label'
-        = f.text_field :birth_date, required: '', placeholder: 'Enter your Birth Date', id: 'datepicker', class: 'c-input'
-        :javascript
-          $(function() {
-            $('#datepicker').datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-          });
+        = f.text_field :birth_date, required: '', placeholder: 'Enter your Birth Date', id: 'datepicker', class: 'c-input dtpicker'
 
       .c-form-set
         = f.label :'national ID', class: 'c-label'
@@ -75,11 +50,7 @@
 
       .c-form-set
         = f.label :'last donation date', class: 'c-label'
-        = f.text_field :lastdonation, placeholder: 'Enter your last date of donation', id: 'picker', class: 'c-input'
-        :javascript
-          $(function() {
-            $('#picker').datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
-          });
+        = f.text_field :lastdonation, placeholder: 'Enter your last date of donation', id: 'picker', class: 'c-input dtpicker'
 
       = f.number_field :num_of_active_requests, hidden: true, value: 0
       = f.date_field :created_at, value: Time.now.strftime("%Y-%m-%d"), hidden: true
