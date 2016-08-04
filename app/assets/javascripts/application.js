@@ -42,3 +42,30 @@ function show_notification_blood(msg){
 }
 
 
+function prepare_to_initialize() {
+  $(document).ready(function() {
+   google.maps.event.addDomListener(window, 'load', initialize());
+ });
+}
+
+
+function initialize() {
+
+  var input = document.getElementsByClassName('search');
+  var options = {
+    componentRestrictions: {country: 'eg'}
+  };
+  var autocomplete = new google.maps.places.Autocomplete(input[0], options);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var place = autocomplete.getPlace();
+    document.getElementsByClassName('location_name')[0].value = document.getElementsByClassName('search')[0].value;
+    document.getElementsByClassName('location_lat')[0].value = place.geometry.location.lat();
+    document.getElementsByClassName('location_lng')[0].value = place.geometry.location.lng();
+  });
+}
+
+
+$(document).ready(function() {
+ $( ".dtpicker" ).datepicker({changeYear: true, yearRange : '-100:+0',dateFormat: 'yy-mm-dd'});
+});
