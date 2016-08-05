@@ -6,10 +6,10 @@
 
 input[hidden="hidden"] { display: none !important; }
 
-$form-namespace: 'c-form';
-$form-set-namespace: 'c-form-set';
-$label-namespace: 'c-label';
-$input-namespace: 'c-input';
+$form-namespace: 'form';
+$form-set-namespace: 'form-set';
+$label-namespace: 'label';
+$input-namespace: 'input';
 
 $label-color: #7b8994;
 $input-color: #47525d;
@@ -19,35 +19,48 @@ $input-border-focused: #72b6ec;
 
 .#{$form-set-namespace} {
   margin-bottom: $line-height__base;
+
+  &:last-child { margin-bottom: 0; }
 }
 
 .#{$label-namespace} {
-  display: block;
-  margin-bottom: $line-height__base / 4;
+  display: inline-block;
+  margin-bottom: quarter($line-height__base);
+  font-size: $font-size__medium;
   color: $label-color;
 }
 
 .#{$input-namespace} {
   display: block;
   width: 100%;
-  padding: ($line-height__base / 4) ($line-height__base / 2);
+  padding: quarter($line-height__base) half($line-height__base);
   line-height: $line-height__base;
 
   color: $input-color;
   border: 1px solid $input-border;
 
-  background: transparent;
+  background: #fff;
   font-family: $font-family__base;
   font-size: $font-size__base;
 
   outline: none;
   font-weight: inherit;
+  transition: $base-transition-speed;
 
   @media #{$medium-down} {
-    padding: ($line-height__small / 4) ($line-height__small / 2);
+    padding: quarter($line-height__small) half($line-height__small);
   }
 
   &:focus {
     border: 1px solid $input-border-focused;
   }
+}
+
+select.#{$input-namespace} {
+  background-image: image-url('icon-arrow-down.svg');
+  background-position: left 16px center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  appearance: none;
+  cursor: pointer;
 }

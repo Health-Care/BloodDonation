@@ -1,0 +1,38 @@
+//---------------------------
+//
+// Alert
+//
+//---------------------------
+
+.alert {
+  padding: half($line-height__base);
+  margin-bottom: half($line-height__base);
+
+  ul { @extend .list-bare; }
+
+  li {
+    margin-bottom: half($line-height__base);
+    list-style: none;
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+.alert-alert,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}

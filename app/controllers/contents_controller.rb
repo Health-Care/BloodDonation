@@ -1,14 +1,14 @@
 class ContentsController < ApplicationController
 
 	#before_action :authenticate_user!
-	
-	def index 
+
+	def index
 		if user_signed_in?
-			#User.my_active_donations(current_user)			
+			#User.my_active_donations(current_user)
 			#redirect_to show_users_path(current_user)
 			redirect_to relatedrequests_requests_path
 		elsif admin_signed_in?
-			redirect_to controls_path   
+			redirect_to controls_path
 		end
 	end
 

@@ -1,0 +1,38 @@
+- content_for :title, t('active_donations_title')
+
+.row
+  .column.column--center.medium-10.large-8
+
+    - if @requests.size != 0
+      %h1 Active Donations Requests
+
+      %table
+        %thead
+          %tr
+            %th Blood type
+            %th Expire date
+            %th Blood bag
+            %th Hospital name
+        %tbody
+          - @requests.each do |request|
+            %tr
+              %td= request.blood_type
+              %td= request.expiredate
+              %td= request.bloodbag
+              %td= request.hospital_name
+              - if !request.expiredate.past?
+                %td
+                  = link_to 'Show', request
+                %td
+                  = link_to 'cancel', cancel_donate_requests_path(request), data: { confirm: 'Are you sure?' }
+              - else
+                %td expired
+                %td
+                  = link_to 'cancel', cancel_donate_requests_path(request), data: { confirm: 'Are you sure?' }
+                  = link_to 'Edit', edit_request_path(request)
+                  = link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' }
+    - else
+      %h2
+        = t('no_active_donations')
+
+    = link_to t('back_to_user_page'), show_users_path(current_user)

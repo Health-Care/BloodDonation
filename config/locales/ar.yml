@@ -1,0 +1,155 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ar:
+  app_name: 'فصيلتي'
+
+  # Navigation
+  account_show: 'عرض الحساب'
+  account_settings: 'اعدادات الحساب'
+  account_pause: 'تجميد الحساب'
+  account_unpause: 'تفعيل الحساب'
+  account_logout: 'تسجيل الخروج'
+  about_faselty: 'عن فصيلتي'
+
+  # Index
+  display_requests_title: 'عرض الحالات'
+  register_new_user: 'تسجيل متبرع جديد'
+
+  # Sign Up Page
+  name: 'الاسم'
+  volunteerـsignup: 'تسجيل حساب كمتبرع جديد'
+  sign_up: 'التسجيل'
+  male: 'ذكر'
+  female: 'أنثى'
+  signup: 'تسجيل'
+  choose_blood_type: 'اختر فصيلة الدم'
+
+  # Request
+  requestـpage_title: 'تسجيل متلقى جديد'
+
+  # Request/new
+  new_requestـpage_title: 'تسجيل حالة تبرع جديدة'
+
+  # Requests
+  show_all_requests: 'عرض الحالات الكاملة'
+
+  # Related Requests
+  related_requests_title: 'الطلبات المتوافقة مع فصيلة دمي'
+  show: 'عرض الحالة'
+
+  # Request Show Page
+  request_show_page_title: 'صفحة الحالة'
+  number_of_donors: 'عدد المتبرعين'
+  showـdonors: 'عرض المتبرعين'
+
+  # Donors Page
+  donors: 'المتبرعين'
+  donor_number: 'الرقم'
+
+  # Created Request
+  created_requestـpage_title: 'صفحة الحالة'
+  contact name: 'الاسم'
+  contact phone: 'رقم الهاتف'
+  contact email: 'البريد الإلكتروني'
+  contact national ID: 'الرقم القومي'
+  patient name: 'اسم المريض'
+  blood type: 'فصيلة الدم'
+  expire date: 'موعد التبرع'
+  blood bag: 'عدد أكياس الدم'
+  hospital name: 'إسم المستشفى'
+  hospital address: 'عنوان المستشفى'
+
+  # Edit Profile Page
+  profile_edit_page_title: 'تعديل الحساب'
+  update: 'تحديث'
+  cancel_my_account: 'إلغاء الحساب'
+  cancel_my_accountـnotification: 'هل أنت متأكد أنك تريد إلغاء الحساب؟'
+
+  # Log In Page
+  login_title: 'تسجيل الدخول كمتبرع'
+  login_button_label: 'دخول'
+
+  # Reregistration shared
+  sign_up: 'تسجيل'
+  login: 'دخول'
+  forgot_your_password: 'نسيت كلمة السر؟'
+
+  #users/confirmation
+  resend_confirmation: 'Resend confirmation instructions'
+
+  # Passwords
+  change_your_password: 'تغيير كلمة السر'
+
+  # User Page
+  login_donor_page_title: 'الصفحة الشخصية'
+  donor_page_title: 'الصفحة الشخصية للمتبرع'
+  donor_pageـno_access_alert: 'لا يمكنك مشاهدة المعلومات الخاصة بهذا المتبرع'
+  pending_requests: 'الطلبات قيد الانتظار'
+  saved_people_number: 'عدد الأشخاص الذين تم مساعدتهم'
+  last_donation_time: 'آخر مرة تم فيها التبرع'
+  number_of_active_requests: 'عدد الطلبات النشطة'
+
+  # Active Donations
+  active_donations_title: 'التبرعات النشطه'
+  no_active_donations: 'لا توجد تبرعات نشطة'
+  back_to_user_page: 'الرجوع إلى الصفحة الشخصية'
+
+  # Pages
+  about_donation: 'عن التبرع'
+  about_donor: 'عن المتبرع'
+  about_blood: 'عن الدم'
+  patient_information: 'معلومات المريض'
+  news: 'أخبار'
+  contact: 'للتواصل'
+  about_page_title: 'ما هي فصيلتي؟'
+  twitter: 'تويتر'
+  facebook: 'فيسبوك'
+
+  helpers:
+    label:
+      user:
+        name: 'الاسم'
+        email: 'البريد الإلكتروني'
+        address: 'العنوان'
+        gender: 'النوع'
+        'blood type': 'فصيلة الدم'
+        'phone number': 'رقم الهاتف'
+        'birth date': 'تاريخ الميلاد'
+        'national ID': 'الرقم القومي'
+        'last donation date': 'آخر موعد تبرعت فيه بالدم'
+        num_of_active_requests: ''
+        password: 'كلمة السر'
+        password_confirmation: 'تأكيد كلمة السر'
+        remember_me: 'تذكرني'
+        phone: 'رقم الهاتف'
+      request:
+        contact name: 'الاسم'
+        contact phone: 'رقم الهاتف'
+        contact email: 'البريد الإلكتروني'
+        contact national ID: 'الرقم القومي'
+        patient name: 'اسم المريض'
+        blood type: 'فصيلة الدم'
+        expire date: 'موعد التبرع'
+        blood bag: 'عدد أكياس الدم'
+        hospital name: 'إسم المستشفى'
+        hospital address: 'عنوان المستشفى'
+

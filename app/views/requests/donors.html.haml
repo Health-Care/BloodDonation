@@ -1,0 +1,29 @@
+- content_for :title, t('donors')
+
+.row
+  .column.column--center.large-8
+    %h2.heading
+      = t('donors')
+
+    - i = 1
+    %table
+      %thead
+        %tr
+          %th
+            = t('donor_number')
+          %th
+            = t('donor name')
+          %th
+            = t('donor phone')
+      %tbody
+        - @users.each do |user|
+          %tr
+            - if current_user && user.id == current_user.id
+              %td= i
+              %td you
+              %td= user.phone
+            - else
+              %td= i
+              %td= user.name
+              %td= user.phone
+          - i = i + 1

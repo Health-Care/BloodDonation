@@ -1,0 +1,32 @@
+- content_for :title, t('related_requests_title')
+
+.row
+  .column.column--center.large-8
+
+    %h2.heading
+      = t('related_requests_title')
+
+    %table
+      %thead
+        %tr
+          %th
+            = t('blood type')
+          %th
+            = t('expire date')
+          %th
+            = t('blood bag')
+          %th
+            = t('hospital name')
+
+      %tbody
+        - @requests.each do |request|
+          %tr
+            %td= request.blood_type
+            %td= request.expiredate
+            %td= request.bloodbag
+            %td= request.hospital_name
+            %td= link_to t('show'), request
+
+            .hide
+              = link_to 'Edit', edit_request_path(request)
+              = link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' }

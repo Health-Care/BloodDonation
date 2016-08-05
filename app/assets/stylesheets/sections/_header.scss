@@ -4,15 +4,43 @@
 //
 //---------------------------
 
+$header-background: #F54337;
+
 .site-header {
-  padding: 1em 0;
-  margin-bottom: 3rem;
-  background-color: #F54337;
+  padding: half($line-height__medium) 0;
+  margin-bottom: $line-height__medium;
+
+  @media #{$large-up} {
+    padding: half($line-height__base) 0;
+    margin-bottom: $line-height__base;
+  }
+
+  background-color: $header-background;
 
   a { color: #fff; }
-}
 
-.logo {
-  display: block;
-  width: 120px;
+  &__logo {
+    margin-bottom: 0;
+    line-height: $line-height__base;
+
+    a {
+      transition: $base-transition-speed;
+      text-decoration: none;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    img {
+      max-height: $line-height__medium;
+      vertical-align: middle;
+
+      @media #{$medium-up} {
+        max-height: $line-height__base;
+      }
+    }
+
+    @media #{$medium-down} {
+      line-height: $line-height__medium;
+    }
+  }
 }

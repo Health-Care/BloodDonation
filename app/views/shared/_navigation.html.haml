@@ -1,19 +1,29 @@
-%ul.nav
-  - if current_user
-    %li
-      = current_user.name.downcase.split[0]
-      %ul
-        %li= link_to 'عرض الحساب', show_users_path(current_user)
-        %li= link_to 'اعدادات الحساب', '#', :onclick => "window.location.href = '/users/edit'"
-        %li
-          / Developer review: if user is available
-          - unless current_user.pause
-            / Developer review: pause user's account
-            = link_to 'تجميد الحساب', pause_user_path(current_user)
-            / Developer review: if user Not Available
-          - else
-            / Developer review: resume user's account
-            = link_to 'تفعيل الحساب', unpause_user_path(current_user)
-        %li= link_to 'تسجيل الخروج',destroy_user_session_path
+.site-header__navigation
 
-  %li= link_to "عن فصيلتي", about_contents_path
+  %ul.list-bare
+    - if current_user
+      %li.nav-item.nav-item-has-children
+        = link_to current_user.name, show_users_path(current_user)
+        %ul.list-bare.sub-menu
+          %li.nav-item
+            = link_to t('account_show'), show_users_path(current_user)
+          %li.nav-item
+            = link_to t('account_settings'), '#', :onclick => "window.location.href = '/users/edit'"
+          %li.nav-item
+            / Developer review: if user is available
+            - unless current_user.pause
+              / Developer review: pause user's account
+              = link_to t('account_pause'), pause_user_path(current_user)
+              / Developer review: if user Not Available
+            - else
+              / Developer review: resume user's account
+              = link_to t('account_unpause'), unpause_user_path(current_user)
+          %li.nav-item
+            = link_to t('account_logout'), destroy_user_session_path
+
+    - if current_user
+      %li.nav-item
+        = link_to image_tag('notiii.png', width: 46, height: 40), relatedrequests_requests_path, { class: 'hide' }
+
+    %li.nav-item
+      = link_to t('about_faselty'), about_contents_path

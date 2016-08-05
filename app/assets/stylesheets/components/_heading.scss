@@ -1,0 +1,17 @@
+//---------------------------
+//
+// Heading
+//
+//---------------------------
+
+// <h2 class='heading'>Heading</h2>
+
+.heading {
+  padding-bottom: $line-height__medium;
+  margin-top: 0;
+  margin-bottom: $line-height__medium;
+  border-bottom: 1px solid $border-color;
+  font-size: $font-size__base;
+  color: #828a9b;
+  text-align: center;
+}

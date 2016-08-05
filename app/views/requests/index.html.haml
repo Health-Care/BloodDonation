@@ -1,0 +1,31 @@
+- content_for :title, t('show_all_requests')
+
+.row
+  .column.column--center.large-8
+
+    - if @requests.size != 0
+      %h2.heading
+        Listing Requests
+
+      %table
+        %thead
+          %tr
+            %td
+              = t('blood type')
+            %th
+              = t('expire date')
+            %th
+              = t('blood bag')
+            %th
+              = t('hospital name')
+        %tbody
+          - @requests.each do |request|
+            %tr
+              %td= request.blood_type
+              %td= request.expiredate
+              %td= request.bloodbag
+              %td= request.hospital_name
+              %td= link_to = t('show'), request
+
+    - else
+      %h3 No requests yet !!

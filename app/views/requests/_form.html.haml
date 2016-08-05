@@ -1,0 +1,80 @@
+- content_for :title, t('requestـpage_title')
+
+:javascript
+  $(document).ready(function () {
+    $('#loading-div-background').css({ opacity: 0.8 });
+  });
+
+.row
+  .column.column--center.medium-10.large-8
+    %h2.heading
+      = t('requestـpage_title')
+
+    #loading-div-background
+
+      #loading-div.ui-corner-all
+        %img{:alt => 'Loading..', :src => 'https://www.tmdn.org/tmdsview-web/resources/images/loading-gallery.gif', :style => 'height:80px;margin:30px;'}/
+        %h2{:style => 'color:gray;font-weight:normal;'} Please wait....
+
+    = form_for( @request, html: { onsubmit: 'ShowProgressAnimation();', class: 'form-wrapper'} ) do |f|
+      - if @request.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@request.errors.count, 'error')
+            prohibited this request from being saved:
+          %ul
+            - @request.errors.full_messages.each do |message|
+              %li= message
+
+      .form-set
+        = f.label :'contact name', class: 'label'
+        = f.text_field :contact_name, required: 'Enter your name', class: 'input'
+
+      .form-set
+        = f.label :'contact phone', class: 'label'
+        = f.text_field :contact_phone, required: 'Enter your mobile number', class: 'input'
+
+      .form-set
+        = f.label :'contact email', class: 'label'
+        = f.text_field :contact_email, required: 'Enter your email', class: 'input'
+
+      .form-set
+        = f.label :'contact national ID', class: 'label'
+        = f.text_field :contact_nationalid, required: 'Enter your national id', class: 'input'
+
+      .form-set
+        = f.label :'patient name', class: 'label'
+        = f.text_field :patient_name, required: 'Enter the patient name', class: 'input'
+
+      .form-set
+        = f.label :'blood type', class: 'label'
+        = f.select(:blood_type, [['A+','A+'],['A-','A-'],
+          ['B+','B+'],['B-','B-'],
+          ['O+','O+'],['O-','O-'],
+          ['AB+','AB+'],['AB-','AB-']], { }, class: 'input', include_blank: t('choose_blood_type'))
+
+      .form-set
+        = f.label :'expire date', class: 'label'
+        = f.text_field :expiredate, class: 'input dtpicker'
+
+      .form-set
+        = f.label :'blood bag', class: 'label'
+        = f.number_field :bloodbag, required: 'Enter number of blood bag', class: 'input'
+
+      = f.number_field :num_of_donors, hidden: true, :value => 0
+
+      .form-set
+        = f.label :'hospital name', class: 'label'
+        = f.text_field :hospital_name, required: 'Enter the hospital name', class: 'input'
+
+      = f.date_field :created_at, value: Time.now.strftime('%Y-%m-%d'), hidden: true
+
+      .form-set
+        = f.label :'hospital address', class: 'label'
+        %input#hospital_searchTextField{autocomplete: 'on', placeholder: 'Enter a location', runat: 'server', size: '50', type: 'text', value: @request.hospital_location, class: 'input search'}
+        = f.text_field :hospital_location, autofocus: true, id: 'hospital_addName', class: 'location_name', hidden: true
+        = f.text_field :hospital_location_lat, autofocus: true, id: 'hospital_addLat', class: 'location_lat', hidden: true
+        = f.text_field :hospital_location_lng, autofocus: true, id: 'hospital_addLng', class: 'location_lng', hidden: true
+
+      .form-set
+        = f.submit t('requestـpage_title'), class: 'button info expand large'

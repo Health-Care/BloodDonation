@@ -1,19 +1,22 @@
-.row
-  .column.large-12
-    .row
-      .column.large-4
-        %h4 ما هي فصيلتي؟
-        %p فصيلتي هي شبكة وحل لعملية التبرع بالدم. تقدم فصيلتي خدماتها للمتبرعين بالدم ولطالبي الدم كما تتعاون مع مراكز الدم والمستشفيات لتطوير وتحسين عملية التبرع بالدم. تجمع فصيلتي كل المساهمين في عملية التبرع بالدم عن طريق موقعها وتطبيقها للهواتف الخلوية ونظام الجرد والمتابعة واستخدام وسائل الاتصالات وتكنولوجيا المعلومات المتعددة.
-      .column.large-8
-        .flex-video
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "//www.youtube.com/embed/_lST9cm5jts", :width => "530"}
+- content_for :title, t('app_name')
 
 .row
-  .column.large-12
+  .column.column--center.large-8
+    %h2.heading
+      = t('about_page_title')
+
+    %p فصيلتي هي شبكة وحل لعملية التبرع بالدم. تقدم فصيلتي خدماتها للمتبرعين بالدم ولطالبي الدم كما تتعاون مع مراكز الدم والمستشفيات لتطوير وتحسين عملية التبرع بالدم. تجمع فصيلتي كل المساهمين في عملية التبرع بالدم عن طريق موقعها وتطبيقها للهواتف الخلوية ونظام الجرد والمتابعة واستخدام وسائل الاتصالات وتكنولوجيا المعلومات المتعددة.
+
+    .flex-video.widescreen
+      %iframe{allowfullscreen: '', frameborder: '0', :height => "315", :src => "//www.youtube.com/embed/_lST9cm5jts"}
+
     .row
-      .column.large-4
-        %p Follow us on Facebook
-      .column.large-4
-        %p Follow us on Twitter
-      .column.large-4
-        %p Follow us on Google Plus
+      .column.large-12
+        .row
+          .column.large-6
+            %p
+              = link_to t('twitter'), 'https://twitter.com/faselty'
+
+          .column.large-6
+            %p
+              = link_to t('facebook'), 'https://www.facebook.com/FaseltyMe/'

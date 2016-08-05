@@ -1,0 +1,22 @@
+- content_for :title, t('app_name')
+
+.row
+  .column.column--center.large-8
+    %ul.list-bare
+      - if current_user
+        %li
+          Welcome
+          = current_user.name
+        %li
+          = current_user.email
+        %li
+          = link_to t('display_requests'), requests_path
+      - else
+        %li
+          = link_to t('volunteerـsignup'), '#', onclick: "window.location.href = '/users/sign_up'"
+        %li
+          = link_to t('login_title'), new_user_session_path
+        %li
+          = link_to t('display_requests_title'), requests_path
+        %li
+          = link_to t('requestـpage_title'), '#', onclick: "window.location.href = '/requests/new'"

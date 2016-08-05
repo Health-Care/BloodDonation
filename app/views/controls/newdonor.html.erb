@@ -20,10 +20,10 @@
 
   });
 }
-google.maps.event.addDomListener(window, 'load', initialize); 
-</script> 
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
-<% content_for :title, "New Donor" %> 
+<% content_for :title, "New Donor" %>
 <aside class="right-side">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -41,43 +41,43 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <!-- Main content -->
   <section class="content">
-    <div align="center"> 
+    <div align="center">
 
-      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_donor ) do |f| %> 
+      <%=form_for :controls, url: url_for( :controller => :admincommands, :action => :create_new_donor ) do |f| %>
 
-      <div class="field"> 
+      <div class="field">
         <%= f.text_field :name, autofocus: true, :required=>"Enter donor name", :placeholder=>"Enter donor name", :style => 'width:30%;'  %>
       </div><br>
 
-      <div class="field"> 
+      <div class="field">
         <%= f.email_field :email, autofocus: true, :required=>"Enter donor email", :placeholder=>"Enter donor email", :style => 'width:30%;'  %>
       </div><br>
 
-      <div class="field"> 
-        <input id="searchTextField" type="text" style="width:30%;" placeholder="Enter a location" autocomplete="on" runat="server" /> 
+      <div class="field">
+        <input id="searchTextField" type="text" style="width:30%;" placeholder="Enter a location" autocomplete="on" runat="server" />
 
         <%= f.text_field :location_name, autofocus: true, id: 'addName', hidden: true  %>
 
-        <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true  %> 
+        <%= f.text_field :location_lat, autofocus: true, id: 'addLat', hidden: true  %>
         <%= f.text_field :location_lng, autofocus: true, id: 'addLng', hidden: true %>
       </div><br>
 
-      <div class="field"> 
+      <div class="field">
         <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"],["Choose gender"]], selected: "Choose gender") ,{}, :style => 'width:30%;'%>
       </div><br />
 
-      <div class="field"> 
+      <div class="field">
         <%= f.select :blood_type, options_for_select([["A+","A+"],["A-","A-"],
           ["B+","B+"],["B-","B-"],
           ["O+","O+"],["O-","O-"],
-          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %> 
+          ["AB+","AB+"],["AB-","AB-"],["Choose blood type"]], selected: "Choose blood type"),{}, :style => 'width:30%;' %>
         </div><br />
 
-        <div class="field"> 
+        <div class="field">
           <%= f.text_field :phone, autofocus: true, :required=>"Enter donor mobile number" , :placeholder=>"Enter donor phone number", :style => 'width:30%;'%>
         </div><br />
 
-        <div class="field"> 
+        <div class="field">
           <%= f.text_field :birth_date, :required=>"", :placeholder=>"Enter donor Birth Date" , :id=>"datepicker", :style => 'width:30%;' %>
           <script type="text/javascript">
             $(function() {
@@ -86,12 +86,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
           </script>
         </div><br />
 
-        <div class="field"> 
+        <div class="field">
           <%= f.text_field :nationalid, autofocus: true, :required=>"Enter donor national id", :placeholder=>"Enter donor national id", :style => 'width:30%;' %>
         </div><br />
 
 
-        <div class="field"> 
+        <div class="field">
           <%= f.text_field :lastdonation, :placeholder=>"Enter donor last date of donation" , :id=>"picker", :style => 'width:30%;' %>
           <script type="text/javascript">
             $(function() {
@@ -102,15 +102,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         <%= f.date_field :created_at, :value => Time.now.strftime("%Y-%m-%d"), :hidden =>true %>
         <%= f.number_field :num_of_active_requests, :hidden => true, :value => 0 %>
-        
+
         <div class="field">
           <%= f.password_field :password, :placeholder=>"Enter password ( 8 or more letters )", autocomplete: "off", :style => 'width:30%;' %>
         </div><br>
 
-        <div class="field"> 
+        <div class="field">
           <%= f.password_field :password_confirmation, :placeholder=>"Enter password confirmation", autocomplete: "off", :style => 'width:30%;' %>
         </div><br>
-        
+
         <div class="actions">
           <%= f.submit "Create a new Donor", :style => 'width:30%;' %>
         </div>
